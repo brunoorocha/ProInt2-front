@@ -1,0 +1,79 @@
+
+/*
+    font-face rules
+*/
+@font-face {
+    font-family: "Roboto Regular";
+    src: url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto Medium";
+    src: url("../fonts/Roboto/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../fonts/Roboto/Roboto-Bold.ttf");
+}
+
+/*
+    Material Icons settings
+*/
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/*
+    Basic format rewrites
+*/
+body {
+    font-family: "Roboto Regular";
+}
+
+/*
+    Custom UI based on Material Design by Google
+*/
+.appbar {
+    max-height: 64px;
+    padding: 4px;
+    background-color: #f8f9fa;
+}
+
+.appbar h3{
+    font-size: 20px;
+    float: left;
+    line-height: 52px;
+    margin: 0;
+    padding: 2px 16px;
+}
+
+.appbar .btn {
+    padding: 0 16px;
+    border: none;
+}
+
+.appbar .btn i{
+    line-height: 56px;
+}
