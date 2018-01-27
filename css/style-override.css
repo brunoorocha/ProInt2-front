@@ -59,6 +59,11 @@ body {
     max-height: 64px;
     padding: 4px;
     background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.appbar .row{
+    width: 100%;
 }
 
 .appbar h3{
@@ -72,8 +77,48 @@ body {
 .appbar .btn {
     padding: 0 16px;
     border: none;
+    border-radius: 0;
 }
 
 .appbar .btn i{
     line-height: 56px;
+}
+
+.nav-left {
+    max-width: 320px;
+    height: 100vh;    
+    margin-left: -320px;
+    background-color: #fafafa;
+    border-right: 1px solid #9d9d9d;
+    z-index: 1;
+    transition: .2s ease-out;
+}
+
+.nav-left-active {
+    margin-left: 0px;
+}
+
+.nav-left .user-session {
+    background-color: #ededee;
+    border-bottom: 1px solid #9d9d9d;
+    padding: 16px;
+    padding-top: 36px;
+}
+
+.nav-left .user-session img {
+    background-color: #9d9d9d;
+    width: 72px;
+    height: 72px;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.nav-left .user-session span.username {
+    font-size: 18px;
+    font-family: "Roboto Bold";
+}
+
+.nav-left .user-session span.usertype {
+    font-size: 14px;
+    color: #444;
 }

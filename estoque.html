@@ -4,30 +4,69 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Estoque</title>
-        <link rel="stylesheet" href="./scr/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./src/bootstrap-4.0.0-dist/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-override.css">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="./scr/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./src/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./js/functions.js"></script>
     </head>
     <body>
-        <div class="navbar appbar">
-            <div class="row no-gutters">
-                <div class="col">
-                    <button type="button" class="btn btn-light">
-                        <i class="material-icons">menu</i>
-                    </button>
+        <div class="row no-gutters">
+            <div class="col-md-3 nav-left">
+                <div class="row no-gutters user-session">
+                    <div class="col">
+                        <img src="" class="rounded-circle" alt="">
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col">
+                        <div class="row">
+                            <span class="col-10 username">Bruno Rocha</span>
+                            <i class="col-2 material-icons dp48">arrow_drop_down</i>
+                        </div>
+                    </div>
+
+                    <div class="w-100"></div>
+
+                    <div class="col">
+                        <span class="usertype">Administrador</span>
+                    </div>
                 </div>
-                <div class="col">
-                    <h3>Estoque</h3>
+            </div>
+
+            <div class="col col-md-9">
+                <div class="navbar appbar">
+                    <div class="row no-gutters">
+                        <div class="col col-sm-1">
+                            <button type="button" class="btn btn-light toggle-nav-left">
+                                <i class="material-icons">menu</i>
+                            </button>
+                        </div>
+
+                        <div class="col-8 col-sm-10">
+                            <h3>Estoque</h3>
+                        </div>
+
+                        <div class="col col-sm-1">
+                            <button type="button" class="btn btn-light">
+                                <i class="material-icons">search</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h1>Estoque</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="container">
-            <h1>Estoque</h1>
-        </div>
     </body>
 </html>
