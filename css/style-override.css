@@ -52,6 +52,10 @@ body {
     font-family: "Roboto Regular";
 }
 
+h1 {
+    font-family: "Roboto Medium";
+}
+
 /*
     Custom UI based on Material Design by Google
 */
@@ -61,6 +65,16 @@ body {
     height: 100vh;
     position: fixed;
     z-index: 1;
+}
+
+.center-content {
+    padding: 16px;
+    height: 110vh;
+}
+
+.fixed-height {
+    height: 100vh;
+    overflow: auto;
 }
 
 .appbar {
@@ -134,4 +148,48 @@ body {
 .nav-left .user-session span.usertype {
     font-size: 14px;
     color: #444;
+}
+
+.nav-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: 56px;
+    align-content: center;
+}
+
+.nav-bottom-unactive {
+    bottom: -56px;
+}
+
+.nav-bottom ul.nav-tabs {
+    width: 100vw;
+    max-width: 576px;
+    border: none;
+}
+
+.nav-bottom ul.nav-tabs li.nav-item {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-bottom ul.nav-tabs li.nav-item a.nav-link {
+    margin: 0;
+    text-align: center;
+    color: #999;
+    border: none;
+    text-transform: uppercase;
+}
+
+.nav-bottom ul.nav-tabs li.nav-item a.active {
+    background-color: transparent;
+    color: #fff;
+    font-family: "Roboto Medium";
+}
+
+.nav-bottom ul.nav-tabs li.nav-item a.nav-link span {
+    float: left;
+    width: 100%;
+    font-size: 12px;
+    margin-top: -5px;
 }

@@ -14,7 +14,10 @@
     </head>
     <body>
         <div class="row no-gutters">
+            <!-- Nav Left Component -->
             <div class="col-md-3 nav-left">
+
+                <!-- User Logged Component -->
                 <div class="row no-gutters user-session">
                     <div class="col">
                         <img src="" class="rounded-circle" alt="">
@@ -24,7 +27,7 @@
 
                     <div class="col">
                         <div class="row">
-                            <span class="col-10 username">Bruno Rocha</span>
+                            <span class="col-10 username">Usuário Logado</span>
                             <i class="col-2 material-icons dp48">arrow_drop_down</i>
                         </div>
                     </div>
@@ -32,27 +35,32 @@
                     <div class="w-100"></div>
 
                     <div class="col">
-                        <span class="usertype">Administrador</span>
+                        <span class="usertype">Nível de Acesso</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Nav Mask Component -->
             <div class="mask"></div>
 
-            <div class="col center-content">
+            <div class="col fixed-height">
+                <!-- Navbar Component -->
                 <div class="navbar appbar">
                     <div class="row no-gutters">
                         <div class="col btn-col">
+                            <!-- Toggle Nav Button Component -->
                             <button type="button" class="btn btn-light toggle-nav-left">
                                 <i class="material-icons">menu</i>
                             </button>
                         </div>
 
                         <div class="col">
-                            <h3>Estoque</h3>
+                            <!-- Page Title Component -->
+                            <h3>Título da Página</h3>
                         </div>
 
                         <div class="col btn-col">
+                            <!-- Nav Button Component -->
                             <button type="button" class="btn btn-light">
                                 <i class="material-icons">search</i>
                             </button>
@@ -60,15 +68,46 @@
                     </div>
                 </div>
 
+                <!-- Container -->
                 <div class="container">
                     <div class="row">
-                        <div class="col">
-                            <h1>Estoque</h1>
+                        <div class="col center-content">
+                            <!-- H1 Title Component -->
+                            <h1>Título H1</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Nav Bottom Component -->
+        <div class="row justify-content-center no-gutters bg-dark nav-bottom">
+            <ul class="nav nav-tabs">
+                <li class="col nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="material-icons">home</i>
+                        <span>Início</span>
+                    </a>
+                </li>
+                <li class="col nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">view_module</i>
+                        <span>Estoque</span>
+                    </a>
+                </li>
+                <li class="col nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">people</i>
+                        <span>Clientes</span>
+                    </a>
+                </li>
+                <li class="col nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="material-icons">attach_money</i>
+                        <span>Caixa</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </body>
 </html>

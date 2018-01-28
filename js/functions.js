@@ -24,6 +24,7 @@ $(function() {
     function offCanvasNavActivate() {
         if(window.innerWidth >= 960) {
             $('.nav-left').addClass('nav-left-active')
+            $('.nav-bottom').addClass('nav-bottom-unactive')
             $('.nav-left').removeClass('position-fixed')
             $('.toggle-nav-left').parent().hide();
 
@@ -38,6 +39,7 @@ $(function() {
 
             $('.toggle-nav-left').parent().show();
             $('.nav-left').addClass('position-fixed')
+            $('.nav-bottom').removeClass('nav-bottom-unactive')
         }
     }
 })
