@@ -3,17 +3,17 @@ $(function() {
     var offCanvasOn = false;
 
     offCanvasNavActivate();
-    $('.mask').hide();
+    $('.mask').hide()
 
     $('.toggle-nav-left').on('click', function() {
         $('.nav-left').addClass('nav-left-active')
-        $('.mask').show();
+        $('.mask').show().addClass('mask-active')
         offCanvasOn = true;
     });
 
     $('.mask').on('click', function() {
         $('.nav-left').removeClass('nav-left-active')
-        $('.mask').hide();
+        $('.mask').hide()
         offCanvasOn = false;
     });
 
@@ -26,13 +26,13 @@ $(function() {
             $('.nav-left').addClass('nav-left-active')
             $('.nav-bottom').addClass('nav-bottom-unactive')
             $('.nav-left').removeClass('position-fixed')
-            $('.toggle-nav-left').parent().hide();
+            $('.toggle-nav-left').parent().hide()
 
             offCanvasOn = false;
-            $('.mask').hide();
+            $('.mask').hide()
         } else {
             if(offCanvasOn) {
-                $('.mask').show();
+                $('.mask').show().addClass('mask-active')
             } else {
                 $('.nav-left').removeClass('nav-left-active')
             }

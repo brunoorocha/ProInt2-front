@@ -1,5 +1,24 @@
 
 /*
+    Define the variables
+    To use, you can try something like this: color: var(--blue);
+*/
+:root {
+    --white: #ffffff;
+    --orange: #F57C00;
+    --orange-6: #fb8c00;
+    --gray-0: #fafafa;
+    --gray-1: #f5f5f5;
+    --gray-2: #eeeeee;
+    --gray-3: #e0e0e0;
+    --gray-5: #9e9e9e;
+    --gray-6: #757575;
+    --gray-7: #616161;
+    --gray-8: #424242;
+    --gray-9: #212121;
+}
+
+/*
     font-face rules
 */
 @font-face {
@@ -50,6 +69,7 @@
 */
 body {
     font-family: "Roboto Regular";
+    background-color: var(--gray-0);
 }
 
 h1 {
@@ -65,6 +85,11 @@ h1 {
     height: 100vh;
     position: fixed;
     z-index: 1;
+    transition: .2s ease-out;
+}
+
+.mask-active {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .center-content {
@@ -80,8 +105,7 @@ h1 {
 .appbar {
     max-height: 64px;
     padding: 4px;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--orange);
 }
 
 .appbar .row{
@@ -94,6 +118,7 @@ h1 {
     line-height: 52px;
     margin: 0;
     padding: 2px 16px;
+    color: var(--white);
 }
 
 .appbar .btn-col {
@@ -104,6 +129,14 @@ h1 {
     padding: 0 16px;
     border: none;
     border-radius: 0;
+    background-color: rgba(255, 255, 255, 0);
+    color: var(--white);
+}
+
+.appbar .btn:hover,
+.appbar .btn:focus,
+.appbar .btn:active {
+    /*background-color: var(--orange-6);*/
 }
 
 .appbar .btn i{
@@ -114,11 +147,19 @@ h1 {
     min-width: 320px;
     width: 320px;
     height: 100vh;
+    max-height: 100vh;
+    overflow-y: auto;
     margin-left: -320px;
-    background-color: #fafafa;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--white);
+    border-right: 1px solid var(--gray-3);
     z-index: 2;
     transition: .2s ease-out;
+}
+
+
+.nav-left::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
 
 .nav-left-active {
@@ -126,8 +167,8 @@ h1 {
 }
 
 .nav-left .user-session {
-    background-color: #ededee;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: var(--gray-2);
+    border-bottom: 1px solid var(--gray-3);
     padding: 16px;
     padding-top: 36px;
 }
@@ -150,12 +191,65 @@ h1 {
     color: #444;
 }
 
+.nav-left .nav-left-link-list .nav-left-spacer {
+    width: 100%;
+    height: 8px;
+    float: left;
+}
+
+.nav-left .nav-left-link-list li.link-separator {
+    padding: 16px;
+    font-family: "Roboto Medium";
+}
+
+.nav-left .nav-left-link-list .link-separator-line {
+    width: 100%;
+    height: 8px;
+    float: left;
+    border-bottom: 1px solid var(--gray-3);
+}
+
+.nav-left .nav-left-link-list a.nav-link {
+    float: left;
+    width: 100%;
+    padding: 12px 16px;
+    color: var(--gray-5);
+    transition: color .2s ease-out;
+}
+
+.nav-left .nav-left-link-list a.nav-link:hover,
+.nav-left .nav-left-link-list a.nav-link:active {
+    color: var(--gray-7);
+}
+
+.nav-left .nav-left-link-list a.nav-link-active {
+    color: var(--orange);
+}
+
+.nav-left .nav-left-link-list a.nav-link-active:hover,
+.nav-left .nav-left-link-list a.nav-link-active:active {
+    color: var(--orange);
+}
+
+.nav-left .nav-left-link-list a.nav-link i {
+    float: left;
+    margin-right: 24px;
+}
+
+.nav-left .nav-left-link-list a.nav-link span {
+    float: left;
+    padding-top: 2px;
+    font-family: "Roboto Medium";
+}
+
 .nav-bottom {
     position: fixed;
     bottom: 0;
     width: 100vw;
     height: 56px;
     align-content: center;
+    background-color: var(--white);
+    border-top: 1px solid var(--gray-3);
 }
 
 .nav-bottom-unactive {
@@ -176,20 +270,22 @@ h1 {
 .nav-bottom ul.nav-tabs li.nav-item a.nav-link {
     margin: 0;
     text-align: center;
-    color: #999;
+    color: var(--gray-5);
     border: none;
     text-transform: uppercase;
-}
-
-.nav-bottom ul.nav-tabs li.nav-item a.active {
-    background-color: transparent;
-    color: #fff;
-    font-family: "Roboto Medium";
 }
 
 .nav-bottom ul.nav-tabs li.nav-item a.nav-link span {
     float: left;
     width: 100%;
+    font-family: "Roboto Medium";
     font-size: 12px;
     margin-top: -5px;
+}
+
+.nav-bottom ul.nav-tabs li.nav-item a.active,
+.nav-bottom ul.nav-tabs li.nav-item a.active span {
+    background-color: none;
+    font-family: "Roboto Bold";
+    color: var(--gray-8);
 }
