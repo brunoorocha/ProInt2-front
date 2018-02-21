@@ -35,7 +35,7 @@
         
         function view_cadastrar(){
           
-            $cVIEW = new cadastroView();
+            $cVIEW = new clienteView();
             $cVIEW->cadastrarCliente();
           
         }
@@ -53,7 +53,7 @@
                     $cliente = $cDAO->listaUm($cod_cliente);
                     $_REQUEST['cliente']=$cliente;
                     $_REQUEST['lista']=$lista;
-                    $ccVIEW->editarCliente();
+                    $cVIEW->editarCliente();
                 }
                 if(isset($_POST['cod_cliente']) && $_POST['cod_cliente']!= NULL){
                     $cliente->setNome($_POST['nome']);

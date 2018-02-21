@@ -28,7 +28,7 @@
         
         function view_cadastrar(){
           
-            $pVIEW = new cadastroView();
+            $pVIEW = new produtoView();
             $pVIEW->cadastrarProduto();
           
         }
