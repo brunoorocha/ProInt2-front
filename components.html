@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Estoque</title>
+        <title>Componentes do Front-End</title>
         <link rel="stylesheet" href="./src/bootstrap-4.0.0-dist/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="./css/style-override.css">
@@ -122,16 +122,69 @@
                     </div>
                 </div>
 
+                <!-- Breadcrumb Component -->
+                <nav class="breadcrumb-container" aria-label="breadcrumb">
+                    <div class="container">
+                        <ul class="breadcrumb clear-margins">
+                            <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i></a></li>
+                            <li class="breadcrumb-item active">Estoque</li>
+                        </ul>
+                    </div>
+                </nav>
+
                 <!-- Container -->
                 <div class="container">
-                    <div class="row">
+                    <div class="row no-gutters">
                         <div class="col center-content">
-                            <!-- H1 Title Component -->
-                            <h1>Título H1</h1>
+
+                            <section>
+                                <!-- H1 Title Component -->
+                                <h1>Título H1</h1>
+
+                                <h3>Tabelas</h3>
+                                <!-- Data Table Component -->
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Produto</th>
+                                                <th>Qtd</th>
+                                                <th class="sm-cell-hide">Preço Revenda</th>
+                                                <th class="md-cell-hide">Fornecedor</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td>Armação de Metal</td>
+                                                <td>10</td>
+                                                <td class="sm-cell-hide">R$ 350,00</td>
+                                                <td class="md-cell-hide">Armações Ltda.</td>
+                                                <td><i class="material-icons">info</i></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Armação de Fibra</td>
+                                                <td>7</td>
+                                                <td class="sm-cell-hide">R$ 400,00</td>
+                                                <td class="md-cell-hide">Armações Ltda.</td>
+                                                <td><i class="material-icons">info</i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="clear-margins align-right">Itens no estoque: 52</p>
+                                </div>
+                            </section>
+
                         </div>
                     </div>
                 </div>
             </div>
+
+            <a href="#" class="floating-action-button md-floating-button">
+                <i class="material-icons">add</i>
+            </a>
         </div>
 
         <!-- Nav Bottom Component -->

@@ -73,7 +73,13 @@ body {
 }
 
 h1 {
-    font-family: "Roboto Medium";
+    font-family: "Roboto Bold";
+    line-height: 1.5;
+}
+
+h3 {
+    font-family: "Roboto Regular";
+    line-height: 1.5;
 }
 
 /*
@@ -92,14 +98,27 @@ h1 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.container {
+    padding: 0;
+}
+
 .center-content {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 110vh;
+}
+
+.center-content section {
     padding: 16px;
-    height: 110vh;
 }
 
 .fixed-height {
     height: 100vh;
     overflow: auto;
+}
+
+.clear-margins {
+    margin: 0;
 }
 
 .appbar {
@@ -288,4 +307,86 @@ h1 {
     background-color: none;
     font-family: "Roboto Bold";
     color: var(--gray-8);
+}
+
+.table th {
+    font-family: "Roboto Bold";
+    border: none;
+}
+
+.table th,
+.table td {
+    padding-top: 20px;
+}
+
+.table td i {
+    color: #9d9d9d;
+}
+
+.breadcrumb-container {
+    background-color: var(--gray-2);
+    border-bottom: 1px solid var(--gray-3);
+}
+
+.breadcrumb {
+    padding: 16px;
+    border-radius: 0;
+    background-color: var(--gray-2);
+}
+
+.breadcrumb .breadcrumb-item i {
+    margin-top: 4px;
+}
+
+.breadcrumb .active::before {
+    content: "›";
+    font-size: 20px;
+    padding: 0 16px;
+    color: #9d9d9d;
+}
+
+a.floating-action-button {
+    border-radius: 50%;
+    background-color: #01579B;
+    padding: 16px;
+    line-height: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+a.floating-action-button i {
+    color: var(--white);
+    font-size: 36px;
+}
+
+.md-floating-button {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+}
+
+.align-right {
+    float: right;
+}
+
+@media (max-width: 576px) {
+    .sm-cell-hide {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .md-cell-hide {
+        display: none;
+    }
+
+    .md-floating-button {
+        position: fixed;
+        right: 16px;
+        bottom: 72px;
+    }
+
+    a.floating-action-button i {
+        font-size: 24px;
+    }
 }
