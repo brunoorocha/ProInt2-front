@@ -21,8 +21,8 @@
                 $venda->setObs($_POST['obs']);
                 $venda->setCliente_cod($_POST['cliente_cod']);
                 $venda->setProduto_cod($_POST['produto_cod']);
-                
-            
+                $venda->setData($_POST['data']);
+
 
                 $vDAO = new vendaDAO();
                 $vDAO->cadastrarVenda($venda);
@@ -32,7 +32,7 @@
         
         function view_cadastrar(){
           
-            $vVIEW = new refratrometriaView();
+            $vVIEW = new vendaView();
             $vVIEW->cadastrarVenda();
           
         }
@@ -45,15 +45,15 @@
             
              if($_SERVER['REQUEST_METHOD']=='POST'){
 
-                if(isset($_POST['cod_refrato'])){
-                    $cod_venda = $_POST['cod_refrato'];
-                    $venda = $vDAO->listaUm($cod_refrato);
+                if(isset($_POST['cod_venda'])){
+                    $cod_venda = $_POST['cod_venda'];
+                    $venda = $vDAO->listaUm($cod_venda);
                     $_REQUEST['venda']=$venda;
                     $_REQUEST['lista']=$lista;
                     $vVIEW->editarvenda();
                 }
                 if(isset($_POST['cod_cliente']) && $_POST['cod_cliente']!= NULL){
-                    $venda->setCod_refrato($_POST['cod_refrato']);
+                    $venda->setCod_venda($_POST['cod_venda']);
                     $venda->setForma_pagamento($_POST['forma_pagamento']);
                     $venda->setQtd_parcela($_POST['qtd_parcela']);
                     $venda->setObs($_POST['obs']);
@@ -80,7 +80,7 @@
 			
             $venda = new venda();
             if($_SERVER['REQUEST_METHOD']=='POST'){
-                $venda->setCod_refrato($_POST['cod_refrato']);
+                $venda->setCod_venda($_POST['cod_venda']);
                 $vDAO = new vendaDAO();
                 $vDAO->excluirVenda($venda);
                 echo "OK";

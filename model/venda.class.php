@@ -7,7 +7,7 @@ class venda{
 	private $obs;
 	private $cliente_cod;
 	private $produto_cod;
-	
+	private $data;
 
 	function setCod_venda($cod_venda){
 		$this->cod_venda = $cod_venda;
@@ -44,5 +44,11 @@ class venda{
 	}
 	function getProduto_cod(){
 		return $this->produto_cod;
+	}
+	function setData($data){
+		$this->data = $data;
+	}
+	function getData(){
+		return $this->data;
 	}
 }

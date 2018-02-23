@@ -17,9 +17,10 @@ class vendaDAO{
         $obs=$venda->getObs();
         $cliente_cod=$cliente->getCod_cliente();
         $produto_cod=$produto->getCod_produto();
+        $data=$venda->getData();
         
         $this->conecta();
-        $q = "INSERT INTO venda (forma_pagamento,qtd_parcela,obs,cliente_cod,produto_cod) VALUES('$forma_pagamento','$qtd_parcela','$obs','$cliente_cod','$produto_cod')";   
+        $q = "INSERT INTO venda (forma_pagamento,qtd_parcela,obs,cliente_cod,produto_cod, data) VALUES('$forma_pagamento','$qtd_parcela','$obs','$cliente_cod','$produto_cod','$data')";   
         $stmt = $this->bd->query($q);
     }
 
@@ -37,6 +38,7 @@ class vendaDAO{
             $venda[$i]->setObs($result[$i]['obs']);
             $venda[$i]->setCliente_cod($result[$i]['cliente_cod']);
             $venda[$i]->setProduto_cod($result[$i]['produto_cod']);
+            $venda[$i]->setData($result[$i]['data']);
         }
         
 	return $venda;
@@ -57,7 +59,8 @@ class vendaDAO{
         $venda->setObs($result[0]['obs']);
         $venda->setCliente_cod($result[0]['cliente_cod']);
         $venda->setProduto_cod($result[0]['produto_cod']);
-        
+        $venda->setData($result[0]['data']);
+
 	return $venda;
     }
     function editarVenda($venda){
