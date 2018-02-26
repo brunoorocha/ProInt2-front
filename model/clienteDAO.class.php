@@ -3,11 +3,7 @@
 require_once 'cliente.class.php';
 include './conexao.php'; 
 class clienteDAO{
-    private $bd;
-    private function conecta{
-    	$this->bd = new conexao("localhost", "root", "", "otica");
-    	$con = $this->bd->conectar();
-	}
+    
     
     function cadastrarCliente($cliente){
         $nome=$cliente->getNome();
@@ -22,15 +18,19 @@ class clienteDAO{
         $profissao_conjuge=$cliente->getProfissao_conjuge();
         $referencia=$cliente->getReferencia();
         $telefone_referencia=$cliente->getTelefone_referencia();
-        $this->conecta();
+       
         $q = "INSERT INTO cliente (nome,profissao,endereco,rg,cpf,filiacao,naturalidade,data_nasc,nome_conjuge,profissao_conjuge,referencia,telefone_referencia) VALUES('$nome','$profissao','$endereco','$rg','$cpf','$filiacao','$naturalidade','$data_nasc','$nome_conjuge','$profissao_conjuge','$referencia','$telefone_referencia')";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
-    function listaTudo(){
-        $this->conecta();
+    function retornaClientes(){
+        
         $q = "SELECT * FROM cliente";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
         for($i=0; $i<$stmt->rowCount(); $i++){
@@ -55,10 +55,12 @@ class clienteDAO{
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código
         
-    function listaUm($cod_cliente){
-        $this->conecta();
+    function retornaUm($cod_cliente){
+        
         $q = "SELECT * FROM cliente WHERE cod_cliente = $cod_cliente";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $cliente= new cliente(); 
@@ -92,16 +94,20 @@ class clienteDAO{
         $profissao_conjuge=$cliente->getProfissao_conjuge();
         $referencia=$cliente->getReferencia();
         $telefone_referencia=$cliente->getTelefone_referencia();
-        $this->conecta();
+        
         $q = "UPDATE cliente set nome='$nome',profissao='$profissao',endereco='$endereco',rg='$rg',cpf='$cpf',filiacao='$filiacao',naturalidade='$naturalidade',data_nasc='$data_nasc',nome_conjuge='$nome_conjuge',profissao_conjuge='$profissao_conjuge',referencia='$referencia',telefone_referencia='$telefone_referencia'WHERE cod_cliente=$cod_cliente";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
 
     function excluirCliente($cliente){
             $cod_cliente=$cliente->getCod_cliente();
-            $this->conecta();
+            
             $q = "DELETE FROM cliente WHERE cod_cliente=$cod_cliente";
-            $stmt = $this->bd->query($q);
+            $conex = new conexao("localhost", "root", "", "otica");
+            $pdo = $conex->conecta();
+            $stmt = $pdo->query($q);
     }
 }

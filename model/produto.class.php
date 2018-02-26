@@ -32,7 +32,7 @@ class produto{
        $this->preco_revenda = $preco_revenda;     
     }
 
-     function getPreco_fabrica(){
+     function getPreco_revenda(){
        return $this->preco_revenda;     
     }
 
@@ -43,4 +43,31 @@ class produto{
      function getFornecedor(){
        return $this->fornecedor;     
     }
+
+
+    public function __construct() {
+
+        $n_args = (int) func_num_args();
+        $args = @func_get_arg();
+
+        if($n_args ==0){
+          $this->cod_produto = " ";
+          $this->nome = " ";
+          $this->preco_fabrica = " ";
+          $this->preco_revenda = " ";
+          $this->fornecedor = " ";
+          
+
+        }
+        if($n_args == 8){
+          $this->cod_produto = $args[0];
+          $this->nome = $args[1];
+          $this->preco_fabrica = $args[2];
+          $this->preco_revenda = $args[3];
+          $this->fornecedor = $args[4];
+          
+        }
+    }
+
+
 }

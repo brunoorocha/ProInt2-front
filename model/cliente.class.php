@@ -14,6 +14,46 @@ class cliente {
     private $profissao_conjuge;
     private $referencia;
     private $telefone_referencia;
+
+    public function __construct() {
+
+        $n_args = (int) func_num_args();
+        $args = @func_get_arg();
+
+        if($n_args ==0){
+          $this->cod_cliente = " ";
+          $this->nome = " ";
+          $this->profissao = " ";
+          $this->endereco = " ";
+          $this->rg = " ";
+          $this->cpf = " ";
+          $this->filiacao = " ";
+          $this->naturalidade = " ";
+          $this->data_nasc = " ";
+          $this->nome_conjuge = " ";
+          $this->profissao_conjuge = " ";
+          $this->referencia = " ";
+          $this->telefone_referencia = " ";
+
+        }
+        if($n_args == 13){
+          $this->cod_cliente = $args[0];
+          $this->nome = $args[1];
+          $this->profissao = $args[2];
+          $this->endereco = $args[3];
+          $this->rg = $args[4];
+          $this->cpf = $args[5];
+          $this->filiacao = $args[6];
+          $this->naturalidade = $args[7];
+          $this->data_nasc = $args[8];
+          $this->nome_conjuge = $args[9];
+          $this->profissao_conjuge = $args[10];
+          $this->referencia = $args[11];
+          $this->telefone_referencia = $args[12];
+          
+
+        }
+    }
      
     function setNome($nome){
        $this->nome = $nome;     

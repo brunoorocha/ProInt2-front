@@ -4,11 +4,7 @@
 require_once 'produto.class.php';
 include './conexao.php'; 
 class clienteDAO{
-    private $bd;
-    private function conecta{
-    	$this->bd = new conexao("localhost", "root", "", "otica");
-    	$con = $this->bd->conectar();
-	}
+    
     
     function cadastrarProduto($produto){
         $nome=$produto->getNome();
@@ -16,15 +12,17 @@ class clienteDAO{
         $preco_revenda=$produto->getPreco_revenda();
         $fornecedor=$produto->getFornecedor();
         
-        $this->conecta();
+        
         $q = "INSERT INTO produto (nome,preco_fabrica,preco_revenda,fornecedor) VALUES('$nome','$preco_fabrica','$preco_revenda','$fornecedor')";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
-    function listaTudo(){
-        $this->conecta();
-        $q = "SELECT * FROM produto";
-        $stmt = $this->bd->query($q);
+    function retornaProdutos(){
+        $conexao = new conexao("localhost", "root", "", "otica");
+        $PDO = $conexao->conecta();
+        $stmt = $PDO->query("SELECT * FROM produto");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
         for($i=0; $i<$stmt->rowCount(); $i++){
@@ -45,7 +43,9 @@ class clienteDAO{
     function listaUm($cod_produto){
         $this->conecta();
         $q = "SELECT * FROM produto WHERE cod_produto = $cod_produto";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $PDO = $conex->conecta();
+        $stmt = $PDO->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $produto= new produto(); 
@@ -58,22 +58,24 @@ class clienteDAO{
 
 	return $produto;
     }
-    function editarProduto($produto){
+    function atualizarProduto($produto){
         $nome=$produto->getNome();
         $preco_fabrica=$produo->getPreco_fabrica();
         $preco_revenda=$produto->getPreco_revenda();
         $fornecedor=$produto->getFornecedor();
 
-        $this->conecta();
+        
         $q = "UPDATE produto set nome='$nome',preco_fabrica='$preco_fabrica',preco_revenda='$preco_revenda',fornecedor='$fornecedor' WHERE cod_produto=$cod_produto";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $PDO = $conex->conecta();
+        $stmt = $PDO->query($q);
     }
-
 
     function excluirProduto($produto){
             $cod_produto=$produto->getCod_produto();
-            $this->conecta();
-            $q = "DELETE FROM produto WHERE cod_produto=$cod_produto";
-            $stmt = $this->bd->query($q);
+            
+            $conex = new conexao("localhost", "root", "", "otica");
+            $PDO = $conex->conecta();
+            $stmt = $PDO->query("DELETE FROM produto WHERE cod_produto=$cod_produto");
     }
 }
