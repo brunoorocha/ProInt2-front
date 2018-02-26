@@ -1,7 +1,7 @@
 <?php
 
 require_once 'cliente.class.php';
-include './conexao.php'; 
+require_once './conexao.php'; 
 class clienteDAO{
     
     
@@ -80,7 +80,7 @@ class clienteDAO{
 
 	return $cliente;
     }
-    function editarCliente($cliente){
+    function atualizarCliente($cliente){
         $cod_cliente=$cliente->getCod_cliente();
         $nome=$cliente->getNome();
         $profissao=$cliente->getProfissao();

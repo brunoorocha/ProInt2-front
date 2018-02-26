@@ -2,13 +2,13 @@
 <?php
 
 require_once 'produto.class.php';
-include './conexao.php'; 
-class clienteDAO{
+require_once './conexao.php'; 
+class produtoDAO{
     
     
     function cadastrarProduto($produto){
         $nome=$produto->getNome();
-        $preco_fabrica=$produo->getPreco_fabrica();
+        $preco_fabrica=$produto->getPreco_fabrica();
         $preco_revenda=$produto->getPreco_revenda();
         $fornecedor=$produto->getFornecedor();
         
@@ -60,10 +60,10 @@ class clienteDAO{
     }
     function atualizarProduto($produto){
         $nome=$produto->getNome();
-        $preco_fabrica=$produo->getPreco_fabrica();
+        $preco_fabrica=$produto->getPreco_fabrica();
         $preco_revenda=$produto->getPreco_revenda();
         $fornecedor=$produto->getFornecedor();
-
+        $cod_produto = $produto->getCod_produto();
         
         $q = "UPDATE produto set nome='$nome',preco_fabrica='$preco_fabrica',preco_revenda='$preco_revenda',fornecedor='$fornecedor' WHERE cod_produto=$cod_produto";   
         $conex = new conexao("localhost", "root", "", "otica");

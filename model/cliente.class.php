@@ -127,28 +127,28 @@ class cliente {
        return $this->data_nasc;     
     }
     function setNome_conjuge($nome_conjuge){
-       this->nome_conjuge = $nome_conjuge;
+       $this->nome_conjuge = $nome_conjuge;
    }
     function getNome_conjuge(){
-      return this->nome_conjuge;
+      return $this->nome_conjuge;
     }
     function setProfissao_conjuge($profissao_conjuge){
-       this->profissao_conjuge = $profissao_conjuge;
+       $this->profissao_conjuge = $profissao_conjuge;
     }
     function getProfissao_conjuge(){
-      return this->profissao_conjuge;
+      return $this->profissao_conjuge;
     }
     function SetTelefone_referencia($telefone_referencia){
-       this->telefone_referencia = $telefone_referencia;
+       $this->telefone_referencia = $telefone_referencia;
     }
     function getTelefone_referencia(){
-      return this->telefone_referencia;
+      return $this->telefone_referencia;
     }
     function setReferencia($referencia){
-       this->referencia = $referencia;
+       $this->referencia = $referencia;
     }
     function getReferencia(){
-      return this->referencia;
+      return $this->referencia;
     }
     
 }
