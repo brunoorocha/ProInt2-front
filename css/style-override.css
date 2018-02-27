@@ -82,11 +82,17 @@ h3 {
     line-height: 1.5;
 }
 
+h4 {
+    font-family: "Roboto Medium";
+    font-size: 18px;
+}
+
 /*
     Custom UI based on Material Design by Google
 */
 
-.mask {
+.mask,
+.modal-mask {
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -94,7 +100,12 @@ h3 {
     transition: .2s ease-out;
 }
 
-.mask-active {
+.modal-mask {
+    z-index: 3;
+}
+
+.mask-active,
+.modal-mask-active {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -302,8 +313,8 @@ h3 {
     margin-top: -5px;
 }
 
-.nav-bottom ul.nav-tabs li.nav-item a.active,
-.nav-bottom ul.nav-tabs li.nav-item a.active span {
+.nav-bottom ul.nav-tabs li.nav-item a.nav-link-active,
+.nav-bottom ul.nav-tabs li.nav-item a.nav-link-active span {
     background-color: none;
     font-family: "Roboto Bold";
     color: var(--gray-8);
@@ -366,6 +377,75 @@ a.floating-action-button i {
 
 .align-right {
     float: right;
+}
+
+.modal {
+    width: 280px;
+    height: 468px;
+    position: fixed;
+    top: calc(50% - 250px);
+    left: calc(50% - 140px);
+    background-color: #fff;
+    border: 1px solid var(--gray-3);
+    display: block;
+}
+
+.modal .modal-title {
+    width: 100%;
+    float: left;
+    padding: 16px;
+    box-sizing: border-box;
+    border-bottom: 1px solid var(--gray-3);
+}
+
+.modal .modal-title h4 {
+    margin: 2px 0 0 0;
+}
+
+.modal .modal-title i {
+    margin-right: 16px;
+}
+
+.modal form {
+    width: 100%;
+    float: left;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.modal form label {
+    float: left;
+    width: 100%;
+}
+
+.modal form input[type=text] {
+    float: left;
+    width: 100%;
+    padding: 5px 8px;
+    margin-bottom: 16px;
+}
+
+.modal form .modal-button-bar {
+    float: left;
+    width: 100%;
+    margin-top: 5px;
+    justify-content: flex-end;
+}
+
+.modal form .modal-button-bar input {
+    font-family: "Roboto Medium";
+    text-transform: uppercase;
+    color: var(--gray-4);
+    background-color: transparent;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.modal form .modal-button-bar input[type=submit] {
+    background-color: var(--gray-3);
 }
 
 @media (max-width: 576px) {

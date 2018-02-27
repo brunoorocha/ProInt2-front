@@ -97,6 +97,35 @@
             <!-- Nav Mask Component -->
             <div class="mask"></div>
 
+            <div class="modal-mask">
+                <div class="modal">
+                    <div class="row no-gutters modal-title">
+                        <i class="material-icons">add</i>
+                        <h4>Adicionar Produto</h4>
+                    </div>
+
+
+                    <form id="add-product-form" class="" action="" method="post">
+                        <label for="nome">Nome do Produto:</label>
+                        <input type="text" id="nome" name="nome" value="">
+
+                        <label for="preco_fabrica">Preço de Fábrica:</label>
+                        <input type="text" id="preco_fabrica" name="preco_fabrica" value="">
+
+                        <label for="preco_revenda">Preço de Revenda:</label>
+                        <input type="text" id="preco_revenda" name="preco_revenda" value="">
+
+                        <label for="fornecedor">Fornecedor:</label>
+                        <input type="text" id="fornecedor" name="fornecedor" value="">
+
+                        <div class="row no-gutters modal-button-bar">
+                            <input type="button" name="cancel-button" value="Cancelar">
+                            <input type="submit" name="save-button" value="Salvar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
             <div class="col fixed-height">
                 <!-- Navbar Component -->
                 <div class="navbar appbar">
