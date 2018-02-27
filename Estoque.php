@@ -2,6 +2,7 @@
     include_once('./view/Head.php');
     $pageTitle = "Estoque";
 ?>
+
 <!DOCTYPE html>
 <html>
 <?php includeHead($pageTitle); ?>
@@ -22,6 +23,10 @@
             </div>
 
             <form id="add-product-form" class="" action="" method="post">
+
+                <label for="cod_produto">Código:</label>
+                <input type="text" id="cod_produto" name="cod_produto" value="">
+
                 <label for="nome">Nome do Produto:</label>
                 <input type="text" id="nome" name="nome" value="">
 
@@ -64,7 +69,8 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr>
+                                        <tr> 
+
                                             <td>Armação de Metal</td>
                                             <td>10</td>
                                             <td class="sm-cell-hide">R$ 350,00</td>
