@@ -29,6 +29,9 @@
                 <label for="senha">Senha:</label>
                 <input type="password" id="senha" name="senha" value="">
 
+                <label for="senha">Nome:</label>
+                <input type="password" id="nome" name="nome" value="">
+
                 <div class="row no-gutters modal-button-bar">
                     <input type="button" name="cancel-button" value="Cancelar">
                     <input type="submit" name="save-button" value="Salvar">

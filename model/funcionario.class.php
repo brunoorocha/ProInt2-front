@@ -5,6 +5,7 @@ class funcionario{
 	private $cod_funci;
 	private $login;
 	private $senha;
+  private $nome;
 
 	function setCod_funci($cod_funci){
        $this->cod_funci = $cod_funci;     
@@ -24,6 +25,9 @@ class funcionario{
      function getSenha(){
        return $this->senha;     
     }
+    function setNome($nome){
+      $this->nome = $nome;
+    }
     public function __construct() {
 
         $n_args = (int) func_num_args();
@@ -33,13 +37,14 @@ class funcionario{
           $this->cod_funci = " ";
           $this->login = " ";
           $this->senha = " ";
+          $this->nome = " ";
 
         }
         if($n_args == 4){
           $this->cod_funci = $args[0];
           $this->login = $args[1];
           $this->senha = $args[2];
-          
+          $this->nome = $args[3];
 
         }
     }

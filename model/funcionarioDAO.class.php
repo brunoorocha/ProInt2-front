@@ -9,9 +9,10 @@ class funcionarioDAO{
     function cadastrarFuncionario($funcionario){
         $login=$funcionario->getLogin();
         $senha=$funcionario->getSenha();
+        $nome=$funcionario->getNome();
         
         
-        $q = "INSERT INTO funcionario (login,senha) VALUES('$login','$senha')";   
+        $q = "INSERT INTO funcionario (login,senha) VALUES('$login','$senha','$nome')";   
         $conex = new conexao("localhost", "root", "", "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
@@ -19,11 +20,12 @@ class funcionarioDAO{
     function atualizarFuncionario($funcionario){
             $login=$funcionario->getLogin();
             $senha=$funcionario->getSenha();
+            $nome=$funcionario->getNome();
             $cod_funci=$funcionario->getCod_funci();
 
 
 
-            $q = "UPDATE funcionario SET login='$login', senha='$senha'
+            $q = "UPDATE funcionario SET login='$login', senha='$senha', nome='$nome'
                   WHERE cod_funci=$cod_funci";
 
             $conex = new conexao("localhost", "root", "", "otica");
@@ -40,6 +42,7 @@ class funcionarioDAO{
             $funcionario[$i] = new funcionario();
             $funcionario[$i]->setLogin($result[$i]['login']);
             $funcionario[$i]->setSenha($result[$i]['senha']);
+            $funcionario[$i]->setNome($result[$i]['nome']);
             $funcionario[$i]->setCod_funci($result[$i]['cod_funci']);
 
         }
