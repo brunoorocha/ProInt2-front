@@ -22,7 +22,8 @@
                 $venda->setCliente_cod($_POST['cliente_cod']);
                 $venda->setProduto_cod($_POST['produto_cod']);
                 $venda->setData($_POST['data']);
-
+                $venda->cliente->setCod_cliente($_POST['cliente_cod']);
+                $venda->produto->setCod_produto($_POST['produto_cod']);
 
                 $vDAO = new vendaDAO();
                 $vDAO->cadastrarVenda($venda);
@@ -57,9 +58,8 @@
                     $venda->setForma_pagamento($_POST['forma_pagamento']);
                     $venda->setQtd_parcela($_POST['qtd_parcela']);
                     $venda->setObs($_POST['obs']);
-                    $venda->setCliente_cod($_POST['cliente_cod']);
-                    $venda->setProduto_cod($_POST['produto_cod']);
-
+                    $venda->cliente->setCod_cliente($_POST['cliente_cod']);
+                    $venda->produto->setCod_produto($_POST['produto_cod']);
 
                     $vDAO->editarVenda($venda);
                     $vVIEW->redirecionar("View_Alterar", "MODIFICAÇÃO BEM SUCEDIDA !!");

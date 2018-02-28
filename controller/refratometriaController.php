@@ -14,6 +14,7 @@
         
         function cadastrar(){
             $refratometria = new refratometria();
+            
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 
                 $refratometria->setOdesf($_POST['odesf']);
@@ -24,7 +25,7 @@
                 $refratometria->setOecil($_POST['oecil']);
                 $refratometria->setOeeixo($_POST['oeeixo']);
                 $refratometria->setOedmp($_POST['oedmp']);
-                $refratometria->setCliente_cod($_POST['cliente_cod']);
+                $refratometria->cliente->setCod_cliente($_POST['cod_cliente']);    
             
 
                 $rDAO = new refratometriaDAO();
@@ -65,7 +66,8 @@
                     $refratometria->setOecil($_POST['oecil']);
                     $refratometria->setOeeixo($_POST['oeeixo']);
                     $refratometria->setOedmp($_POST['oedmp']);
-                    $refratometria->setCliente_cod($_POST['cliente_cod']);
+                    $refratometria->cliente->setCod_cliente($_POST['cod_cliente']); 
+                    
 
                     $rDAO->editarRefratometria($refratometria);
                     $rVIEW->redirecionar("View_Alterar", "MODIFICAÇÃO BEM SUCEDIDA !!");
