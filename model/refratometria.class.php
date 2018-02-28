@@ -10,7 +10,44 @@ class refratometria{
 	private $oecil;
 	private $oeeixo;
 	private $oedmp;
-	private $cliente_cod;
+	private $cliente;
+
+	public function __construct() {
+
+        $n_args = (int) func_num_args();
+        $args = @func_get_arg();
+
+        if($n_args ==0){
+          $this->cod_refrato = " ";
+          $this->odesf = " ";
+          $this->odcil = " ";
+          $this->odeixo = " ";
+          $this->oddmp = " ";
+          $this->oeesf = " ";
+          $this->oecil = " ";
+          $this->oeeixo = " ";
+          $this->oedmp = " ";
+          $this->cliente_cod = " ";
+
+
+        }
+        if($n_args == 13){
+          $this->cod_refrato = $args[0];
+          $this->odesf = $args[1];
+          $this->odcil = $args[2];
+          $this->odeixo = $args[3];
+          $this->oddmp = $args[4];
+          $this->cpf = $args[5];
+          $this->oeesf = $args[6];
+          $this->oecil = $args[7];
+          $this->oeeixo = $args[8];
+          $this->oedmp = $args[9];
+          $this->cliente = $args[10];
+          
+        }
+    }
+
+
 
 	function setCod_refrato($cod_refrato){
 		$this->cod_refrato = $cod_refrato;
@@ -66,10 +103,10 @@ class refratometria{
 	function getOedmp(){
 		return $this->oedmp;
 	}
-	function setCliente_cod($cliente_cod){
-		$this->cliente_cod = $cliente_cod;
+	function setCliente($cliente){
+		$this->cliente = $cliente;
 	}
-	function getCliente_cod(){
-		return $this->cliente_cod;
+	function getCliente(){
+		return $this->cliente;
 	}
 }

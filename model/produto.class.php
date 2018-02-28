@@ -59,7 +59,7 @@ class produto{
           
 
         }
-        if($n_args == 8){
+        if($n_args == 5){
           $this->cod_produto = $args[0];
           $this->nome = $args[1];
           $this->preco_fabrica = $args[2];

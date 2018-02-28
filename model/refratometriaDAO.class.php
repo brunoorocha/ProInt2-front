@@ -2,15 +2,11 @@
 
 require_once 'refratometria.class.php';
 require_once 'cliente.class.php';
-include './conexao.php'; 
+require_once './conexao.php'; 
 class refratometriaDAO{
-    private $bd;
-    private function conecta{
-    	$this->bd = new conexao("localhost", "root", "", "otica");
-    	$con = $this->bd->conectar();
-	}
     
-    function cadastrarRefratometria($refratometria,$cliente){
+    
+    function cadastrarRefratometria($refratometria){
         $odesf=$refratometria->getOdesf();
         $odcil=$refratometria->getOdcil();
         $odeixo=$refratometria->getOdeixo();
@@ -19,16 +15,20 @@ class refratometriaDAO{
         $oecil=$refratometria->getOecil();
         $oeeixo=$refratometria->getOeeixo();
         $oedmp=$refratometria->getOedmp();
-        $cliente_cod=$cliente->getCod_cliente();
-        $this->conecta();
+        $cliente_cod = $refratometria->cliente->getCliente_cod();
+        
         $q = "INSERT INTO refratometria (odesf,odcil,odeixo,oddmp,oeesf,oecil,oeeixo,oedmp,cliente_cod) VALUES('$odesf','$odcil','$odeixo','$oddmp','$oeesf','$oecil','$oeeixo','$oedmp','$cliente_cod')";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
     function listaTudo(){
-        $this->conecta();
+        
         $q = "SELECT * FROM refratometria";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
         for($i=0; $i<$stmt->rowCount(); $i++){
@@ -42,7 +42,7 @@ class refratometriaDAO{
             $refratometria[$i]->setOecil($result[$i]['oecil']);
             $refratometria[$i]->setOeeixo($result[$i]['oeeixo']);
             $refratometria[$i]->setOedmp($result[$i]['oedmp']);
-            $refratometria[$i]->setCliente_cod($result[$i]['cliente_cod']);
+            $refratometria[$i]->cliente->setCod_cliente($result[$i]['cliente_cod']);
         }
         
 	return $refratometria;
@@ -51,9 +51,11 @@ class refratometriaDAO{
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código
         
     function listaUm($cod_refrato){
-        $this->conecta();
+        
         $q = "SELECT * FROM refratometria WHERE cod_refrato = $cod_refrato";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $refratometria= new refratometria(); 
@@ -79,17 +81,21 @@ class refratometriaDAO{
         $oecil=$refratometria->getOecil();
         $oeeixo=$refratometria->getOeeixo();
         $oedmp=$refratometria->getOedmp();
-        $cliente_cod=$refratometria->getCliente_cod();
-        $this->conecta();
+        $cliente_cod=$refratometria->cliente->getCod_cliente();
+        
         $q = "UPDATE refratometria set odesf='$odesf',odcil='$odcil',odeixo='$odeixo',oddmp='$oddmp',oeesf='$oeesf',oecil='$oecil',oeeixo='$oeeixo',oedmp='$oedmp',cliente_cod='$cliente_cod' WHERE cod_refrato=$cod_refrato";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
 
     function excluirRefratometria($refratometria){
-            $cod_refrato=$refrato->getCod_refrato();
-            $this->conecta();
-            $q = "DELETE FROM refrato WHERE cod_refrato=$cod_refrato";
-            $stmt = $this->bd->query($q);
+        $cod_refrato=$refrato->getCod_refrato();
+            
+        $q = "DELETE FROM refrato WHERE cod_refrato=$cod_refrato";
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 }

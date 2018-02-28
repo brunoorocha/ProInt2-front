@@ -5,29 +5,28 @@ require_once 'cliente.class.php';
 require_once 'produto.class.php';
 include './conexao.php'; 
 class vendaDAO{
-    private $bd;
-    private function conecta{
-    	$this->bd = new conexao("localhost", "root", "", "otica");
-    	$con = $this->bd->conectar();
-	}
     
-    function cadastrarVenda($venda,$produto,$cliente){
+    function cadastrarVenda($venda){
         $forma_pagamento=$venda->getForma_pagamento();
         $qtd_parcela=$venda->getQtd_parcela();
         $obs=$venda->getObs();
-        $cliente_cod=$cliente->getCod_cliente();
-        $produto_cod=$produto->getCod_produto();
+        $cliente_cod=$venda->cliente->getCod_cliente();
+        $produto_cod=$venda->produto->getCod_produto();
         $data=$venda->getData();
         
-        $this->conecta();
+        
         $q = "INSERT INTO venda (forma_pagamento,qtd_parcela,obs,cliente_cod,produto_cod, data) VALUES('$forma_pagamento','$qtd_parcela','$obs','$cliente_cod','$produto_cod','$data')";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
     function listaTudo(){
-        $this->conecta();
+        
         $q = "SELECT * FROM venda";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		
         for($i=0; $i<$stmt->rowCount(); $i++){
@@ -36,8 +35,8 @@ class vendaDAO{
             $venda[$i]->setForma_pagamento($result[$i]['forma_pagamento']);
             $venda[$i]->setQtd_parcela($result[$i]['qtd_parcela']);
             $venda[$i]->setObs($result[$i]['obs']);
-            $venda[$i]->setCliente_cod($result[$i]['cliente_cod']);
-            $venda[$i]->setProduto_cod($result[$i]['produto_cod']);
+            $venda[$i]->cliente->setCod_cliente($result[$i]['cliente_cod']);
+            $venda[$i]->produto->setCod_produto($result[$i]['produto_cod']);
             $venda[$i]->setData($result[$i]['data']);
         }
         
@@ -47,9 +46,11 @@ class vendaDAO{
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código
         
     function listaUm($cod_venda){
-        $this->conecta();
+        
         $q = "SELECT * FROM venda WHERE cod_venda = $cod_venda";
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $venda= new venda(); 
@@ -57,8 +58,8 @@ class vendaDAO{
         $venda->setForma_pagamento($result[0]['forma_pagamento']);
         $venda->setQtd_parcela($result[0]['qtd_parcela']);
         $venda->setObs($result[0]['obs']);
-        $venda->setCliente_cod($result[0]['cliente_cod']);
-        $venda->setProduto_cod($result[0]['produto_cod']);
+        $venda->cliente->setCod_cliente($result[0]['cliente_cod']);
+        $venda->produto->setCod_produto($result[0]['produto_cod']);
         $venda->setData($result[0]['data']);
 
 	return $venda;
@@ -68,19 +69,23 @@ class vendaDAO{
         $forma_pagamento=$venda->getForma_pagamento();
         $qtd_parcela=$venda->getQtd_parcela();
         $obs=$venda->getObs();
-        $cliente_cod=$venda->getCliente_cod();
-        $produto_cod=$venda->getProduto_cod();
+        $cliente_cod=$venda->cliente->getCod_cliente();
+        $produto_cod=$venda->produto->getCod_produto();
 
         $this->conecta();
         $q = "UPDATE venda set forma_pagamento='$forma_pagamento',qtd_parcela='$qtd_parcela',obs='$obs',cliente_cod='$cliente_cod',produto_cod='$produto_cod' WHERE cod_venda=$cod_venda";   
-        $stmt = $this->bd->query($q);
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 
 
     function excluirVenda($venda){
-            $cod_venda=$venda->getCod_venda();
-            $this->conecta();
-            $q = "DELETE FROM venda WHERE cod_venda=$cod_venda";
-            $stmt = $this->bd->query($q);
+        $cod_venda=$venda->getCod_venda();
+        $this->conecta();
+        $q = "DELETE FROM venda WHERE cod_venda=$cod_venda";
+        $conex = new conexao("localhost", "root", "", "otica");
+        $pdo = $conex->conecta();
+        $stmt = $pdo->query($q);
     }
 }

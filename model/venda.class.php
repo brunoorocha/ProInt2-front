@@ -5,9 +5,36 @@ class venda{
 	private $forma_pagamento; 
 	private $qtd_parcela;
 	private $obs;
-	private $cliente_cod;
-	private $produto_cod;
 	private $data;
+	private $cliente;
+	private $produto;
+
+	public function __construct() {
+
+        $n_args = (int) func_num_args();
+        $args = @func_get_arg();
+
+        if($n_args ==0){
+          $this->cod_venda = " ";
+          $this->forma_pagamento = " ";
+          $this->qtd_parcela = " ";
+          $this->obs = " ";
+          $this->data = " ";
+          $this->cliente = " ";
+          $this->produto = " ";
+
+        }
+        if($n_args == 13){
+          $this->cod_venda = $args[0];
+          $this->forma_pagamento = $args[1];
+          $this->qtd_parcela = $args[2];
+          $this->obs = $args[3];
+          $this->data = $args[4];
+          $this->cliente = $args[5];
+          $this->produto = $args[6];
+          
+        }
+    }
 
 	function setCod_venda($cod_venda){
 		$this->cod_venda = $cod_venda;
@@ -33,17 +60,17 @@ class venda{
 	function getObs(){
 		return $this->obs;
 	}
-	function setCliente_cod($cliente_cod){
-		$this->cliente_cod = $cliente_cod;
+	function setCliente($cliente){
+		$this->cliente = $cliente;
 	}
-	function getCliente_cod(){
-		return $this->cliente_cod;
+	function getCliente(){
+		return $this->cliente;
 	}
-	function setProduto_cod($produto_cod){
-		$this->produto_cod = $produto_cod;
+	function setProduto($produto){
+		$this->produto = $produto;
 	}
-	function getProduto_cod(){
-		return $this->produto_cod;
+	function getProduto(){
+		return $this->produto;
 	}
 	function setData($data){
 		$this->data = $data;
