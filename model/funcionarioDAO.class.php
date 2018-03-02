@@ -13,7 +13,7 @@ class funcionarioDAO{
         
         
         $q = "INSERT INTO funcionario (login,senha) VALUES('$login','$senha','$nome')";   
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }
@@ -28,13 +28,13 @@ class funcionarioDAO{
             $q = "UPDATE funcionario SET login='$login', senha='$senha', nome='$nome'
                   WHERE cod_funci=$cod_funci";
 
-            $conex = new conexao("localhost", "root", "", "otica");
+            $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
             $pdo = $conex->conecta();
             $stmt = $pdo->query($q);
         }
 
     public function retornaFuncionarios(){
-        $conexao = new conexao("localhost", "root", "", "otica");
+        $conexao = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $PDO = $conexao->conecta();
         $stmt = $PDO->query("SELECT * FROM funcionario");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@ class funcionarioDAO{
         $cod_funci=$funcionario->getCod_funci();
         
         $q = "DELETE FROM funcionario WHERE cod_funci=$cod_funci";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }
@@ -62,7 +62,7 @@ class funcionarioDAO{
         $login = $fun->getLogin();
         $senha = $fun->getSenha();
 
-        $conexao = new conexao("localhost", "root", "", "otica");
+        $conexao = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $PDO = $conexao->conecta();
         $stmt = $PDO->query("SELECT * FROM funcionario");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

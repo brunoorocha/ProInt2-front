@@ -18,7 +18,7 @@ class refratometriaDAO{
         $cliente_cod = $refratometria->cliente->getCliente_cod();
         
         $q = "INSERT INTO refratometria (odesf,odcil,odeixo,oddmp,oeesf,oecil,oeeixo,oedmp,cliente_cod) VALUES('$odesf','$odcil','$odeixo','$oddmp','$oeesf','$oecil','$oeeixo','$oedmp','$cliente_cod')";   
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }
@@ -26,7 +26,7 @@ class refratometriaDAO{
     function listaTudo(){
         
         $q = "SELECT * FROM refratometria";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +53,7 @@ class refratometriaDAO{
     function listaUm($cod_refrato){
         
         $q = "SELECT * FROM refratometria WHERE cod_refrato = $cod_refrato";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -84,7 +84,7 @@ class refratometriaDAO{
         $cliente_cod=$refratometria->cliente->getCod_cliente();
         
         $q = "UPDATE refratometria set odesf='$odesf',odcil='$odcil',odeixo='$odeixo',oddmp='$oddmp',oeesf='$oeesf',oecil='$oecil',oeeixo='$oeeixo',oedmp='$oedmp',cliente_cod='$cliente_cod' WHERE cod_refrato=$cod_refrato";   
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }
@@ -94,7 +94,7 @@ class refratometriaDAO{
         $cod_refrato=$refrato->getCod_refrato();
             
         $q = "DELETE FROM refrato WHERE cod_refrato=$cod_refrato";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }

@@ -4,7 +4,7 @@
            require_once './model/cliente.class.php';
            require_once './model/clienteDAO.class.php';
 
-           $bd = new conexao("localhost", "root", "", "otica");
+           new conexao("localhost", "root", "", "otica");
            $con = $bd->conecta();
            $cliente = new cliente();
 //           $cliente->setNome('victoria');

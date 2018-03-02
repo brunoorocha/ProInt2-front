@@ -2,7 +2,9 @@ $(function() {
 
     var offCanvasOn = false
 
+    loadDataFromAPI()
     offCanvasNavActivate()
+
     $('.mask').hide()
     $('.modal').hide()
     $('.modal-mask').hide()
@@ -61,4 +63,18 @@ $(function() {
         }
     }
 
+    var apiUrl = "http://localhost:8000";
+
+    function loadDataFromAPI() {
+        $.get("http://localhost:8000/produto/", function(produtos){                        
+            produtos.forEach(function(produto) {
+                var tableRow = '<tr><td>'+ produto.nome +'</td><td>10</td>'
+                tableRow    += '<td class="sm-cell-hide">'+ produto.preco_fabrica +'</td>'
+                tableRow    += '<td class="md-cell-hide">'+ produto.fornecedor +'</td>'
+                tableRow    += '<td><i class="material-icons">info</i></td></tr>'
+
+                $("#tableProdutos tbody").append(tableRow)
+            })
+        }, "json")
+    }
 })

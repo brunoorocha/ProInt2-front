@@ -4,7 +4,7 @@
            require_once './model/funcionario.class.php';
            require_once './model/funcionarioDAO.class.php';
 
-           $bd = new conexao("localhost", "root", "", "otica");
+           new conexao("localhost", "root", "", "otica");
            $con = $bd->conecta();
            $funci = new funcionario();
 //           $funci->setLogin('victoria');

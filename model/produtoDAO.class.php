@@ -15,27 +15,30 @@ class produtoDAO{
         
         $q = "INSERT INTO produto (nome,preco_fabrica,preco_revenda,fornecedor) VALUES('$nome','$preco_fabrica','$preco_revenda','$fornecedor')";   
         $conex = new conexao("localhost", "root", "", "otica");
-        $pdo = $conex->conecta();
+        $pdo = $conex->conectar();
         $stmt = $pdo->query($q);
     }
 
     function retornaProdutos(){
-        $conexao = new conexao("localhost", "root", "", "otica");
-        $PDO = $conexao->conecta();
+        $conexao = new conexao("localhost", "bruno", "123", "otica");
+        $PDO = $conexao->conectar();
         $stmt = $PDO->query("SELECT * FROM produto");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		
+        
+        $produtos = array();
+
         for($i=0; $i<$stmt->rowCount(); $i++){
-            $produto[$i]= new produto(); 
-            $produto[$i]->setCod_produto($result[$i]['cod_produto']);
-            $produto[$i]->setNome($result[$i]['nome']);
-            $produto[$i]->setPreco_fabrica($result[$i]['preco_fabrica']);
-            $produto[$i]->setPreco_revenda($result[$i]['preco_revenda']);
-            $produto[$i]->setFornecedor($result[$i]['fornecedor']);
+            $produto = array(); 
+            $produto["cod_produto"] = $result[$i]['cod_produto'];
+            $produto["nome"] = $result[$i]['nome'];
+            $produto["preco_fabrica"] = $result[$i]['preco_fabrica'];            
+            $produto["preco_revenda"] = $result[$i]['preco_revenda'];
+            $produto["fornecedor"] = $result[$i]['fornecedor'];            
             
+            array_push($produtos, $produto);
         }
         
-	return $produto;
+	    return json_encode($produtos);
 	}
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código

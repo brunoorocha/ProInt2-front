@@ -16,7 +16,7 @@ class vendaDAO{
         
         
         $q = "INSERT INTO venda (forma_pagamento,qtd_parcela,obs,cliente_cod,produto_cod, data) VALUES('$forma_pagamento','$qtd_parcela','$obs','$cliente_cod','$produto_cod','$data')";   
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }
@@ -24,7 +24,7 @@ class vendaDAO{
     function listaTudo(){
         
         $q = "SELECT * FROM venda";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -48,7 +48,7 @@ class vendaDAO{
     function listaUm($cod_venda){
         
         $q = "SELECT * FROM venda WHERE cod_venda = $cod_venda";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -74,7 +74,7 @@ class vendaDAO{
 
         $this->conecta();
         $q = "UPDATE venda set forma_pagamento='$forma_pagamento',qtd_parcela='$qtd_parcela',obs='$obs',cliente_cod='$cliente_cod',produto_cod='$produto_cod' WHERE cod_venda=$cod_venda";   
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }
@@ -84,7 +84,7 @@ class vendaDAO{
         $cod_venda=$venda->getCod_venda();
         $this->conecta();
         $q = "DELETE FROM venda WHERE cod_venda=$cod_venda";
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
         $pdo = $conex->conecta();
         $stmt = $pdo->query($q);
     }

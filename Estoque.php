@@ -57,7 +57,7 @@
                             <!-- <h3>Produtos</h3> -->
                             <!-- Data Table Component -->
                             <div class="table-responsive">
-                                <table class="table">
+                                <table id="tableProdutos" class="table">
                                     <thead>
                                         <tr>
                                             <th>Produto</th>
@@ -69,22 +69,15 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr> 
-
+                                        
+                                        <!-- <tr> 
                                             <td>Armação de Metal</td>
                                             <td>10</td>
                                             <td class="sm-cell-hide">R$ 350,00</td>
                                             <td class="md-cell-hide">Armações Ltda.</td>
                                             <td><i class="material-icons">info</i></td>
-                                        </tr>
+                                        </tr> -->
 
-                                        <tr>
-                                            <td>Armação de Fibra</td>
-                                            <td>7</td>
-                                            <td class="sm-cell-hide">R$ 400,00</td>
-                                            <td class="md-cell-hide">Armações Ltda.</td>
-                                            <td><i class="material-icons">info</i></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                                 <p class="clear-margins align-right">Itens no estoque: 52</p>

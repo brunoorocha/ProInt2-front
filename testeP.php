@@ -4,7 +4,7 @@
            require_once './model/produto.class.php';
            require_once './model/produtoDAO.class.php';
 
-           $bd = new conexao("localhost", "root", "", "otica");
+           new conexao("localhost", "root", "", "otica");
            $con = $bd->conecta();
            $produto = new produto();
 //           $produto->setNome('victoria');

@@ -11,18 +11,18 @@
         }
         
         
-        function cadastrar(){
+        function cadastrar($input){
             $produto = new produto();
             if($_SERVER['REQUEST_METHOD']=='POST'){
-                $produto->setNome($_POST['nome']);
-                $produto->setPreco_fabrica($_POST['preco_fabrica']);
-                $produto->setPreco_revenda($_POST['preco_revenda']);
-                $produto->setFornecedor($_POST['fornecedor']);
+                $produto->setNome($input["nome"]);
+                $produto->setPreco_fabrica($input["preco_fabrica"]);
+                $produto->setPreco_revenda($input["preco_revenda"]);
+                $produto->setFornecedor($input["fornecedor"]);
                 
+                $produtoDao = new produtoDAO();
+                $produtoDao->cadastrarProduto($produto);
 
-                $pDAO = new produtoDAO();
-                $pDAO->cadastrarCliente($produto);
-                echo "OK";
+                return "OK";
             } 
         }
         
