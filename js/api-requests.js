@@ -1,8 +1,7 @@
 
 function loadDataFromAPI(endpoint, callback) {
     var resourceUrl = "http://localhost:8000/" + endpoint
-    $.get(resourceUrl, function(resources, status){                             
-        console.log(resources)
+    $.get(resourceUrl, function(resources, status){                                     
         if(status == "nocontent") {                            
             callback(null);        
         }    
@@ -48,4 +47,11 @@ function loadTableFuncionarios() {
             })    
         }                        
     })            
+}
+
+function sendPost(endpoint, data) {
+    var resourceUrl = "http://localhost:8000/" + endpoint
+    $.post(resourceUrl, data, function(data){
+        console.log(data);        
+    })
 }

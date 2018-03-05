@@ -31,13 +31,6 @@ $(function() {
         offCanvasNavActivate()
     })
 
-    $('#add-product-button').on('click', function(evt){
-        evt.preventDefault()
-        $('.modal-mask').show()
-        $('.modal-mask').addClass('modal-mask-active')
-        $('.modal').show()
-    })
-
     $('.modal-mask').addClass('modal-mask-active').on('click', function() {
         $('.modal').hide()
         $('.modal-mask').removeClass('modal-mask-active')
@@ -66,4 +59,21 @@ $(function() {
         }
     }    
     
+    $('#add-product-form').on('submit', function(e){
+        e.preventDefault()                
+        var formSerialized = JSON.stringify(serializeForm($(this)))
+        
+        sendPost('produto', formSerialized)        
+    })
 })
+
+function serializeForm(form) {
+    var dataSerialized = {}
+    var formData = form.serializeArray()
+
+    formData.forEach(function(element) {
+        dataSerialized[element.name] = element.value
+    })
+
+    return dataSerialized;
+}

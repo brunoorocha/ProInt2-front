@@ -11,40 +11,49 @@
     <div class="row no-gutters">
         <?php include_once('./view/NavLeft.php'); ?>
 
+        <div id="adicionarProdutoModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Adicionar Produto</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                    <form id="add-product-form" class="" action="" method="post">
+
+                        <label for="cod_produto">Código:</label>
+                        <input type="text" id="cod_produto" name="cod_produto" value="">
+
+                        <label for="nome">Nome do Produto:</label>
+                        <input type="text" id="nome" name="nome" value="">
+
+                        <label for="preco_fabrica">Preço de Fábrica:</label>
+                        <input type="text" id="preco_fabrica" name="preco_fabrica" value="">
+
+                        <label for="preco_revenda">Preço de Revenda:</label>
+                        <input type="text" id="preco_revenda" name="preco_revenda" value="">
+
+                        <label for="fornecedor">Fornecedor:</label>
+                        <input type="text" id="fornecedor" name="fornecedor" value="">
+
+                        <div class="row no-gutters modal-button-bar">
+                            <input type="button" name="cancel-button" data-dismiss="modal" value="Cancelar">
+                            <input type="submit" name="save-button" class="btn-primary" value="Salvar">
+                        </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
         <!-- Nav Mask Component -->
         <div class="mask"></div>
-
-        <div class="modal-mask">
-        </div>
-        <div class="modal">
-            <div class="row no-gutters modal-title">
-                <i class="material-icons">add</i>
-                <h4>Adicionar Produto</h4>
-            </div>
-
-            <form id="add-product-form" class="" action="" method="post">
-
-                <label for="cod_produto">Código:</label>
-                <input type="text" id="cod_produto" name="cod_produto" value="">
-
-                <label for="nome">Nome do Produto:</label>
-                <input type="text" id="nome" name="nome" value="">
-
-                <label for="preco_fabrica">Preço de Fábrica:</label>
-                <input type="text" id="preco_fabrica" name="preco_fabrica" value="">
-
-                <label for="preco_revenda">Preço de Revenda:</label>
-                <input type="text" id="preco_revenda" name="preco_revenda" value="">
-
-                <label for="fornecedor">Fornecedor:</label>
-                <input type="text" id="fornecedor" name="fornecedor" value="">
-
-                <div class="row no-gutters modal-button-bar">
-                    <input type="button" name="cancel-button" value="Cancelar">
-                    <input type="submit" name="save-button" value="Salvar">
-                </div>
-            </form>
-        </div>
 
         <div class="col fixed-height">
             <?php include_once('./view/NavBar.php'); ?>
@@ -67,21 +76,12 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-
-                                    <tbody>
-                                        
-                                        <!-- <tr> 
-                                            <td>Armação de Metal</td>
-                                            <td>10</td>
-                                            <td class="sm-cell-hide">R$ 350,00</td>
-                                            <td class="md-cell-hide">Armações Ltda.</td>
-                                            <td><i class="material-icons">info</i></td>
-                                        </tr> -->
-
+                                    <tbody>       
                                     </tbody>
                                 </table>
                                 <p class="clear-margins align-right">Itens no estoque: 52</p>
                             </div>
+                            
                         </section>
 
                     </div>
@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <a href="#" id="add-product-button" class="floating-action-button md-floating-button">
+        <a href="#" data-toggle="modal" data-target="#adicionarProdutoModal" class="floating-action-button md-floating-button btn-primary">
             <i class="material-icons">add</i>
         </a>
     </div>

@@ -14,7 +14,7 @@ class produtoDAO{
         
         
         $q = "INSERT INTO produto (nome,preco_fabrica,preco_revenda,fornecedor) VALUES('$nome','$preco_fabrica','$preco_revenda','$fornecedor')";   
-        $conex = new conexao("localhost", "root", "", "otica");
+        $conex = new conexao("localhost", "bruno", "123", "otica");
         $pdo = $conex->conectar();
         $stmt = $pdo->query($q);
     }

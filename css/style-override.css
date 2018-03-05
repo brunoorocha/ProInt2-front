@@ -5,7 +5,7 @@
 */
 :root {
     --white: #ffffff;
-    --orange: #F57C00;
+    /* --orange: #F57C00; */
     --orange-6: #fb8c00;
     --gray-0: #fafafa;
     --gray-1: #f5f5f5;
@@ -346,8 +346,8 @@ h4 {
 }
 
 .breadcrumb .breadcrumb-item i {
-    margin-top: 4px;
-    color: #01579B;
+    margin-top: 4px;    
+    transition: .2s ease-out;
 }
 
 .breadcrumb .active::before {
@@ -358,11 +358,11 @@ h4 {
 }
 
 a.floating-action-button {
-    border-radius: 50%;
-    background-color: #01579B;
+    border-radius: 50%;    
     padding: 16px;
     line-height: 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    transition: .2s ease-out;
 }
 
 a.floating-action-button i {
@@ -380,37 +380,9 @@ a.floating-action-button i {
     float: right;
 }
 
-.modal {
-    width: 280px;
-    height: 468px;
-    position: fixed;
-    top: calc(50% - 250px);
-    left: calc(50% - 140px);
-    background-color: #fff;
-    border: 1px solid var(--gray-3);
-    display: block;
-}
-
-.modal .modal-title {
-    width: 100%;
-    float: left;
-    padding: 16px;
-    box-sizing: border-box;
-    border-bottom: 1px solid var(--gray-3);
-}
-
-.modal .modal-title h4 {
-    margin: 2px 0 0 0;
-}
-
-.modal .modal-title i {
-    margin-right: 16px;
-}
-
 .modal form {
     width: 100%;
-    float: left;
-    padding: 16px;
+    float: left;    
     box-sizing: border-box;
 }
 
@@ -436,17 +408,25 @@ a.floating-action-button i {
 .modal form .modal-button-bar input {
     font-family: "Roboto Medium";
     text-transform: uppercase;
-    color: var(--gray-4);
-    background-color: transparent;
+    color: var(--gray-4);    
     border: none;
-    padding: 4px 8px;
+    padding: 4px 12px;
     border-radius: 3px;
     margin-left: 16px;
     cursor: pointer;
+    transition: .2s ease-out;
 }
 
-.modal form .modal-button-bar input[type=submit] {
-    background-color: var(--gray-3);
+.modal form .modal-button-bar input[type=button]{
+    background-color: transparent;    
+}
+
+.modal form .modal-button-bar input[type=button]:hover {
+    background-color: var(--gray-3);    
+}
+
+.modal form .modal-button-bar input[type=submit] {    
+    color: var(--white);
 }
 
 @media (max-width: 576px) {
