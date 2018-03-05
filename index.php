@@ -53,6 +53,12 @@
         if($method == 'GET') {
             if($request[0] != '') {
                 $controllerName = ucfirst($request[0]) .'Controller';
+
+                if(!class_exists($controllerName)) {
+                    http_response_code(404);
+                    include_once('404.php');              
+                }
+
                 $controllerInstance = new $controllerName();
 
                 $result = $controllerInstance->visualizar_todos();
