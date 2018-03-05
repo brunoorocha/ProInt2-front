@@ -26,6 +26,10 @@ class produtoDAO{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         $produtos = array();
+        
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
 
         for($i=0; $i<$stmt->rowCount(); $i++){
             $produto = array(); 

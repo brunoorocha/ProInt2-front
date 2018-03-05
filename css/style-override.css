@@ -347,6 +347,7 @@ h4 {
 
 .breadcrumb .breadcrumb-item i {
     margin-top: 4px;
+    color: #01579B;
 }
 
 .breadcrumb .active::before {

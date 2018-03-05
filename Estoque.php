@@ -60,8 +60,8 @@
                                 <table id="tableProdutos" class="table">
                                     <thead>
                                         <tr>
+                                            <th>Código</th>
                                             <th>Produto</th>
-                                            <th>Qtd</th>
                                             <th class="sm-cell-hide">Preço Revenda</th>
                                             <th class="md-cell-hide">Fornecedor</th>
                                             <th></th>

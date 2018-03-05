@@ -51,6 +51,11 @@
         if($method == 'GET') {
             if($request[0] == 'produto') {
                 $produtoDAO = new produtoDAO();
-                echo $produtoDAO->retornaProdutos();
+                if($produtoDAO->retornaProdutos() == NULL) {
+                    http_response_code(204);
+                } 
+                else {
+                    echo $produtoDAO->retornaProdutos();
+                }
             }
         }
