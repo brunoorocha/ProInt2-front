@@ -25,6 +25,13 @@
                 return "OK";
             } 
         }
+
+        function visualizar_todos() {
+            $produtoDao = new produtoDAO();
+            $result = $produtoDao->retornaProdutos();            
+            
+            return $result;            
+        }
         
         function view_cadastrar(){
           

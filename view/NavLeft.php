@@ -38,7 +38,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="estoque nav-link" href="#">
+                <a class="estoque nav-link" href="./Estoque.php">
                     <i class="material-icons">view_module</i>
                     <span>Estoque</span>
                 </a>
@@ -62,7 +62,7 @@
             <li class="nav-item link-separator">Mais Opções</li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="funcionários nav-link" href="Funcionario.php">
                     <i class="material-icons">person</i>
                     <span>Funcionários</span>
                 </a>

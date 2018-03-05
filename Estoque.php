@@ -7,7 +7,7 @@
 <html>
 <?php includeHead($pageTitle); ?>
 
-<body page-title="<?php echo strtolower($pageTitle); ?>">
+<body page-title="<?php echo strtolower($pageTitle); ?>" onload="loadTableProdutos()">
     <div class="row no-gutters">
         <?php include_once('./view/NavLeft.php'); ?>
 

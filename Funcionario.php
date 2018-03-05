@@ -7,7 +7,7 @@
 <html>
 <?php includeHead($pageTitle); ?>
 
-<body page-title="<?php echo strtolower($pageTitle); ?>">
+<body page-title="<?php echo strtolower($pageTitle); ?>" onload="loadTableFuncionarios()">
     <div class="row no-gutters">
         <?php include_once('./view/NavLeft.php'); ?>
 
@@ -50,30 +50,24 @@
                             <!-- <h3>Produtos</h3> -->
                             <!-- Data Table Component -->
                             <div class="table-responsive">
-                                <table class="table">
+                                <table id="tableFuncionarios" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Usuário</th>
-                                            <th>Senha</th>
+                                            <th>Funcionário</th>
+                                            <th>Login</th>
                                             <th></th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr> 
+                                        <!-- <tr> 
 
                                             <td>Bianca</td>
                                             <td>abc123</td>
                                             
                                             <td><i class="material-icons">info</i></td>
-                                        </tr>
+                                        </tr> -->
 
-                                        <tr>
-                                            <td>Alyne</td>
-                                            <td>q1w2e3</td>
-                                          
-                                            <td><i class="material-icons">info</i></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                                 <p class="clear-margins align-right">Funcionários cadastrados: 02</p>

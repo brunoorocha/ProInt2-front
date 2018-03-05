@@ -1,9 +1,8 @@
 $(function() {
 
     var offCanvasOn = false
-
-    loadDataFromAPI()
-    offCanvasNavActivate()
+    
+    offCanvasNavActivate()    
 
     $('.mask').hide()
     $('.modal').hide()
@@ -23,6 +22,10 @@ $(function() {
 
     var page = $('body').attr('page-title');
     $("."+ page).addClass('nav-link-active');
+
+    $('.nav-link-active').on('click', function(e) {
+        e.preventDefault();
+    });
 
     $(window).resize(function() {
         offCanvasNavActivate()
@@ -61,26 +64,6 @@ $(function() {
             $('.nav-left').addClass('position-fixed')
             $('.nav-bottom').removeClass('nav-bottom-unactive')
         }
-    }
-
-    var apiUrl = "http://localhost:8000";
-
-    function loadDataFromAPI() {
-        $.get("http://localhost:8000/produto/", function(produtos, status){                             
-            if(status == "nocontent") {                            
-                $("#tableProdutos tbody").append("<tr><td>Não há produtos para exibir.</td></tr>")
-            }         
-            else if(status == "success") {
-                produtos.forEach(function(produto) {                
-                    var tableRow = '<tr><td>'+ produto.cod_produto +'</td>'
-                    tableRow    += '<td>'+ produto.nome +'</td>'
-                    tableRow    += '<td class="sm-cell-hide">'+ produto.preco_fabrica +'</td>'
-                    tableRow    += '<td class="md-cell-hide">'+ produto.fornecedor +'</td>'
-                    tableRow    += '<td><i class="material-icons">info</i></td></tr>'
+    }    
     
-                    $("#tableProdutos tbody").append(tableRow)
-                })    
-            }                        
-        }, "json")
-    }
 })

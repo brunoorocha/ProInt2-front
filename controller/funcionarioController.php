@@ -1,11 +1,10 @@
 <?php
     
-    class clienteController{
+    class funcionarioController{
     
         public function __construct() {
             
             require_once 'model/funcionarioDAO.class.php';
-            require_once 'view/funcionarioView.php';
             require_once 'model/funcionario.class.php';
             
         }
@@ -21,6 +20,16 @@
                 $fDAO->cadastrarFuncionario($funcionario);
                 echo "OK";
             } 
+        }
+
+        function visualizar_todos() {
+            $funcionarioDAO = new FuncionarioDAO();
+            $result = $funcionarioDAO->retornaFuncionarios();            
+            
+            if($result == NULL) {                
+                return NULL;
+            }
+            return json_encode();
         }
         
         function view_cadastrar(){

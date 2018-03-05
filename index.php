@@ -3,8 +3,10 @@
         //conexão
         include './conexao.php'; 
         require_once './controller/produtoController.php';
+        require_once './controller/funcionarioController.php';
         require_once './model/produtoDAO.class.php';
         //    require_once './controller/homeController.php';
+
         $bd = new conexao("localhost", "bruno", "123", "otica");
         $con = $bd->conectar();
             
@@ -49,13 +51,18 @@
         }
 
         if($method == 'GET') {
-            if($request[0] == 'produto') {
-                $produtoDAO = new produtoDAO();
-                if($produtoDAO->retornaProdutos() == NULL) {
+            if($request[0] != '') {
+                $controllerName = ucfirst($request[0]) .'Controller';
+                $controllerInstance = new $controllerName();
+
+                $result = $controllerInstance->visualizar_todos();
+
+                if($result == NULL) {                    
                     http_response_code(204);
                 } 
                 else {
-                    echo $produtoDAO->retornaProdutos();
+                    echo $result;
                 }
             }
+            
         }
