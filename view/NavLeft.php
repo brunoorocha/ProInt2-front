@@ -31,7 +31,7 @@
             <li class="nav-item link-separator">Principal</li>
 
             <li class="nav-item">
-                <a class="home nav-link" href="#">
+                <a class="principal nav-link" href="./Home.php">
                     <i class="material-icons">home</i>
                     <span>Início</span>
                 </a>
