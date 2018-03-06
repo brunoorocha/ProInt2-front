@@ -45,7 +45,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="clientes nav-link" href="#">
+                <a class="clientes nav-link" href="./Clientes.php">
                     <i class="material-icons">people</i>
                     <span>Clientes</span>
                 </a>
@@ -62,7 +62,7 @@
             <li class="nav-item link-separator">Mais Opções</li>
 
             <li class="nav-item">
-                <a class="funcionários nav-link" href="Funcionario.php">
+                <a class="funcionário nav-link" href="./Funcionario.php">
                     <i class="material-icons">person</i>
                     <span>Funcionários</span>
                 </a>
