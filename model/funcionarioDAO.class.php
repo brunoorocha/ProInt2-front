@@ -34,9 +34,8 @@ class funcionarioDAO{
         }
 
     public function retornaFuncionarios(){
-        $conexao = new conexao("localhost", $this->MYSQL_USER, $this->MYSQL_PASS, "otica");
-        $PDO = $conexao->conectar();
-        $stmt = $PDO->query("SELECT * FROM funcionario");
+        $conexao = conexao::connect();            
+        $stmt = $conexao->query("SELECT * FROM funcionario");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if($stmt->rowCount() == 0) {            

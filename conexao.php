@@ -32,5 +32,24 @@ class conexao {
     
      }
      
+    public static function connect (){
+        $host = "localhost";
+        $user = "bruno";
+        $pass = "123";
+        $dbname = "otica";
+        $connection = NULL;        
+
+        if($connection == NULL) {
+            try{        
+                $connection = new PDO("mysql:host=$host; dbname=$dbname", $user, $pass);
+                $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);            
+            }
+            catch (PDOException $e){        
+                echo "Erro ao conectar com o MYSQL:".$e->getMessage();              
+            }
+        }        
+
+        return $connection;
+    }
             
 }

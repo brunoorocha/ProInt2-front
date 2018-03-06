@@ -79,7 +79,7 @@
                                     <tbody>       
                                     </tbody>
                                 </table>
-                                <p class="clear-margins align-right">Itens no estoque: 52</p>
+                                <p class="clear-margins align-right">Itens no estoque: <b id="table-itens-count">52</b></p>
                             </div>
                             
                         </section>

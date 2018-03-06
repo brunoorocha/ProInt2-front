@@ -70,7 +70,7 @@
 
                                     </tbody>
                                 </table>
-                                <p class="clear-margins align-right">Funcionários cadastrados: 02</p>
+                                <p class="clear-margins align-right">Funcionários cadastrados: <b id="table-itens-count"></b></p>
                             </div>
                         </section>
 

@@ -14,15 +14,13 @@ class produtoDAO{
         
         
         $q = "INSERT INTO produto (nome,preco_fabrica,preco_revenda,fornecedor) VALUES('$nome','$preco_fabrica','$preco_revenda','$fornecedor')";   
-        $conex = new conexao("localhost", "bruno", "123", "otica");
-        $pdo = $conex->conectar();
-        $stmt = $pdo->query($q);
+        $conexao = conexao::connect();        
+        $stmt = $conexao->query($q);
     }
 
     function retornaProdutos(){
-        $conexao = new conexao("localhost", "bruno", "123", "otica");
-        $PDO = $conexao->conectar();
-        $stmt = $PDO->query("SELECT * FROM produto");
+        $conexao = conexao::connect();        
+        $stmt = $conexao->query("SELECT * FROM produto");        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         $produtos = array();
