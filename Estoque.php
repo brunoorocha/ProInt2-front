@@ -24,21 +24,22 @@
 
                     <div class="modal-body">
                     <form id="add-product-form" class="" action="" method="post">
-
-                        <label for="cod_produto">Código:</label>
-                        <input type="text" id="cod_produto" name="cod_produto" value="">
-
-                        <label for="nome">Nome do Produto:</label>
-                        <input type="text" id="nome" name="nome" value="">
-
-                        <label for="preco_fabrica">Preço de Fábrica:</label>
-                        <input type="text" id="preco_fabrica" name="preco_fabrica" value="">
-
-                        <label for="preco_revenda">Preço de Revenda:</label>
-                        <input type="text" id="preco_revenda" name="preco_revenda" value="">
-
-                        <label for="fornecedor">Fornecedor:</label>
-                        <input type="text" id="fornecedor" name="fornecedor" value="">
+                        <div class="fields">
+                            <label for="cod_produto">Código:</label>
+                            <input type="text" id="cod_produto" name="cod_produto" value="">
+    
+                            <label for="nome">Nome do Produto:</label>
+                            <input type="text" id="nome" name="nome" value="">
+    
+                            <label for="preco_fabrica">Preço de Fábrica:</label>
+                            <input type="text" id="preco_fabrica" name="preco_fabrica" value="">
+    
+                            <label for="preco_revenda">Preço de Revenda:</label>
+                            <input type="text" id="preco_revenda" name="preco_revenda" value="">
+    
+                            <label for="fornecedor">Fornecedor:</label>
+                            <input type="text" id="fornecedor" name="fornecedor" value="">
+                        </div>
 
                         <div class="row no-gutters modal-button-bar">
                             <input type="button" name="cancel-button" data-dismiss="modal" value="Cancelar">

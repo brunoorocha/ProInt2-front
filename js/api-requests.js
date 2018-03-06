@@ -56,7 +56,7 @@ function loadTableFuncionarios() {
                 tableRow    += '<td>'+ funcionario.login +'</td>'                
                 tableRow    += '<td><i class="material-icons">info</i></td></tr>'
     
-                $("#tableProdutos tbody").append(tableRow)
+                $("#tableFuncionarios tbody").append(tableRow)
                 counter++
             })   
             
@@ -77,9 +77,9 @@ function loadTableClientes() {
             var counter = 0;
             clientes.forEach(function(cliente) {                
                 var tableRow = '<tr><td>'+ cliente.nome +'</td>'
-                tableRow    += '<td>'+ cliente.status +'</td>'                
-                tableRow    += '<td>'+ cliente.profissao +'</td>'                
-                tableRow    += '<td>'+ cliente.profissao +'</td>'                
+                tableRow    += '<td class="align-center"><i class="material-icons" style="color: var(--green);">label</i></td>'                
+                tableRow    += '<td class="sm-cell-hide">'+ cliente.profissao +'</td>'                
+                tableRow    += '<td class="md-cell-hide">'+ cliente.profissao +'</td>'                
                 tableRow    += '<td><i class="material-icons">info</i></td></tr>'
     
                 $("#tableClientes tbody").append(tableRow)

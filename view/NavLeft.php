@@ -62,7 +62,7 @@
             <li class="nav-item link-separator">Mais Opções</li>
 
             <li class="nav-item">
-                <a class="funcionário nav-link" href="./Funcionario.php">
+                <a class="funcionários nav-link" href="./Funcionario.php">
                     <i class="material-icons">person</i>
                     <span>Funcionários</span>
                 </a>

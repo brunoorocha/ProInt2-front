@@ -380,9 +380,25 @@ a.floating-action-button i {
     float: right;
 }
 
+.modal .modal-header i {
+    float: left;
+    margin-right: 16px;
+    margin-top: 1px;
+}
+
+.modal-dialog .modal-body {
+    padding: 0;
+}
+
 .modal form {
     width: 100%;
     float: left;    
+}
+
+.modal form .fields {
+    float: left;
+    width: 100%;
+    padding: 16px;
     box-sizing: border-box;
 }
 
@@ -391,7 +407,8 @@ a.floating-action-button i {
     width: 100%;
 }
 
-.modal form input[type=text] {
+.modal form input[type=text],
+.modal form input[type=password] {
     float: left;
     width: 100%;
     padding: 5px 8px;
@@ -401,8 +418,9 @@ a.floating-action-button i {
 .modal form .modal-button-bar {
     float: left;
     width: 100%;
-    margin-top: 5px;
     justify-content: flex-end;
+    border-top: 1px solid var(--gray-3);
+    padding: 12px 16px;
 }
 
 .modal form .modal-button-bar input {
@@ -436,11 +454,15 @@ a.floating-action-button i {
 
 .cliente-labels p {
     float: left; 
-    margin-left: 24px;       
+    margin-right: 24px;       
 }
 
-.cliente-labels p:first-child {    
-    margin-left: 0px;   
+.cliente-labels p:last-child {    
+    margin-right: 0px;   
+}
+
+.align-center {
+    text-align: center;
 }
 
 @media (max-width: 576px) {

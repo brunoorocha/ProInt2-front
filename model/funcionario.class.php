@@ -28,6 +28,9 @@ class funcionario{
     function setNome($nome){
       $this->nome = $nome;
     }
+    function getNome(){
+      return $this->nome;
+    }
     public function __construct() {
 
         $n_args = (int) func_num_args();

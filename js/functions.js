@@ -4,6 +4,8 @@ $(function() {
     
     offCanvasNavActivate()    
 
+    $('[data-toggle="tooltip"]').tooltip()
+
     $('.mask').hide()
     $('.modal').hide()
     $('.modal-mask').hide()
@@ -70,12 +72,21 @@ $(function() {
 
     $('#add-cliente-form').on('submit', function(e){
         e.preventDefault()                
-        var formSerialized = JSON.stringify(serializeForm($(this)))
-        console.log(formSerialized);
+        var formSerialized = JSON.stringify(serializeForm($(this)))        
         
         sendPost('cliente', formSerialized)      
         $("#adicionarClienteModal").modal('hide')
         loadTableClientes()  
+    })
+
+
+    $('#add-funcionario-form').on('submit', function(e){
+        e.preventDefault()                
+        var formSerialized = JSON.stringify(serializeForm($(this)))        
+        
+        sendPost('funcionario', formSerialized)      
+        $("#adicionarFuncionarioModal").modal('hide')
+        loadTableFuncionarios()  
     })
 })
 

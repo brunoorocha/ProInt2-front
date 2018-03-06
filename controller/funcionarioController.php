@@ -10,11 +10,12 @@
         }
         
         
-        function cadastrar(){
+        function cadastrar($input){
             $funcionario = new funcionario();
             if($_SERVER['REQUEST_METHOD']=='POST'){
-                $funcionario->setLogin($_POST['login']);
-                $funcionario->setSenha($_POST['senha']);
+                $funcionario->setLogin($input['login']);
+                $funcionario->setSenha($input['senha']);
+                $funcionario->setNome($input['nome']);
 
                 $fDAO = new funcionarioDAO();
                 $fDAO->cadastrarFuncionario($funcionario);
@@ -29,7 +30,7 @@
             if($result == NULL) {                
                 return NULL;
             }
-            return json_encode();
+            return json_encode($result);
         }
         
         function view_cadastrar(){

@@ -25,18 +25,19 @@ $pageTitle = "Funcionários";
                         <div class="modal-body">
 
                             <form id="add-funcionario-form" class="" action="" method="post">
-
-                                <label for="nome">Nome:</label>
-                                <input type="text" id="nome" name="nome" value="">
-                                <label for="login">Login:</label>
-                                <input type="text" id="login" name="login" value="">
-
-                                <label for="senha">Senha:</label>
-                                <input type="password" id="senha" name="senha" value="">
+                                <div class="fields">
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" id="nome" name="nome" value="">
+                                    <label for="login">Login:</label>
+                                    <input type="text" id="login" name="login" value="">
+    
+                                    <label for="senha">Senha:</label>
+                                    <input type="password" id="senha" name="senha" value="">
+                                </div>
 
                                 <div class="row no-gutters modal-button-bar">
-                                    <input type="button" name="cancel-button" value="Cancelar">
-                                    <input type="submit" name="save-button" value="Salvar">
+                                    <input type="button" name="cancel-button" data-dismiss="modal" value="Cancelar">
+                                    <input type="submit" class="btn-primary" name="save-button" value="Salvar">
                                 </div>
                             </form>
                         </div>

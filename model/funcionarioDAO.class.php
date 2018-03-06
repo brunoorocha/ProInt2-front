@@ -13,10 +13,9 @@ class funcionarioDAO{
         $nome=$funcionario->getNome();
         
         
-        $q = "INSERT INTO funcionario (login,senha) VALUES('$login','$senha','$nome')";   
-        $conex = new conexao("localhost", $this->MYSQL_USER, $this->MYSQL_PASS, "otica");
-        $pdo = $conex->conectar();
-        $stmt = $pdo->query($q);
+        $q = "INSERT INTO funcionario (login,senha, nome) VALUES('$login','$senha','$nome')";   
+        $conexao = conexao::connect();                    
+        $stmt = $conexao->query($q);
     }
 
     function atualizarFuncionario($funcionario){
