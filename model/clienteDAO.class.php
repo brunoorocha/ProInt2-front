@@ -20,37 +20,43 @@ class clienteDAO{
         $telefone_referencia=$cliente->getTelefone_referencia();
        
         $q = "INSERT INTO cliente (nome,profissao,endereco,rg,cpf,filiacao,naturalidade,data_nasc,nome_conjuge,profissao_conjuge,referencia,telefone_referencia) VALUES('$nome','$profissao','$endereco','$rg','$cpf','$filiacao','$naturalidade','$data_nasc','$nome_conjuge','$profissao_conjuge','$referencia','$telefone_referencia')";   
-        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
-        $pdo = $conex->conecta();
-        $stmt = $pdo->query($q);
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);        
     }
 
     function retornaClientes(){
         
         $q = "SELECT * FROM cliente";
-        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
-        $pdo = $conex->conecta();
-        $stmt = $pdo->query($q);
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		
+        
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
+
+        $clientes = array();
+
         for($i=0; $i<$stmt->rowCount(); $i++){
-            $cliente[$i]= new cliente(); 
-            $cliente[$i]->setCod_cliente($result[$i]['cod_cliente']);
-            $cliente[$i]->setNome($result[$i]['nome']);
-            $cliente[$i]->setProfissao($result[$i]['profissao']);
-            $cliente[$i]->setEndereco($result[$i]['endereco']);
-            $cliente[$i]->setRg($result[$i]['rg']);
-            $cliente[$i]->setCpf($result[$i]['cpf']);
-            $cliente[$i]->setFiliacao($result[$i]['filiacao']);
-            $cliente[$i]->setNaturalidade($result[$i]['naturalidade']);
-            $cliente[$i]->setData_nasc($result[$i]['data_nasc']);
-            $cliente[$i]->setNome_conjuge($result[$i]['nome_conjuge']);
-            $cliente[$i]->setProfissao_conjuge($result[$i]['profissao_conjuge']);
-            $cliente[$i]->setReferencia($result[$i]['referencia']);
-            $cliente[$i]->setTelefone_referencia($result[$i]['telefone_referencia']);
+            $cliente = array();            
+            $cliente["cod_cliente"] = $result[$i]['cod_cliente'];
+            $cliente["nome"] = $result[$i]['nome'];
+            $cliente["profissao"] = $result[$i]['profissao'];
+            $cliente["endereco"] = $result[$i]['endereco'];
+            $cliente["rg"] = $result[$i]['rg'];
+            $cliente["cpf"] = $result[$i]['cpf'];
+            $cliente["filiacao"] = $result[$i]['filiacao'];
+            $cliente["naturalidade"] = $result[$i]['naturalidade'];
+            $cliente["data_nasc"] = $result[$i]['data_nasc'];
+            $cliente["nome_conjuge"] = $result[$i]['nome_conjuge'];
+            $cliente["profissao_conjuge"] = $result[$i]['profissao_conjuge'];
+            $cliente["referencia"] = $result[$i]['referencia'];
+            $cliente["telefone_referencia"] = $result[$i]['telefone_referencia'];
+
+            array_push($clientes, $cliente);
         }
         
-	return $cliente;
+	    return json_encode($clientes);
 	}
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código

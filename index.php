@@ -3,8 +3,8 @@
         //conexão
         include './conexao.php'; 
         require_once './controller/produtoController.php';
-        require_once './controller/funcionarioController.php';
-        require_once './model/produtoDAO.class.php';
+        require_once './controller/funcionarioController.php';        
+        require_once './controller/clienteController.php';        
         //    require_once './controller/homeController.php';
 
         $bd = new conexao("localhost", "bruno", "123", "otica");
@@ -43,24 +43,21 @@
         $key     = (count($request) > 1) ? $request[1] : 0;
         $input   = json_decode(file_get_contents('php://input'), true);
         
-        if($method == 'POST') {
-            if($request[0] == 'produto') {
-                $produtoController = new ProdutoController();
-                echo $produtoController->cadastrar($input);
+        if($request[0] != '') {
+            $controllerName = ucfirst($request[0]) .'Controller';
+
+            if(!class_exists($controllerName)) {
+                http_response_code(404);
+                include_once('404.php');              
             }
-        }
 
-        if($method == 'GET') {
-            if($request[0] != '') {
-                $controllerName = ucfirst($request[0]) .'Controller';
+            $controllerInstance = new $controllerName();
+                
+            if($method == 'POST') {                                                            
+                echo $controllerInstance->cadastrar($input);
+            }
 
-                if(!class_exists($controllerName)) {
-                    http_response_code(404);
-                    include_once('404.php');              
-                }
-
-                $controllerInstance = new $controllerName();
-
+            if($method == 'GET') {            
                 $result = $controllerInstance->visualizar_todos();
 
                 if($result == NULL) {                    
@@ -68,7 +65,6 @@
                 } 
                 else {
                     echo $result;
-                }
+                }                        
             }
-            
         }

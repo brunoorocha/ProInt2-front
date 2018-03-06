@@ -42,8 +42,8 @@ $pageTitle = "Clientes";
                                 <input type="text" id="endereco" name="endereco" value="">
                                 <label for="telefone">Telefone:</label>
                                 <input type="text" id="telefone" name="telefone" value="">
-                                <label for="conjuge">Cônjuge:</label>
-                                <input type="text" id="conjuge" name="conjuge" value="">
+                                <label for="nome_conjuge">Cônjuge:</label>
+                                <input type="text" id="nome_conjuge" name="nome_conjuge" value="">
                                 <label for="profissao_conjuge">Profissão do cônjuge:</label>
                                 <input type="text" id="profissao_conjuge" name="profissao_conjuge" value="">
                                 <label for="referencia">Referência:</label>
@@ -53,7 +53,7 @@ $pageTitle = "Clientes";
 
                                 <div class="row no-gutters modal-button-bar">
                                     <input type="button" name="cancel-button" value="Cancelar">
-                                    <input type="submit" name="save-button" value="Salvar">
+                                    <input type="submit" name="save-button" class="btn-primary" value="Salvar">
                                 </div>
                             </form>
                         </div>
@@ -71,14 +71,17 @@ $pageTitle = "Clientes";
                     <div class="row no-gutters">
                         <div class="col center-content">
                             <section>
-                             <div class="clear-margins align-left">Clientes: 02
-                                        <p class="clear-margins align-right"><i class="material-icons" style="color:green;">label</i>Em dias
-                                        <i class="material-icons" style="color:yellow;">label</i>Em atraso
-                                        <i class="material-icons" style="color:red;">label</i>Bloqueado
-                                        <i class="material-icons" style="color:gray;">label</i>Quitado </p></div>
+                                <div class="row align-right">                                    
+                                    <div class="col cliente-labels">                                        
+                                        <p><i class="material-icons" style="color: var(--green);">label</i><span>Em dias</span></p>
+                                        <p><i class="material-icons" style="color: var(--yellow);">label</i><span>Em atraso</span></p>                                        
+                                        <p><i class="material-icons" style="color: var(--red);">label</i><span>Bloqueado</span></p>
+                                        <p><i class="material-icons" style="color: var(--gray);">label</i><span>Quitado</span></p>                               
+                                    </div>
+                                </div>
+                    
                                 <div class="table-responsive">
-                                    <table id="tableClientes" class="table">
-                                       
+                                    <table id="tableClientes" class="table">                                       
                                     
                                         <thead>
                                             <tr>
@@ -93,9 +96,9 @@ $pageTitle = "Clientes";
 
 
                                         </tbody>
-                                    </table>
-                                    
+                                    </table>                                    
                                 </div>
+                                <p class="clear-margins align-right">Clientes: <b id="table-itens-count">0</b></p>
                             </section>
 
                         </div>

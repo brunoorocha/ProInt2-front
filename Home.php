@@ -11,7 +11,8 @@
     <div class="row no-gutters">
         <?php include_once('./view/NavLeft.php'); ?>
 
-        <!-- Nav Mask Component -->       
+        <!-- Nav Mask Component --> 
+        <div class="mask"></div>      
 
         <div class="col fixed-height">
             <?php include_once('./view/NavBar.php'); ?>            

@@ -2,19 +2,19 @@
 <div class="row justify-content-center no-gutters nav-bottom">
     <ul class="nav nav-tabs">
         <li class="col nav-item">
-            <a class="home nav-link" href="#">
+            <a class="principal nav-link" href="Home.php">
                 <i class="material-icons">home</i>
                 <span>Início</span>
             </a>
         </li>
         <li class="col nav-item">
-            <a class="estoque nav-link" href="#">
+            <a class="estoque nav-link" href="Estoque.php">
                 <i class="material-icons">view_module</i>
                 <span>Estoque</span>
             </a>
         </li>
         <li class="col nav-item">
-            <a class="clientes nav-link" href="#">
+            <a class="clientes nav-link" href="Clientes.php">
                 <i class="material-icons">people</i>
                 <span>Clientes</span>
             </a>

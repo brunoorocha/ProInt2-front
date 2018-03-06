@@ -2,35 +2,39 @@
     
     class clienteController{
     
-        public function __construct() {
-            
-            require_once 'model/clienteDAO.class.php';
-            require_once 'view/clienteView.php';
-            require_once 'model/cliente.class.php';
-            
+        public function __construct() {            
+            require_once 'model/clienteDAO.class.php';            
+            require_once 'model/cliente.class.php';            
         }
         
         
-        function cadastrar(){
+        function cadastrar($input){
             $cliente = new cliente();
             if($_SERVER['REQUEST_METHOD']=='POST'){
-                $cliente->setNome($_POST['nome']);
-                $cliente->setProfissao($_POST['profissao']);
-                $cliente->setEndereco($_POST['endereco']);
-                $cliente->setRg($_POST['rg']);
-                $cliente->setCpf($_POST['cpf']);
-                $cliente->setFiliacao($_POST['filiacao']);
-                $cliente->setNaturalidade($_POST['naturalidade']);
-                $cliente->setData_nasc($_POST['data_nasc']);
-                $cliente->setNome_conjuge($_POST['nome_conjuge']);
-                $cliente->setProfissao_conjuge($_POST['profissao_conjuge']);
-                $cliente->setReferencia($_POST['referencia']);
-                $cliente->setTelefone_referencia($_POST['telefone_referencia']);
+                $cliente->setNome($input['nome']);
+                $cliente->setProfissao($input['profissao']);
+                $cliente->setEndereco($input['endereco']);
+                $cliente->setRg($input['rg']);
+                $cliente->setCpf($input['cpf']);
+                $cliente->setFiliacao($input['filiacao']); 
+                $cliente->setNaturalidade($input['naturalidade']);
+                $cliente->setData_nasc($input['data_nasc']);
+                $cliente->setNome_conjuge($input['nome_conjuge']);
+                $cliente->setProfissao_conjuge($input['profissao_conjuge']);
+                $cliente->setReferencia($input['referencia']);
+                $cliente->setTelefone_referencia($input['telefone_referencia']);
 
                 $cDAO = new clienteDAO();
                 $cDAO->cadastrarCliente($cliente);
                 echo "OK";
             } 
+        }
+
+        function visualizar_todos() {
+            $clienteDao = new clienteDAO();
+            $result = $clienteDao->retornaClientes();            
+            
+            return $result;            
         }
         
         function view_cadastrar(){

@@ -63,7 +63,19 @@ $(function() {
         e.preventDefault()                
         var formSerialized = JSON.stringify(serializeForm($(this)))
         
-        sendPost('produto', formSerialized)        
+        sendPost('produto', formSerialized)
+        $("#adicionarProdutoModal").modal('hide')
+        loadTableProdutos()
+    })
+
+    $('#add-cliente-form').on('submit', function(e){
+        e.preventDefault()                
+        var formSerialized = JSON.stringify(serializeForm($(this)))
+        console.log(formSerialized);
+        
+        sendPost('cliente', formSerialized)      
+        $("#adicionarClienteModal").modal('hide')
+        loadTableClientes()  
     })
 })
 
