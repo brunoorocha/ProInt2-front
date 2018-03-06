@@ -163,11 +163,11 @@ h4 {
     color: var(--white);
 }
 
-.appbar .btn:hover,
+/* .appbar .btn:hover,
 .appbar .btn:focus,
 .appbar .btn:active {
-    /*background-color: var(--orange-6);*/
-}
+    background-color: var(--orange-6);
+} */
 
 .appbar .btn i{
     line-height: 56px;
