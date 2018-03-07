@@ -64,28 +64,32 @@ class clienteDAO{
     function retornaUm($cod_cliente){
         
         $q = "SELECT * FROM cliente WHERE cod_cliente = $cod_cliente";
-        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
-        $pdo = $conex->conecta();
-        $stmt = $pdo->query($q);
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $cliente= new cliente(); 
-        $cliente->setCod_cliente($result[0]['cod_cliente']);
-        $cliente->setNome($result[0]['nome']);
-        $cliente->setProfissao($result[0]['profissao']);
-        $cliente->setEndereco($result[0]['endereco']);
-        $cliente->setRg($result[0]['rg']);
-        $cliente->setCpf($result[0]['cpf']);
-        $cliente->setFiliacao($result[0]['filiacao']);
-        $cliente->setNaturalidade($result[0]['naturalidade']);
-        $cliente->setData_nasc($result[0]['data_nasc']);
-        $cliente->setNome_conjuge($result[0]['nome_conjuge']);
-        $cliente->setProfissao_conjuge($result[0]['profissao_conjuge']);
-        $cliente->setReferencia($result[0]['referencia']);
-        $cliente->setTelefone_referencia($result[0]['telefone_referencia']);
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
 
-	return $cliente;
+        $cliente = array(); 
+        $cliente["cod_cliente"] = $result[0]['cod_cliente'];
+        $cliente["nome"] = $result[0]['nome'];
+        $cliente["profissao"] = $result[0]['profissao'];
+        $cliente["endereco"] = $result[0]['endereco'];
+        $cliente["rg"] = $result[0]['rg'];
+        $cliente["cpf"] = $result[0]['cpf'];
+        $cliente["filiacao"] = $result[0]['filiacao'];
+        $cliente["naturalidade"] = $result[0]['naturalidade'];
+        $cliente["data_nasc"] = $result[0]['data_nasc'];
+        $cliente["nome_conjuge"] = $result[0]['nome_conjuge'];
+        $cliente["profissao_conjuge"] = $result[0]['profissao_conjuge'];
+        $cliente["referencia"] = $result[0]['referencia'];
+        $cliente["telefone_referencia"] = $result[0]['telefone_referencia'];
+
+	    return json_encode($cliente);
     }
+
     function atualizarCliente($cliente){
         $cod_cliente=$cliente->getCod_cliente();
         $nome=$cliente->getNome();
@@ -108,12 +112,9 @@ class clienteDAO{
     }
 
 
-    function excluirCliente($cliente){
-            $cod_cliente=$cliente->getCod_cliente();
-            
-            $q = "DELETE FROM cliente WHERE cod_cliente=$cod_cliente";
-            $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
-            $pdo = $conex->conecta();
-            $stmt = $pdo->query($q);
+    function excluirCliente($cod_cliente){                        
+        $q = "DELETE FROM cliente WHERE cod_cliente=$cod_cliente";
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
     }
 }

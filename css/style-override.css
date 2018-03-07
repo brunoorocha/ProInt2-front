@@ -423,7 +423,12 @@ a.floating-action-button i {
     padding: 12px 16px;
 }
 
-.modal form .modal-button-bar input {
+.modal form .space-bettwen {
+    justify-content: space-between;
+}
+
+.modal form .modal-button-bar input,
+.modal form .modal-button-bar button {
     font-family: "Roboto Medium";
     text-transform: uppercase;
     color: var(--gray-4);    
@@ -435,7 +440,11 @@ a.floating-action-button i {
     transition: .2s ease-out;
 }
 
-.modal form .modal-button-bar input[type=button]{
+.modal form .modal-button-bar input:first-child {
+    margin: 0px;
+}
+
+.modal form .modal-button-bar input[type=button] {
     background-color: transparent;    
 }
 
@@ -445,6 +454,17 @@ a.floating-action-button i {
 
 .modal form .modal-button-bar input[type=submit] {    
     color: var(--white);
+}
+
+.modal form .modal-button-bar button.btn-delete {        
+    background-color: var(--white);
+    color: var(--red);    
+    transition: .2s ease-out;
+}
+
+.modal form .modal-button-bar button.btn-delete:hover {        
+    background-color: var(--red);
+    color: var(--white);    
 }
 
 .cliente-labels i {

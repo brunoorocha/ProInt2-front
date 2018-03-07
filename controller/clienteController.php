@@ -36,6 +36,13 @@
             
             return $result;            
         }
+
+        function visualizar_um($id) {
+            $clienteDao = new clienteDAO();
+            $result = $clienteDao->retornaUm($id);            
+            
+            return $result;            
+        }
         
         function view_cadastrar(){
           
@@ -89,15 +96,10 @@
             $cVIEW->editarCliente();
         }
 		
-        function excluir(){
-			
-            $cliente = new cliente();
-            if($_SERVER['REQUEST_METHOD']=='POST'){
-                $cliente->setCod_cliente($_POST['cod_cliente']);
-                $cDAO = new clienteDAO();
-                $cDAO->excluirCliente($cliente);
-                echo "OK";
-            }
+        function excluir($id){			                                    
+            $cDAO = new clienteDAO();
+            $cDAO->excluirCliente($id);
+            echo "OK";        
         }
 		
 	function View_Excluir(){

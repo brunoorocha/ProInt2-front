@@ -88,7 +88,35 @@ $(function() {
         $("#adicionarFuncionarioModal").modal('hide')
         loadTableFuncionarios()  
     })
+
+    $('#removeCliente').on('click', function(e) {
+        e.preventDefault()
+        var id = $('#infoClienteModal #cod_cliente').val()
+        removeClienteById(id, function(response) {
+            $('#infoClienteModal').modal('hide')        
+            loadTableClientes()
+        })
+    })
 })
+
+function loadClienteInfoModal(id) {                     
+    $('#infoClienteModal').modal('show')
+   
+    getClienteById(id, function(cliente) {
+        $('#infoClienteModal #cod_cliente').val(cliente.cod_cliente)
+        $('#infoClienteModal #nome').val(cliente.nome)
+        $('#infoClienteModal #cpf').val(cliente.cpf)
+        $('#infoClienteModal #rg').val(cliente.rg)
+        $('#infoClienteModal #naturalidade').val(cliente.naturalidade)
+        $('#infoClienteModal #filiacao').val(cliente.filiacao)
+        $('#infoClienteModal #profissao').val(cliente.profissao)  
+        $('#infoClienteModal #endereco').val(cliente.endereco)
+        $('#infoClienteModal #nome_conjuge').val(cliente.nome_conjuge)
+        $('#infoClienteModal #profissao_conjuge').val(cliente.profissao_conjuge)
+        $('#infoClienteModal #referencia').val(cliente.referencia)
+        $('#infoClienteModal #telefone_referencia').val(cliente.telefone_referencia)            
+    })
+}    
 
 function serializeForm(form) {
     var dataSerialized = {}

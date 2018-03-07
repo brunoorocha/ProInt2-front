@@ -62,6 +62,58 @@ $pageTitle = "Clientes";
                 </div>
             </div>
 
+            <div id="infoClienteModal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title"><i class="material-icons">info</i>Cliente</h4>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <form id="edit-cliente-form" class="" action="" method="post">
+                                <div class="fields">
+                                    <input type="hidden" id="cod_cliente" name="cod_cliente" value="">
+                                    <label for="nome">Nome:</label>
+                                    <input type="text" id="nome" name="nome" value="">
+                                    <label for="cpf">CPF:</label>
+                                    <input type="text" id="cpf" name="cpf" value="">
+                                    <label for="rg">RG:</label>
+                                    <input type="text" id="rg" name="rg" value="">
+                                    <label for="naturalidade">Naturalidade:</label>
+                                    <input type="text" id="naturalidade" name="naturalidade" value="">
+                                    <label for="filiacao">Filiação:</label>
+                                    <input type="text" id="filiacao" name="filiacao" value="">
+                                    <label for="profissao">Profissão:</label>
+                                    <input type="text" id="profissao" name="profissao" value="">
+                                    <label for="endereco">Endereço:</label>
+                                    <input type="text" id="endereco" name="endereco" value="">
+                                    <label for="telefone">Telefone:</label>
+                                    <input type="text" id="telefone" name="telefone" value="">
+                                    <label for="nome_conjuge">Cônjuge:</label>
+                                    <input type="text" id="nome_conjuge" name="nome_conjuge" value="">
+                                    <label for="profissao_conjuge">Profissão do cônjuge:</label>
+                                    <input type="text" id="profissao_conjuge" name="profissao_conjuge" value="">
+                                    <label for="referencia">Referência:</label>
+                                    <input type="text" id="referencia" name="referencia" value="">
+                                    <label for="telefone_referencia">Telefone da referência:</label>
+                                    <input type="text" id="telefone_referencia" name="telefone_referencia" value="">
+                                </div>
+
+                                <div class="row no-gutters modal-button-bar space-bettwen">
+                                    <input type="button" name="edit-button" value="Editar">
+                                    <button id="removeCliente" class="btn-delete">Remover</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="mask"></div>
 
             <div class="col fixed-height">

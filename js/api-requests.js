@@ -80,7 +80,7 @@ function loadTableClientes() {
                 tableRow    += '<td class="align-center"><i class="material-icons" style="color: var(--green);">label</i></td>'                
                 tableRow    += '<td class="sm-cell-hide">'+ cliente.profissao +'</td>'                
                 tableRow    += '<td class="md-cell-hide">'+ cliente.profissao +'</td>'                
-                tableRow    += '<td><i class="material-icons">info</i></td></tr>'
+                tableRow    += '<td><a href="javascript:loadClienteInfoModal('+ cliente.cod_cliente +')"><i class="material-icons">info</i></a></td></tr>'
     
                 $("#tableClientes tbody").append(tableRow)
 
@@ -90,6 +90,22 @@ function loadTableClientes() {
             $('#table-itens-count').html(counter)
         }                        
     })            
+}
+
+function getClienteById(id, callback) {
+    loadDataFromAPI('cliente/'+ id, callback)
+}
+
+function removeClienteById(id, callback) {
+    var resourceUrl = apiURL + 'cliente/' + id
+
+    $.ajax({
+        url: resourceUrl,
+        type: 'DELETE', 
+        success: function(response) {
+            callback(response)
+        }
+    })
 }
 
 function sendPost(endpoint, data) {
