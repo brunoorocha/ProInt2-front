@@ -1,5 +1,6 @@
 
-var apiURL = "http://localhost:8000/"
+var currentLocation = window.location.host
+var apiURL = "http://" + currentLocation +"/"
 
 function loadDataFromAPI(endpoint, callback) {
     var resourceUrl =  apiURL + endpoint
