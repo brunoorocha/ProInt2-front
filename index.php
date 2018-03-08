@@ -3,10 +3,7 @@
     include './conexao.php'; 
     require_once './controller/produtoController.php';
     require_once './controller/funcionarioController.php';        
-    require_once './controller/clienteController.php';                
-
-    $bd = new conexao("localhost", "bruno", "123", "otica");
-    $con = $bd->conectar();
+    require_once './controller/clienteController.php';                    
     
     $method  = $_SERVER['REQUEST_METHOD'];
     $request = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
