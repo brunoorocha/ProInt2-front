@@ -1,19 +1,25 @@
 
 var currentLocation = window.location.host
-var apiURL = "http://" + currentLocation +"/"
+var apiURL = "./api/"
 
 function loadDataFromAPI(endpoint, callback) {
-    var resourceUrl =  apiURL + endpoint
-    $.get(resourceUrl, function(resources, status){                                     
-        if(status == "nocontent") {                            
-            callback(null);        
+    var resourceUrl =  apiURL + "?resource="+ endpoint    
+    
+    $.ajax({
+        url: resourceUrl,
+        type: 'GET',
+        crossDomain: true,
+        dataType: "json",
+        success:  function(resources, status){                                     
+            if(status == "nocontent") {                            
+                callback(null);        
+            }    
+            
+            if(status == "success"){
+                callback(resources);        
+            }
         }    
-        
-        if(status == "success"){
-            callback(resources);        
-        }
-        
-    }, "json")
+    })
 }
 
 function loadTableProdutos() {
@@ -94,11 +100,11 @@ function loadTableClientes() {
 }
 
 function getOnEndPointById(endpoint, id, callback) {
-    loadDataFromAPI(endpoint + id, callback)
+    loadDataFromAPI((endpoint +"&key="+ id), callback)
 }
 
 function removeOnEndPointById(endpoint, id, callback) {
-    var resourceUrl = apiURL + endpoint + id
+    var resourceUrl = apiURL + "?resource=" + endpoint +"&key="+ id
 
     $.ajax({
         url: resourceUrl,
@@ -110,7 +116,7 @@ function removeOnEndPointById(endpoint, id, callback) {
 }
 
 function updateOnEndPoint(endpoint, object, id, callback) {
-    var resourceUrl = apiURL + endpoint + id    
+    var resourceUrl = apiURL + "?resource=" + endpoint +"&key="+ id
     
     $.ajax({
         url: resourceUrl,
@@ -123,7 +129,7 @@ function updateOnEndPoint(endpoint, object, id, callback) {
 }
 
 function sendPost(endpoint, data) {
-    var resourceUrl = apiURL + endpoint
+    var resourceUrl = apiURL + "?resource=" + endpoint
     $.post(resourceUrl, data, function(data){
         console.log(data);        
     })

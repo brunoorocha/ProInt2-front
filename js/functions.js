@@ -174,7 +174,7 @@ $(function() {
         var formSerialized = JSON.stringify(serializeForm($(this)))        
         var id = $('#infoProdutoModal #cod_produto').val()
 
-        updateOnEndPoint('produto/', formSerialized, id, function(res) {
+        updateOnEndPoint('produto', formSerialized, id, function(res) {
             $('.primary').show()
             $('.secondary').hide()
             
@@ -189,7 +189,7 @@ $(function() {
         var formSerialized = JSON.stringify(serializeForm($(this)))        
         var id = $('#infoClienteModal #cod_cliente').val()
 
-        updateOnEndPoint('cliente/', formSerialized, id, function(res) {
+        updateOnEndPoint('cliente', formSerialized, id, function(res) {
             $('.primary').show()
             $('.secondary').hide()
             
@@ -202,7 +202,7 @@ $(function() {
 function loadClienteInfoModal(id) {                     
     $('#infoClienteModal').modal('show')
    
-    getOnEndPointById('cliente/', id, function(cliente) {        
+    getOnEndPointById('cliente', id, function(cliente) {        
         $('#infoClienteModal #cod_cliente').val(cliente.cod_cliente)
         $('#infoClienteModal #nome').val(cliente.nome).attr('disabled', 'disabled')
         $('#infoClienteModal #cpf').val(cliente.cpf).attr('disabled', 'disabled')
@@ -221,7 +221,7 @@ function loadClienteInfoModal(id) {
 function loadProdutoInfoModal(id) {                     
     $('#infoProdutoModal').modal('show')
    
-    getOnEndPointById('produto/', id, function(produto){
+    getOnEndPointById('produto', id, function(produto){
         $('#infoProdutoModal #cod_produto').val(produto.cod_produto).attr('disabled', 'disabled')
         $('#infoProdutoModal #nome').val(produto.nome).attr('disabled', 'disabled')
         $('#infoProdutoModal #preco_fabrica').val(produto.preco_fabrica).attr('disabled', 'disabled')

@@ -3,15 +3,25 @@
     include './conexao.php'; 
     require_once './controller/produtoController.php';
     require_once './controller/funcionarioController.php';        
-    require_once './controller/clienteController.php';                    
+    require_once './controller/clienteController.php';   
+    
+    header("Access-Control-Allow-Origin: *");
+    header("");
     
     $method  = $_SERVER['REQUEST_METHOD'];
-    $request = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
-    $key     = (count($request) > 1) ? $request[1] : 0;
+    $resource = $_GET['resource'];
+    $key = isset($_GET['key']) ? $_GET['key'] : 0;
+    // $request = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
+    // $lastIdx = count($request) - 1;
+    // $key     = (count($request) > 1) ? $request[$lastIdx] : 0;
+
+    // $resource = is_numeric($request[$lastIdx]) ? $request[$lastIdx - 1] : $request[$lastIdx];    
+    // // echo "<br>res: $resource | key: $key | last index: $lastIdx <br>";
+    // print_r($_GET);
     $input   = json_decode(file_get_contents('php://input'), true);
     
-    if($request[0] != '') {
-        $controllerName = ucfirst($request[0]) .'Controller';
+    if($resource != '') {
+        $controllerName = ucfirst($resource) .'Controller';
 
         if(!class_exists($controllerName)) {
             http_response_code(404);
