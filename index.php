@@ -43,11 +43,18 @@
             }                        
         }
 
-        if($method == 'DELETE') {
-            if($key != 0) {
+        if($method == 'DELETE') {            
+            if($key != 0) {                                
                 $result = $controllerInstance->excluir($key);
             }
 
             echo $result;
+        }
+
+        if($method == 'PUT') {
+            if($key != 0) {                                             
+                $result = $controllerInstance->alterar($input);
+                echo $result;
+            }            
         }
     }

@@ -52,6 +52,51 @@
             </div>
         </div>
 
+        <div id="infoProdutoModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Produto</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                    <form id="edit-product-form" class="" action="" method="post">
+                        <div class="fields">
+                            <label for="cod_produto">Código:</label>
+                            <input type="text" id="cod_produto" name="cod_produto" value="">
+    
+                            <label for="nome">Nome do Produto:</label>
+                            <input type="text" id="nome" name="nome" value="">
+    
+                            <label for="preco_fabrica">Preço de Fábrica:</label>
+                            <input type="text" id="preco_fabrica" name="preco_fabrica" value="">
+    
+                            <label for="preco_revenda">Preço de Revenda:</label>
+                            <input type="text" id="preco_revenda" name="preco_revenda" value="">
+    
+                            <label for="fornecedor">Fornecedor:</label>
+                            <input type="text" id="fornecedor" name="fornecedor" value="">
+                        </div>
+
+                        <div class="row no-gutters modal-button-bar primary space-bettwen">
+                            <input type="button" id="edit-button" name="edit-button" value="Editar">
+                            <button id="removeProduto" class="btn-delete">Remover</button>
+                        </div>
+
+                        <div class="row no-gutters modal-button-bar secondary">
+                            <input type="button" id="cancel-edit-button" name="cancel-edit-button" value="Cancelar">
+                            <input type="submit" name="save-button" class="btn-primary hidden" value="Salvar">                                    
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
         <!-- Nav Mask Component -->
         <div class="mask"></div>
@@ -80,7 +125,7 @@
                                     <tbody>       
                                     </tbody>
                                 </table>
-                                <p class="clear-margins align-right">Itens no estoque: <b id="table-itens-count">52</b></p>
+                                <p class="clear-margins">Itens no estoque: <b id="table-itens-count">52</b></p>
                             </div>
                             
                         </section>

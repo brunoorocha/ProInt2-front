@@ -45,24 +45,26 @@ class produtoDAO{
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código
         
-    function listaUm($cod_produto){
-        $this->conecta();
+    function listaUm($cod_produto){        
         $q = "SELECT * FROM produto WHERE cod_produto = $cod_produto";
-        $conex = new conexao("localhost", "root", "", "otica");
-        $PDO = $conex->conecta();
-        $stmt = $PDO->query($q);
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $produto= new produto(); 
-        $produto->setCod_produto($result[0]['cod_produto']);
-        $produto->setNome($result[0]['nome']);
-        $produto->setPreco_fabrica($result[0]['preco_fabrica']);
-        $produto->setPreco_revenda($result[0]['preco_revenda']);
-        $produto->setFornecedor($result[0]['fornecedor']);
-        
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
 
-	return $produto;
+        $produto = array(); 
+        $produto['cod_produto'] = $result[0]['cod_produto'];
+        $produto['nome'] = $result[0]['nome'];
+        $produto['preco_fabrica'] = $result[0]['preco_fabrica'];        
+        $produto['preco_revenda'] = $result[0]['preco_revenda'];
+        $produto['fornecedor'] = $result[0]['fornecedor'];                
+
+	    return json_encode($produto);
     }
+    
     function atualizarProduto($produto){
         $nome=$produto->getNome();
         $preco_fabrica=$produto->getPreco_fabrica();
@@ -71,16 +73,12 @@ class produtoDAO{
         $cod_produto = $produto->getCod_produto();
         
         $q = "UPDATE produto set nome='$nome',preco_fabrica='$preco_fabrica',preco_revenda='$preco_revenda',fornecedor='$fornecedor' WHERE cod_produto=$cod_produto";   
-        $conex = new conexao("localhost", "root", "", "otica");
-        $PDO = $conex->conecta();
-        $stmt = $PDO->query($q);
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
     }
 
-    function excluirProduto($produto){
-            $cod_produto=$produto->getCod_produto();
-            
-            $conex = new conexao("localhost", "root", "", "otica");
-            $PDO = $conex->conecta();
-            $stmt = $PDO->query("DELETE FROM produto WHERE cod_produto=$cod_produto");
+    function excluirProduto($cod_produto){                        
+        $conex = conexao::connect();                
+        $stmt = $conex->query("DELETE FROM produto WHERE cod_produto=$cod_produto");
     }
 }

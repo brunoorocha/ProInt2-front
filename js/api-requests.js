@@ -31,7 +31,7 @@ function loadTableProdutos() {
                 tableRow    += '<td>'+ produto.nome +'</td>'
                 tableRow    += '<td class="sm-cell-hide">'+ produto.preco_revenda +'</td>'
                 tableRow    += '<td class="md-cell-hide">'+ produto.fornecedor +'</td>'
-                tableRow    += '<td><i class="material-icons">info</i></td></tr>'
+                tableRow    += '<td><a href="javascript:loadProdutoInfoModal('+ produto.cod_produto +')"><i class="material-icons">info</i></a></td></tr>'
     
                 $("#tableProdutos tbody").append(tableRow)
                 counter++
@@ -93,16 +93,29 @@ function loadTableClientes() {
     })            
 }
 
-function getClienteById(id, callback) {
-    loadDataFromAPI('cliente/'+ id, callback)
+function getOnEndPointById(endpoint, id, callback) {
+    loadDataFromAPI(endpoint + id, callback)
 }
 
-function removeClienteById(id, callback) {
-    var resourceUrl = apiURL + 'cliente/' + id
+function removeOnEndPointById(endpoint, id, callback) {
+    var resourceUrl = apiURL + endpoint + id
 
     $.ajax({
         url: resourceUrl,
         type: 'DELETE', 
+        success: function(response) {
+            callback(response)
+        }
+    })
+}
+
+function updateOnEndPoint(endpoint, object, id, callback) {
+    var resourceUrl = apiURL + endpoint + id    
+    
+    $.ajax({
+        url: resourceUrl,
+        type: 'PUT', 
+        data: object,
         success: function(response) {
             callback(response)
         }

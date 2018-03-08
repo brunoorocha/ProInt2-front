@@ -104,9 +104,14 @@ $pageTitle = "Clientes";
                                     <input type="text" id="telefone_referencia" name="telefone_referencia" value="">
                                 </div>
 
-                                <div class="row no-gutters modal-button-bar space-bettwen">
-                                    <input type="button" name="edit-button" value="Editar">
+                                <div class="row no-gutters modal-button-bar primary space-bettwen">
+                                    <input type="button" id="edit-button" name="edit-button" value="Editar">                                    
                                     <button id="removeCliente" class="btn-delete">Remover</button>
+                                </div>
+
+                                <div class="row no-gutters modal-button-bar secondary">
+                                    <input type="button" id="cancel-edit-button" name="cancel-edit-button" value="Cancelar">
+                                    <input type="submit" name="save-button" class="btn-primary hidden" value="Salvar">                                    
                                 </div>
                             </form>
                         </div>
@@ -151,7 +156,7 @@ $pageTitle = "Clientes";
                                         </tbody>
                                     </table>                                    
                                 </div>                                
-                                <p class="clear-margins align-right">Clientes: <b id="table-itens-count">0</b></p>
+                                <p class="clear-margins">Clientes: <b id="table-itens-count">0</b></p>
                             </section>
 
                         </div>

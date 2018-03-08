@@ -91,24 +91,23 @@ class clienteDAO{
     }
 
     function atualizarCliente($cliente){
-        $cod_cliente=$cliente->getCod_cliente();
-        $nome=$cliente->getNome();
-        $profissao=$cliente->getProfissao();
-        $endereco=$cliente->getEndereco();
-        $rg=$cliente->getRg();
-        $cpf=$cliente->getCpf();
-        $filiacao=$cliente->getFiliacao();
-        $naturalidade=$cliente->getNaturalidade();
-        $data_nasc=$cliente->getData_nasc();
-        $nome_conjuge=$cliente->getNome_conjuge();
-        $profissao_conjuge=$cliente->getProfissao_conjuge();
-        $referencia=$cliente->getReferencia();
-        $telefone_referencia=$cliente->getTelefone_referencia();
+        $cod_cliente = $cliente->getCod_cliente();
+        $nome = $cliente->getNome();
+        $profissao = $cliente->getProfissao();
+        $endereco = $cliente->getEndereco();
+        $rg = $cliente->getRg();
+        $cpf = $cliente->getCpf();
+        $filiacao = $cliente->getFiliacao();
+        $naturalidade = $cliente->getNaturalidade();
+        $data_nasc = $cliente->getData_nasc();
+        $nome_conjuge = $cliente->getNome_conjuge();
+        $profissao_conjuge = $cliente->getProfissao_conjuge();
+        $referencia = $cliente->getReferencia();
+        $telefone_referencia = $cliente->getTelefone_referencia();
         
-        $q = "UPDATE cliente set nome='$nome',profissao='$profissao',endereco='$endereco',rg='$rg',cpf='$cpf',filiacao='$filiacao',naturalidade='$naturalidade',data_nasc='$data_nasc',nome_conjuge='$nome_conjuge',profissao_conjuge='$profissao_conjuge',referencia='$referencia',telefone_referencia='$telefone_referencia'WHERE cod_cliente=$cod_cliente";   
-        $conex = new conexao("localhost", $MYSQL_USER, $MYSQL_PASS, "otica");
-        $pdo = $conex->conecta();
-        $stmt = $pdo->query($q);
+        $q = "UPDATE cliente set nome='$nome',profissao='$profissao',endereco='$endereco',rg='$rg',cpf='$cpf',filiacao='$filiacao',naturalidade='$naturalidade',data_nasc='$data_nasc',nome_conjuge='$nome_conjuge',profissao_conjuge='$profissao_conjuge',referencia='$referencia',telefone_referencia='$telefone_referencia' WHERE cod_cliente=$cod_cliente";   
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
     }
 
 

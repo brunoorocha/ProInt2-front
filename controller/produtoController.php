@@ -2,12 +2,9 @@
 
  class produtoController{
     
-        public function __construct() {
-            
-            require_once 'model/produtoDAO.class.php';
-            require_once 'view/produtoView.php';
-            require_once 'model/produto.class.php';
-            
+        public function __construct() {            
+            require_once 'model/produtoDAO.class.php';            
+            require_once 'model/produto.class.php';            
         }
         
         
@@ -32,6 +29,13 @@
             
             return $result;            
         }
+
+        function visualizar_um($id) {
+            $produtoDao = new produtoDAO();
+            $result = $produtoDao->listaUm($id);            
+            
+            return $result;                 
+        }
         
         function view_cadastrar(){
           
@@ -40,32 +44,18 @@
           
         }
 
-        function alterar(){
+        function alterar($input){            	
+            $produto = new produto();            
+                                     
+            $produto->setNome($input['nome']);
+            $produto->setPreco_fabrica($input['preco_fabrica']);
+            $produto->setPreco_revenda($input['preco_revenda']);
+            $produto->setFornecedor($input['fornecedor']);
+            $produto->setCod_produto($input['cod_produto']);
+
             $pDAO = new produtoDAO();
-            $lista = $pDAO->listaTudo();		
-            $produto = new produto();
-            $pVIEW = new produtoView();
-            
-             if($_SERVER['REQUEST_METHOD']=='POST'){
-
-                if(isset($_POST['cod_produto'])){
-                    $cod_produto = $_POST['cod_produto'];
-                    $produto = $pDAO->listaUm($cod_produto);
-                    $_REQUEST['produto']=$produto;
-                    $_REQUEST['lista']=$lista;
-                    $pVIEW->editarProduto();
-                }
-                if(isset($_POST['cod_produto']) && $_POST['cod_produto']!= NULL){
-                    $produto->setNome($_POST['nome']);
-                	$produto->setPreco_fabrica($_POST['preco_fabrica']);
-                	$produto->setPreco_revenda($_POST['preco_revenda']);
-                	$produto->setFornecedor($_POST['fornecedor']);
-                    $produto->setCod_produto($_POST['cod_produto']);
-
-                    $pDAO->editarProduto($produto);
-                    $pVIEW->redirecionar("View_Alterar", "MODIFICAÇÃO BEM SUCEDIDA !!");
-                }
-            }
+            $pDAO->atualizarProduto($produto);
+            return "Ok";
         }
 		
         function View_Alterar(){
@@ -77,15 +67,10 @@
             $pVIEW->editarProduto();
         }
 		
-        function excluir(){
-			
-            $produto = new produto();
-            if($_SERVER['REQUEST_METHOD']=='POST'){
-                $produto->setCod_produto($_POST['cod_produto']);
-                $pDAO = new produtoDAO();
-                $pDAO->excluirProduto($produto);
-                echo "OK";
-            }
+        function excluir($id){			            
+            $pDAO = new produtoDAO();
+            $pDAO->excluirProduto($id);
+            echo "OK";
         }
 		
 	function View_Excluir(){
