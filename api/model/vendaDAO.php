@@ -66,13 +66,13 @@ class vendaDAO{
         
         
             $venda = array();
-            $venda["cod_venda"]=$result[$i]['cod_venda'];
-            $venda["forma_pagamento"]=$result[$i]['forma_pagamento'];
-            $venda["qtd_parcela"]=$result[$i]['qtd_parcela'];
-            $venda["obs"]=$result[$i]['obs'];
-            $venda["cliente_cod"]=$result[$i]['cliente_cod'];
-            $venda["produto_cod"]=$result[$i]['produto_cod'];
-            $venda["data"]=$result[$i]['data'];    
+            $venda["cod_venda"]=$result[0]['cod_venda'];
+            $venda["forma_pagamento"]=$result[0]['forma_pagamento'];
+            $venda["qtd_parcela"]=$result[0]['qtd_parcela'];
+            $venda["obs"]=$result[0]['obs'];
+            $venda["cliente_cod"]=$result[0]['cliente_cod'];
+            $venda["produto_cod"]=$result[0]['produto_cod'];
+            $venda["data"]=$result[0]['data'];    
             return json_encode($venda);
 	
     }
@@ -94,5 +94,25 @@ class vendaDAO{
     function excluirVenda($cod_venda){
         $conexao = conexao::connect();
         $stmt = $conex->query("DELETE FROM venda WHERE cod_venda=$cod_venda");
+    }
+
+    function carnePagameno($cliente_cod){
+        $conexao = conexao::connect();        
+        $stmt = $conexao->query("SELECT v.qtd_parcela, v.data, p.preco_revenda, c.nome, c.cpf FROM venda v, produto p, cliente c WHERE p.cod_produto = v.produto_cod AND c.cod_cliente = v.cliente_cod AND v.cliente_cod = $cliente_cod");        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
+        
+        
+        $carne = array();
+        $carne["data"]=$result[0]['data'];
+        $carne["preco_revenda"]=$result[0]['preco_revenda'];
+        $carne["qtd_parcela"]=$result[0]['qtd_parcela'];
+        $carne["nome"]=$result[0]['nome'];
+        $carne["cpf"]=$result[]['cpf'];
+           
+        return json_encode($carne);
+
     }
 }
