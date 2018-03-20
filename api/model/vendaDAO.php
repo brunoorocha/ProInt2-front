@@ -96,9 +96,9 @@ class vendaDAO{
         $stmt = $conex->query("DELETE FROM venda WHERE cod_venda=$cod_venda");
     }
 
-    function carnePagameno($cliente_cod){
+    function carnePagamento($cliente_cod){
         $conexao = conexao::connect();        
-        $stmt = $conexao->query("SELECT v.qtd_parcela, v.data, p.preco_revenda, c.nome, c.cpf FROM venda v, produto p, cliente c WHERE p.cod_produto = v.produto_cod AND c.cod_cliente = v.cliente_cod AND v.cliente_cod = $cliente_cod");        
+        $stmt = $conexao->query("SELECT v.cod_venda,v.qtd_parcela, v.data, p.preco_revenda, c.nome, c.cpf FROM venda v, produto p, cliente c WHERE p.cod_produto = v.produto_cod AND c.cod_cliente = v.cliente_cod AND v.cliente_cod = $cliente_cod");        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         if($stmt->rowCount() == 0) {            
             return NULL;
@@ -110,9 +110,20 @@ class vendaDAO{
         $carne["preco_revenda"]=$result[0]['preco_revenda'];
         $carne["qtd_parcela"]=$result[0]['qtd_parcela'];
         $carne["nome"]=$result[0]['nome'];
-        $carne["cpf"]=$result[]['cpf'];
+        $carne["cpf"]=$result[0]['cpf'];
+        $carne["venda_cod"]=$result[0]['cod_venda'];
+        $carne["preco_parcela"] = $carne["preco_revenda"] / $carne["qtd_parcela"];
+        
+        return $carne;
+    }
+    function preencheCarne($cliente_cod){
+        $carne = this->carnePagamento($cliente_cod);
+        for ($i=0; $i < $carne['qtd_parcela']; $i++) { 
+            //alterar os meses das parccelas
+            $q = "INSERT INTO parcela ( data, preco, nome, cpf, venda_cod) VALUES('$carne['data'], $carne['preco_parcela'],  $carne['nome'], $carne['cpf'], $carne['venda_cod']')";   
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
+        }
            
-        return json_encode($carne);
-
     }
 }
