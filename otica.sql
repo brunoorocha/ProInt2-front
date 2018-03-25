@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Fev-2018 às 15:20
+-- Generation Time: 15-Mar-2018 às 20:32
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -43,6 +43,14 @@ CREATE TABLE `cliente` (
   `funci_cod` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `cliente`
+--
+
+INSERT INTO `cliente` (`cod_cliente`, `nome`, `profissao`, `endereco`, `rg`, `cpf`, `filiacao`, `naturalidade`, `data_nasc`, `nome_conjuge`, `profissao_conjuge`, `referencia`, `telefone_referencia`, `funci_cod`) VALUES
+(123, 'Alyne', 'doutora', 'rua dos alffineiros', '0000', '00000', 'papai e mamãe', 'Cedro', '10/09/2000', 'Felipe Feroz', 'Buxo chhei', 'Rua da  alinha', '88996077789', 0),
+(124, 'Alyne', 'doutora', 'rua dos alffineiros', '0000', '00000', 'papai e mamãe', 'Cedro', '10/09/2000', 'Felipe Feroz', 'Buxo chhei', 'Rua da  alinha', '88996077789', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -52,15 +60,31 @@ CREATE TABLE `cliente` (
 CREATE TABLE `funcionario` (
   `cod_funci` int(11) NOT NULL,
   `login` varchar(20) NOT NULL,
-  `senha` varchar(8) NOT NULL
+  `senha` varchar(8) NOT NULL,
+  `nome` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `funcionario`
 --
 
-INSERT INTO `funcionario` (`cod_funci`, `login`, `senha`) VALUES
-(1, 'victoria', 'admin');
+INSERT INTO `funcionario` (`cod_funci`, `login`, `senha`, `nome`) VALUES
+(1, 'victoria', 'admin', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `parcela`
+--
+
+CREATE TABLE `parcela` (
+  `cod_parcela` int(11) NOT NULL,
+  `data` varchar(10) NOT NULL,
+  `preco` float NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cpf` varchar(15) NOT NULL,
+  `venda_cod` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -75,6 +99,13 @@ CREATE TABLE `produto` (
   `preco_revenda` float NOT NULL,
   `fornecedor` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`cod_produto`, `nome`, `preco_fabrica`, `preco_revenda`, `fornecedor`) VALUES
+(134, 'oculos', 100, 200, 'itallo');
 
 -- --------------------------------------------------------
 
@@ -99,6 +130,19 @@ CREATE TABLE `refratometria` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `relatorio`
+--
+
+CREATE TABLE `relatorio` (
+  `cod_rel` int(11) NOT NULL,
+  `saldo` float NOT NULL,
+  `saidas` float NOT NULL,
+  `entradas` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `venda`
 --
 
@@ -109,8 +153,16 @@ CREATE TABLE `venda` (
   `obs` varchar(50) NOT NULL,
   `produto_cod` int(11) NOT NULL,
   `cliente_cod` int(11) NOT NULL,
-  `funcio_cod` int(11) NOT NULL
+  `funcio_cod` int(11) NOT NULL,
+  `data` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `venda`
+--
+
+INSERT INTO `venda` (`cod_venda`, `forma_pagamento`, `qtd_parcela`, `obs`, `produto_cod`, `cliente_cod`, `funcio_cod`, `data`) VALUES
+(1, 'A vista', 1, 'Varias', 134, 124, 1, '');
 
 --
 -- Indexes for dumped tables
@@ -131,6 +183,13 @@ ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`cod_funci`);
 
 --
+-- Indexes for table `parcela`
+--
+ALTER TABLE `parcela`
+  ADD PRIMARY KEY (`cod_parcela`),
+  ADD KEY `venda_cod` (`venda_cod`);
+
+--
 -- Indexes for table `produto`
 --
 ALTER TABLE `produto`
@@ -143,6 +202,12 @@ ALTER TABLE `refratometria`
   ADD PRIMARY KEY (`cod_refrato`),
   ADD KEY `cliente_cod` (`cliente_cod`),
   ADD KEY `funcio_cod` (`funcio_cod`);
+
+--
+-- Indexes for table `relatorio`
+--
+ALTER TABLE `relatorio`
+  ADD PRIMARY KEY (`cod_rel`);
 
 --
 -- Indexes for table `venda`
@@ -161,30 +226,46 @@ ALTER TABLE `venda`
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `cod_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 --
 -- AUTO_INCREMENT for table `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `cod_funci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cod_funci` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `parcela`
+--
+ALTER TABLE `parcela`
+  MODIFY `cod_parcela` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `cod_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cod_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 --
 -- AUTO_INCREMENT for table `refratometria`
 --
 ALTER TABLE `refratometria`
   MODIFY `cod_refrato` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `relatorio`
+--
+ALTER TABLE `relatorio`
+  MODIFY `cod_rel` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `venda`
 --
 ALTER TABLE `venda`
-  MODIFY `cod_venda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_venda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `parcela`
+--
+ALTER TABLE `parcela`
+  ADD CONSTRAINT `parcela_ibfk_1` FOREIGN KEY (`venda_cod`) REFERENCES `venda` (`cod_venda`);
 
 --
 -- Limitadores para a tabela `refratometria`

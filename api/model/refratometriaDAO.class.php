@@ -48,7 +48,8 @@ class refratometriaDAO{
             $refratometria['oeeixo']=$result[$i]['oeeixo'];
             $refratometria['oedmp']=$result[$i]['oedmp'];
             $refratometria['cliente_cod']=$result[$i]['cliente_cod'];
-            array_push($refratometrias, $refratometria)
+            
+            array_push($refratometrias, $refratometria);
         }
         
 	   return json_encode($refratometrias);

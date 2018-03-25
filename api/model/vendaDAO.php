@@ -117,12 +117,11 @@ class vendaDAO{
         return $carne;
     }
     function preencheCarne($cliente_cod){
-        $carne = this->carnePagamento($cliente_cod);
+        $carne = $this->carnePagamento($cliente_cod);
         for ($i=0; $i < $carne['qtd_parcela']; $i++) { 
-            //alterar os meses das parccelas
-            $q = "INSERT INTO parcela ( data, preco, nome, cpf, venda_cod) VALUES('$carne['data'], $carne['preco_parcela'],  $carne['nome'], $carne['cpf'], $carne['venda_cod']')";   
-        $conex = conexao::connect();        
-        $stmt = $conex->query($q);
+            //alterar os meses das parcelas            
+            $conex = conexao::connect();                    
+            $stmt = $conex->query("INSERT INTO parcela(data, preco, nome, cpf, venda_cod) VALUES(". $carne['data'] .", ". $carne['preco_parcela'] .", ". $carne['nome'] .", ". $carne['cpf'] .", ". $carne['venda_cod'] .")");
         }
            
     }

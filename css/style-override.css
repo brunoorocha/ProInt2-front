@@ -174,8 +174,8 @@ h4 {
 }
 
 .nav-left {
-    min-width: 320px;
-    width: 320px;
+    min-width: 300px;
+    width: 300px;
     height: 100vh;
     max-height: 100vh;
     overflow-y: auto;
@@ -427,17 +427,23 @@ a.floating-action-button i {
     justify-content: space-between;
 }
 
+.content-center {
+    justify-content: center;
+}
+
+.btn-default,
 .modal form .modal-button-bar input,
 .modal form .modal-button-bar button {
     font-family: "Roboto Medium";
-    text-transform: uppercase;
+    text-transform: uppercase;    
+    background-color: var(--gray-2);
     color: var(--gray-4);    
     border: none;
     padding: 4px 12px;
     border-radius: 3px;
     margin-left: 16px;
     cursor: pointer;
-    transition: .2s ease-out;
+    transition: .2s ease-out;    
 }
 
 .modal form .modal-button-bar input:first-child {
@@ -448,8 +454,11 @@ a.floating-action-button i {
     background-color: transparent;    
 }
 
+.btn-default:hover,
 .modal form .modal-button-bar input[type=button]:hover {
     background-color: var(--gray-3);    
+    color: var(--gray-9);
+    text-decoration: none;    
 }
 
 .modal form .modal-button-bar input[type=submit] {    
@@ -465,6 +474,14 @@ a.floating-action-button i {
 .modal form .modal-button-bar button.btn-delete:hover {        
     background-color: var(--red);
     color: var(--white);    
+}
+
+.btn-large {
+    display: block;
+    text-align: center;
+    width: 320px;
+    padding: 8px 12px;
+    margin-top: 20px;
 }
 
 .cliente-labels i {

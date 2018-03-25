@@ -133,30 +133,54 @@
                 <div class="row no-gutters">
                     <div class="col center-content">
                         <section>
+                            <div class="row align-right">                                    
+                                <div class="col">                                        
+                                    <p>Data: 23/11/2017</p>                              
+                                </div>
+                            </div>
                             <!-- <h3>Produtos</h3> -->
                             <!-- Data Table Component -->
                             <div class="table-responsive">
                                 <table id="tableRefratometria" class="table">
                                     <thead>
                                         <tr>
-                                            <th>Data</th>
-                                            <th>ODESF</th>
-                                            <th>ODCIL</th>
-                                            <th>ODEIXO</th>
-                                            <th>ODDMP</th>
-                                            <th>OEESF</th>
-                                            <th>OECIL</th>
-                                            <th>OEEIXO</th>
-                                            <th>OEDMP</th>
+                                            <th>Olho</th>
+                                            <th>Esférico</th>
+                                            <th>Cilíndrico</th>
+                                            <th>Eixo</th>      
+                                            <th>Cilíndrico</th>                                      
                                             <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td><b>OD</b></td>    
+                                            <td>0,75</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>OE</b></td>
+                                            <td>1,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td>0,00</td>
+                                            <td></td>
                                         </tr>
                                     </thead>
                                     <tbody>       
                                     </tbody>
-                                </table>
-                               
+                                </table>                               
                             </div>
                             
+                            <p><b>Adições: </b> adições</p>
+                            <p><b>Observações: </b> adições</p>
+
+                            <div class="row no-gutters content-center">
+                                <div class="">
+                                    <a href="" class="btn-default btn-large">Ver histórico</a>
+                                </div>                                
+                            </div>                            
                         </section>
 
                     </div>

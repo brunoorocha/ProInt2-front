@@ -15,73 +15,65 @@
     background-color: #F0EEEE;
 }
 
-
-    
-
 .bigicon {
     font-size: 97px;
     color: #f96145;
 }
 
-.contcustom {
-    text-align: center;
-    width: 300px;
-    border-radius: 0.5rem;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: 10px auto;
+.contcustom {    
+    width: 90%;
+    max-width: 320px;
+    border-radius: 0.5rem;    
+    margin: 50px auto;
     background-color: white;
-    padding: 20px;
+    border: 1px solid var(--gray-3); 
+    padding: 20px 0;    
+    box-sizing: border-box;
+}
+
+.login-header-bar {        
+    box-sizing: border-box;
+    text-align: center; 
+    padding: 20px 20px 10px 20px;   
+}
+
+.login-header-bar i {        
+    font-size: 116px;
+    color: var(--gray-3);    
+}
+
+.contcustom form {    
+    float: left;    
+    padding: 0 20px;
 }
 
 .loginInput {
     width: 100%;
     margin-bottom: 17px;
-    padding: 15px;
-    background-color: #ECF4F4;
+    padding: 8px 10px;
+    background-color: transparent;
     border-radius: 2px;
+    border: 1px solid var(--gray-3);
+}
+
+input[type=submit] {
+    font-family: "Roboto Medium";
+    text-transform: uppercase;
+    color: var(--white);    
+    background-color: var(--orange);
     border: none;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .2s ease-out;
+    width: 100%;    
 }
 
-.titleLogin {
-    margin-bottom: 20px;
-    font-weight: bold;
-    color: #ABABAB;
+input[type=submit]:hover {    
+    background-color: var(--orange-6);       
 }
 
-.btn {
-    border-radius: 2px;
-    padding: 10px;
-}
-
-.med {
-    font-size: 27px;
-    color: white;
-}
-
-.medhidden {
-    font-size: 27px;
-    color: #f96145;
-    padding: 10px;
-    width:100%;
-}
-
-.wide {
-    background-color: #8EB7E4;
-    width: 100%;
-    -webkit-border-top-right-radius: 0;
-    -webkit-border-bottom-right-radius: 0;
-    -moz-border-radius-topright: 0;
-    -moz-border-radius-bottomright: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
 #divLogin{
     margin-top: 50px;
-    width: 101%;
-
-
 }
-.rBlueIcon {color:royalblue;}
+
