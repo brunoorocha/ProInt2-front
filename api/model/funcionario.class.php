@@ -10,19 +10,24 @@ class funcionario{
 	function setCod_funci($cod_funci){
        $this->cod_funci = $cod_funci;     
     }
-     function getCod_funci(){
+    
+    function getCod_funci(){
        return $this->cod_funci;     
     }
-    function setLogin($login){
+    
+    public function setLogin($login){
        $this->login = $login;     
     }
-     function getLogin(){
+
+    public function getLogin(){
        return $this->login;     
     }
-    function setSenha($senha){
+    
+    public function setSenha($senha){
        $this->senha = $senha;     
     }
-     function getSenha(){
+    
+    public function getSenha(){
        return $this->senha;     
     }
     function setNome($nome){

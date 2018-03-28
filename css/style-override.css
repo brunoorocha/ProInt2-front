@@ -481,7 +481,8 @@ a.floating-action-button i {
     text-align: center;
     width: 320px;
     padding: 8px 12px;
-    margin-top: 20px;
+    margin: 0px;
+    margin-top: 20px;    
 }
 
 .cliente-labels i {

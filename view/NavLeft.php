@@ -13,7 +13,6 @@
         <div class="col">
             <div class="row">
                 <span class="col-10 username">Usuário Logado</span>
-                <i class="col-2 material-icons dp48">arrow_drop_down</i>
             </div>
         </div>
 
@@ -72,6 +71,20 @@
                 <a class="nav-link" href="#">
                     <i class="material-icons">pie_chart</i>
                     <span>Relatórios</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="material-icons">settings</i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="Login.php">
+                    <i class="material-icons">eject</i>
+                    <span>Sair</span>
                 </a>
             </li>
 

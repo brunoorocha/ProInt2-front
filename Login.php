@@ -13,7 +13,7 @@ $pageTitle = "Acesso";
         <div class="row no-gutters" id ="divLogin">
             <div id="contentdiv" class="col contcustom">        
                 <div class="login-header-bar">
-                    <i class="material-icons">account_circle</i>
+                    <i class="material-icons">lock</i>
                 </div>
                 
                 <form>

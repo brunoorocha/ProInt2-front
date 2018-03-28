@@ -71,24 +71,14 @@ class funcionarioDAO{
 
         $conexao = new conexao("localhost", $this->MYSQL_USER, $this->MYSQL_PASS, "otica");
         $PDO = $conexao->conectar();
-        $stmt = $PDO->query("SELECT * FROM funcionario");
+        $stmt = $PDO->query("SELECT cod_funci FROM funcionario WHERE login = '$login' AND senha = '$senha'");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        for($i = 0; $i < $stmt->rowCount(); $i++){
-            $funcionario[$i] = new funcionario();
-            $funcionario[$i]->setLogin($result[$i]['login']);
-            $funcionario[$i]->setSenha($result[$i]['senha']);
-            $funcionario[$i]->setCod_funci($result[$i]['cod_funci']);
-
+        
+        if(count($result)) {
+            return true;
         }
-        foreach ($funcionario as $linha) {
-                  $loginO = $linha->getLogin();
-                  $senhaO = $linha->getSenha();
-                  if ($loginO == $login && $senhaO == $senha) {
-                      echo "<h1>Usuário logado com sucesso!</h1>";
-                  }else{
-                    echo "<h1>Usuário ou senha incorretos!</h1>";
-                  }
-           }
+        
+        return false;
     }
     
 }

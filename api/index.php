@@ -3,7 +3,8 @@
     include './conexao.php'; 
     require_once './controller/produtoController.php';
     require_once './controller/funcionarioController.php';        
-    require_once './controller/clienteController.php';   
+    require_once './controller/clienteController.php'; 
+    require_once './controller/AuthController.php';   
     
     header("Access-Control-Allow-Origin: *");
     header("");
@@ -18,14 +19,24 @@
     // $resource = is_numeric($request[$lastIdx]) ? $request[$lastIdx - 1] : $request[$lastIdx];    
     // // echo "<br>res: $resource | key: $key | last index: $lastIdx <br>";
     // print_r($_GET);
-    $input   = json_decode(file_get_contents('php://input'), true);
-    
+    $input   = json_decode(file_get_contents('php://input'), true);        
+
     if($resource != '') {
         $controllerName = ucfirst($resource) .'Controller';
 
         if(!class_exists($controllerName)) {
             http_response_code(404);
             include_once('404.php');              
+        }        
+        
+        if($resource == 'auth') {            
+            if($key != 0) {                
+                return $controllerName::validate_token($key);
+            }
+
+            $token = $controllerName::authenticate("victoria", "admin");            
+            echo $token;
+            return $token;
         }
 
         $controllerInstance = new $controllerName();
