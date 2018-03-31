@@ -1,15 +1,19 @@
 
 var currentLocation = window.location.host
 var apiURL = "./api/"
+var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MjI0OTc4OTYsImV4cCI6MTUyMjUwMTQ5NiwidXNlciI6InZpY3RvcmlhIiwicGFzcyI6ImFkbWluIn0=.SQPToiLevzwa+7nQFNfKoW3ODWy+jsCK+3A5x9mWZOk="
 
 function loadDataFromAPI(endpoint, callback) {
-    var resourceUrl =  apiURL + "?resource="+ endpoint    
+    var resourceUrl =  apiURL + "?resource="+ endpoint
     
     $.ajax({
         url: resourceUrl,
         type: 'GET',
         crossDomain: true,
         dataType: "json",
+        headers: {
+            'token': token
+        },
         success:  function(resources, status){                                     
             if(status == "nocontent") {                            
                 callback(null);        
@@ -109,6 +113,9 @@ function removeOnEndPointById(endpoint, id, callback) {
     $.ajax({
         url: resourceUrl,
         type: 'DELETE', 
+        headers: {
+            'token': token
+        },
         success: function(response) {
             callback(response)
         }
@@ -122,6 +129,9 @@ function updateOnEndPoint(endpoint, object, id, callback) {
         url: resourceUrl,
         type: 'PUT', 
         data: object,
+        headers: {
+            'token': token
+        },
         success: function(response) {
             callback(response)
         }
@@ -130,7 +140,15 @@ function updateOnEndPoint(endpoint, object, id, callback) {
 
 function sendPost(endpoint, data) {
     var resourceUrl = apiURL + "?resource=" + endpoint
-    $.post(resourceUrl, data, function(data){
-        console.log(data);        
-    })
+    $.ajax({
+        url: resourceUrl,
+        type: 'POST',
+        data: data,
+        headers: {
+            'token': token
+        },
+        success: function(response){
+            console.log(response);        
+        }
+    })    
 }

@@ -16,7 +16,7 @@ class AuthController {
         $fDAO = new funcionarioDAO();
        
         if($fDAO->loginFuncionario($funcionario)) {
-            return self::getToken($user, $pass, 60);
+            return self::getToken($user, $pass, 60*60);
         }
 
         return false;
@@ -58,13 +58,19 @@ class AuthController {
         $receivedHeaderAndPayload = $jwt_values[0] .'.'. $jwt_values[1];
 
         $resultedSignature = base64_encode(hash_hmac('sha256', $receivedHeaderAndPayload, self::$key, true));
-
+        
         if($receivedSignature === $resultedSignature) {
-            echo "Ok";
-            return true;
-        }
+            
+            $payload = base64_decode($jwt_values[1]);
+            $payload = json_decode($payload);
 
-        echo "Invalid Token";
+            $timeLeft = $payload->exp - time();                                        
+            
+            if($timeLeft > 0) {                
+                return true;
+            }            
+        }
+        
         return false;
     }
 }

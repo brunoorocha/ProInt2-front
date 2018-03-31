@@ -12,32 +12,32 @@
     $method  = $_SERVER['REQUEST_METHOD'];
     $resource = $_GET['resource'];
     $key = isset($_GET['key']) ? $_GET['key'] : 0;
-    // $request = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
-    // $lastIdx = count($request) - 1;
-    // $key     = (count($request) > 1) ? $request[$lastIdx] : 0;
-
-    // $resource = is_numeric($request[$lastIdx]) ? $request[$lastIdx - 1] : $request[$lastIdx];    
-    // // echo "<br>res: $resource | key: $key | last index: $lastIdx <br>";
-    // print_r($_GET);
+    $token = isset($_GET['token']) ? $_GET['token'] : '';
+    
     $input   = json_decode(file_get_contents('php://input'), true);        
+    
+    $headers = getallheaders();
+    $token = $headers['token'];
 
-    if($resource != '') {
+    if($resource == 'auth') {                        
+        $token = AuthController::authenticate("victoria", "admin");            
+        echo $token;
+        return $token;
+    }
+    
+    if(!AuthController::validate_token($token)) {
+        http_response_code(401);
+        return;
+    }       
+
+    if($resource != '') {                                
+        
         $controllerName = ucfirst($resource) .'Controller';
 
         if(!class_exists($controllerName)) {
             http_response_code(404);
             include_once('404.php');              
-        }        
-        
-        if($resource == 'auth') {            
-            if($key != 0) {                
-                return $controllerName::validate_token($key);
-            }
-
-            $token = $controllerName::authenticate("victoria", "admin");            
-            echo $token;
-            return $token;
-        }
+        }                        
 
         $controllerInstance = new $controllerName();
             
