@@ -11,18 +11,24 @@
     
     $method  = $_SERVER['REQUEST_METHOD'];
     $resource = $_GET['resource'];
-    $key = isset($_GET['key']) ? $_GET['key'] : 0;
-    $token = isset($_GET['token']) ? $_GET['token'] : '';
+    $key = isset($_GET['key']) ? $_GET['key'] : 0;    
     
     $input   = json_decode(file_get_contents('php://input'), true);        
     
     $headers = getallheaders();
-    $token = $headers['token'];
+    $token = isset($headers['token']) ? $headers['token'] : '';
 
-    if($resource == 'auth') {                        
-        $token = AuthController::authenticate("victoria", "admin");            
-        echo $token;
-        return $token;
+    if($resource == 'auth') {
+        $token = AuthController::authenticate($input["username"], $input["password"]);
+        // $token = AuthController::authenticate("bruno123", "123");
+
+        if($token != '') {
+            echo $token;
+            return;
+        }
+        
+        http_response_code(401);
+        return;
     }
     
     if(!AuthController::validate_token($token)) {

@@ -2,7 +2,9 @@ $(function() {
 
     var offCanvasOn = false
     
-    offCanvasNavActivate()    
+    offCanvasNavActivate()        
+
+    $('#user-logged-name').html(userLoggedName)
 
     $('[data-toggle="tooltip"]').tooltip()
 
@@ -197,6 +199,23 @@ $(function() {
             loadTableClientes() 
         })        
     })
+
+    $('#loginForm').on('submit', function(evt) {
+        evt.preventDefault()
+        
+        var formSerialized = JSON.stringify(serializeForm($(this)))
+        var url = apiURL + "?resource=auth"
+        
+        $.post(url, formSerialized, function(response, status) {
+            if(status == 'success') {
+                console.log(response)
+                sessionStorage.setItem("otica_token", response)
+                window.location.assign("/Home.php")
+            } else {
+                console.log("Autenticação falhou!")
+            }
+        })
+    })
 })
 
 function loadClienteInfoModal(id) {                     
@@ -240,4 +259,13 @@ function serializeForm(form) {
     })
 
     return dataSerialized;
+}
+
+function getInfoInToken(key, token) {
+    var expToken = token.split('.')
+    var payload = atob(expToken[1])
+    
+    payload = JSON.parse(payload)
+
+    return payload[key]
 }

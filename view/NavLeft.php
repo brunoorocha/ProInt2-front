@@ -12,7 +12,7 @@
 
         <div class="col">
             <div class="row">
-                <span class="col-10 username">Usuário Logado</span>
+                <span id="user-logged-name" class="col-10 username">Usuário Logado</span>
             </div>
         </div>
 

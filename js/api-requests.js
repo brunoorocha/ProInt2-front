@@ -1,7 +1,14 @@
 
 var currentLocation = window.location.host
 var apiURL = "./api/"
-var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1MjI0OTc4OTYsImV4cCI6MTUyMjUwMTQ5NiwidXNlciI6InZpY3RvcmlhIiwicGFzcyI6ImFkbWluIn0=.SQPToiLevzwa+7nQFNfKoW3ODWy+jsCK+3A5x9mWZOk="
+var token = sessionStorage.getItem("otica_token")
+
+if((token == null || token == "") && window.location.pathname != "/Login.php") {
+    window.location = "/Login.php"
+}
+
+var userLoggedName = getInfoInToken("name", token)
+
 
 function loadDataFromAPI(endpoint, callback) {
     var resourceUrl =  apiURL + "?resource="+ endpoint
@@ -14,6 +21,11 @@ function loadDataFromAPI(endpoint, callback) {
         headers: {
             'token': token
         },
+        statusCode: {
+            401: function() {
+                window.location = "/Login.php"
+            }
+        },
         success:  function(resources, status){                                     
             if(status == "nocontent") {                            
                 callback(null);        
@@ -22,7 +34,7 @@ function loadDataFromAPI(endpoint, callback) {
             if(status == "success"){
                 callback(resources);        
             }
-        }    
+        } 
     })
 }
 
@@ -148,7 +160,7 @@ function sendPost(endpoint, data) {
             'token': token
         },
         success: function(response){
-            console.log(response);        
+                 
         }
     })    
 }

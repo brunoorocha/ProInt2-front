@@ -14,15 +14,16 @@ class AuthController {
         $funcionario->setSenha($pass);                
 
         $fDAO = new funcionarioDAO();
-       
-        if($fDAO->loginFuncionario($funcionario)) {
-            return self::getToken($user, $pass, 60*60);
+        $funcionario = $fDAO->loginFuncionario($funcionario);
+        
+        if($funcionario) {            
+            return self::getToken($funcionario['login'], $funcionario['senha'], $funcionario['nome'], 60*60);
         }
 
         return false;
     }
 
-    public static function getToken($user, $pass, $sessionTime) {        
+    public static function getToken($user, $pass, $name, $sessionTime) {        
         
         $header = [
             'typ' => 'JWT',
@@ -38,7 +39,8 @@ class AuthController {
             'iat' => $issueAt,
             'exp' => $expireAt, 
             'user' => $user,
-            'pass' => $pass
+            'pass' => $pass,
+            'name' => $name
         ];
 
         $payload = base64_encode(json_encode($payload));

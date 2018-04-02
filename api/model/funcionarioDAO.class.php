@@ -71,11 +71,11 @@ class funcionarioDAO{
 
         $conexao = new conexao("localhost", $this->MYSQL_USER, $this->MYSQL_PASS, "otica");
         $PDO = $conexao->conectar();
-        $stmt = $PDO->query("SELECT cod_funci FROM funcionario WHERE login = '$login' AND senha = '$senha'");
+        $stmt = $PDO->query("SELECT * FROM funcionario WHERE login = '$login' AND senha = '$senha'");
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if(count($result)) {
-            return true;
+        if(count($result)) {                        
+            return $result[0];
         }
         
         return false;

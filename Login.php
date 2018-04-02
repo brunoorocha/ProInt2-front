@@ -16,12 +16,12 @@ $pageTitle = "Acesso";
                     <i class="material-icons">lock</i>
                 </div>
                 
-                <form>
+                <form id="loginForm">
                     <label for="username">Login:</label>
-                    <input id="username" class="loginInput" type="text">
+                    <input name="username" id="username" class="loginInput" type="text">
                     
                     <label for="username">Senha:</label>
-                    <input id="password" class="loginInput" type="password">
+                    <input name="password" id="password" class="loginInput" type="password">
 
                     <input type="submit" class="" value="Entrar">
                     
