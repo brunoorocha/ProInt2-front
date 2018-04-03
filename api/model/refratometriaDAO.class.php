@@ -15,7 +15,7 @@ class refratometriaDAO{
         $oecil=$refratometria->getOecil();
         $oeeixo=$refratometria->getOeeixo();
         $oedmp=$refratometria->getOedmp();
-        $cliente_cod = $refratometria->cliente->getCliente_cod();
+        $cliente_cod = $refratometria->getCodCliente();
         
         $q = "INSERT INTO refratometria (odesf,odcil,odeixo,oddmp,oeesf,oecil,oeeixo,oedmp,cliente_cod) VALUES('$odesf','$odcil','$odeixo','$oddmp','$oeesf','$oecil','$oeeixo','$oedmp','$cliente_cod')";   
         $conex = conexao::connect();        
@@ -57,10 +57,10 @@ class refratometriaDAO{
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código
         
-    function listaUm($cod_cliente,$cod_refrato){
+    function listaUm($cod_cliente){
         
         $conexao = conexao::connect();        
-        $stmt = $conexao->query("SELECT * FROM refratometria WHERE cliente_cod=$cliente_cod AND cod_refrato = $cod_refrato");        
+        $stmt = $conexao->query("SELECT * FROM refratometria WHERE cliente_cod=$cod_cliente");        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if($stmt->rowCount() == 0) {            

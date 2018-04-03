@@ -1,7 +1,7 @@
 
 var currentLocation = window.location.host
 var apiURL = "./api/"
-var token = sessionStorage.getItem("otica_token")
+var token = localStorage.getItem("otica_token")
 
 if((token == null || token == "") && window.location.pathname != "/Login.php") {
     window.location = "/Login.php"
@@ -102,7 +102,7 @@ function loadTableClientes() {
                 var tableRow = '<tr><td>'+ cliente.nome +'</td>'
                 tableRow    += '<td class="align-center"><i class="material-icons" style="color: var(--green);">label</i></td>'                
                 tableRow    += '<td class="sm-cell-hide">'+ cliente.profissao +'</td>'                
-                tableRow    += '<td class="md-cell-hide">'+ cliente.profissao +'</td>'                
+                tableRow    += '<td class="md-cell-hide"><a class="table-link" href="Refratometria.php?cliente='+ cliente.cod_cliente +'">visualizar</a></td>'                
                 tableRow    += '<td><a href="javascript:loadClienteInfoModal('+ cliente.cod_cliente +')"><i class="material-icons">info</i></a></td></tr>'
     
                 $("#tableClientes tbody").append(tableRow)
@@ -113,6 +113,35 @@ function loadTableClientes() {
             $('#table-itens-count').html(counter)
         }                        
     })            
+}
+
+function loadTableRefratometria() {
+    var url = new URL(window.location)
+    var codCliente = url.searchParams.get("cliente")
+
+    $('#cod_cliente').val(codCliente)
+    getOnEndPointById("refratometria", codCliente, function(refratometria){
+        if(refratometria == null) {
+            $("#tableRefratometria tbody").append("<tr><td colspan=\"2\">Não há refratometria cadastrada.</td></tr>");
+        }
+        else {                        
+            var tableRow = "<tr><td><b>OD</b></td>"
+            tableRow += "<td>"+ refratometria.odesf +"</td>"
+            tableRow += "<td>"+ refratometria.odcil +"</td>"
+            tableRow += "<td>"+ refratometria.odeixo +"</td>"
+            tableRow += "<td>"+ refratometria.oddmp +"</td>"
+            tableRow += "</tr>"
+
+            tableRow += "<tr><td><b>OE</b></td>"
+            tableRow += "<td>"+ refratometria.oeesf +"</td>"
+            tableRow += "<td>"+ refratometria.oecil +"</td>"
+            tableRow += "<td>"+ refratometria.oeeixo +"</td>"
+            tableRow += "<td>"+ refratometria.oedmp +"</td>"
+            tableRow += "</tr>"
+
+            $("#tableRefratometria tbody").append(tableRow)            
+        }
+    })    
 }
 
 function getOnEndPointById(endpoint, id, callback) {

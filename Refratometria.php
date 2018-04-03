@@ -25,6 +25,7 @@
                     <div class="modal-body">
                     <form id="add-refratometria-form" class="" action="" method="post">
                         <div class="fields">
+                            <input type="hidden" id="cod_cliente" name="cod_cliente" value="">
                             <label for="data">Data:</label>
                             <input type="date" id="data" name="data" value="">
     
@@ -54,8 +55,8 @@
                         </div>
 
                         <div class="row no-gutters modal-button-bar">
-                            <input type="button" name="cancel-button" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" name="save-button" class="btn-primary" value="Salvar">
+                            <input type="button" name="cancel-button" data-dismiss="modal" class="btn-default" value="Cancelar">
+                            <input type="submit" name="save-button" class="btn-primary btn-default" value="Salvar">
                         </div>
                         </form>
                     </div>
@@ -150,24 +151,9 @@
                                             <th>Eixo</th>      
                                             <th>Cilíndrico</th>                                      
                                             <th></th>
-                                        </tr>
-                                        <tr>
-                                            <td><b>OD</b></td>    
-                                            <td>0,75</td>
-                                            <td>0,00</td>
-                                            <td>0,00</td>
-                                            <td>0,00</td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>OE</b></td>
-                                            <td>1,00</td>
-                                            <td>0,00</td>
-                                            <td>0,00</td>
-                                            <td>0,00</td>
-                                            <td></td>
-                                        </tr>
+                                        </tr>                                        
                                     </thead>
+                                    
                                     <tbody>       
                                     </tbody>
                                 </table>                               

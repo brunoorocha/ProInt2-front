@@ -91,6 +91,15 @@ $(function() {
         loadTableFuncionarios()  
     })
 
+    $('#add-refratometria-form').on('submit', function(e){
+        e.preventDefault()                
+        var formSerialized = JSON.stringify(serializeForm($(this)))        
+                
+        sendPost('refratometria', formSerialized)      
+        $("#adicionarRefratometriaModal").modal('hide')
+        loadTableRefratometria()  
+    })
+
     $('#removeCliente').on('click', function(e) {
         e.preventDefault()
         
@@ -209,12 +218,19 @@ $(function() {
         $.post(url, formSerialized, function(response, status) {
             if(status == 'success') {
                 console.log(response)
-                sessionStorage.setItem("otica_token", response)
+                localStorage.setItem("otica_token", response)
                 window.location.assign("/Home.php")
             } else {
                 console.log("Autenticação falhou!")
             }
         })
+    })
+
+    $("#btn-logout").on('click', function(evt) {
+        evt.preventDefault()
+
+        localStorage.removeItem("otica_token")
+        window.location = "/Login.php"
     })
 })
 

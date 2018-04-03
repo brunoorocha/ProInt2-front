@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="caixa nav-link" href="#">
+                <a class="caixa nav-link" href="./Caixa.php">
                     <i class="material-icons">attach_money</i>
                     <span>Caixa</span>
                 </a>
@@ -82,7 +82,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="Login.php">
+                <a class="nav-link" id="btn-logout" href="Login.php">
                     <i class="material-icons">eject</i>
                     <span>Sair</span>
                 </a>

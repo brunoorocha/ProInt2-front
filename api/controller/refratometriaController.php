@@ -5,29 +5,33 @@
         public function __construct() {
             
             require_once 'model/refratometriaDAO.class.php';
-            require_once 'view/refratometriaView.php';
+            // require_once 'view/refratometriaView.php';
             require_once 'model/refratometria.class.php';
             require_once 'model/cliente.class.php';
             
         }
+
+        function visualizar_um($cod_cliente) {
+            $rDAO = new refratometriaDAO();
+            return $rDAO->listaUm($cod_cliente);
+        }
         
         
-        function cadastrar(){
+        function cadastrar($input){
             $refratometria = new refratometria();
             
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 
-                $refratometria->setOdesf($_POST['odesf']);
-                $refratometria->setOdcil($_POST['odcil']);
-                $refratometria->setOdeixo($_POST['odeixo']);
-                $refratometria->setOddmp($_POST['oddmp']);
-                $refratometria->setOeesf($_POST['oeesf']);
-                $refratometria->setOecil($_POST['oecil']);
-                $refratometria->setOeeixo($_POST['oeeixo']);
-                $refratometria->setOedmp($_POST['oedmp']);
-                $refratometria->cliente->setCod_cliente($_POST['cod_cliente']);    
+                $refratometria->setOdesf($input['odesf']);
+                $refratometria->setOdcil($input['odcil']);
+                $refratometria->setOdeixo($input['odeixo']);
+                $refratometria->setOddmp($input['oddmp']);
+                $refratometria->setOeesf($input['oeesf']);
+                $refratometria->setOecil($input['oecil']);
+                $refratometria->setOeeixo($input['oeeixo']);
+                $refratometria->setOedmp($input['oedmp']);
+                $refratometria->setCodCliente($input['cod_cliente']);    
             
-
                 $rDAO = new refratometriaDAO();
                 $rDAO->cadastrarRefratometria($refratometria);
                 echo "OK";

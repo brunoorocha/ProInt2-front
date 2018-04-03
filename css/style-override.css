@@ -334,6 +334,23 @@ h4 {
     color: #9d9d9d;
 }
 
+.table td a.table-link {
+    font-size: 14px;
+    font-family: "Roboto Medium";
+    text-transform: uppercase;
+    color: var(--blue);
+    background-color: var(--gray-2);
+    padding: 3px 8px;
+    border-radius: 3px;
+    transition: .2s ease-out;    
+}
+
+.table td a.table-link:hover {
+    color: var(--white);
+    background-color: var(--blue);    
+    text-decoration: none;
+}
+
 .breadcrumb-container {
     background-color: var(--gray-1);
     border-bottom: 1px solid var(--gray-3);
@@ -408,11 +425,13 @@ a.floating-action-button i {
 }
 
 .modal form input[type=text],
-.modal form input[type=password] {
+.modal form input[type=password],
+.modal form input[type=date] {
     float: left;
     width: 100%;
     padding: 5px 8px;
     margin-bottom: 16px;
+    border: 1px solid var(--gray-5);
 }
 
 .modal form .modal-button-bar {
@@ -431,9 +450,7 @@ a.floating-action-button i {
     justify-content: center;
 }
 
-.btn-default,
-.modal form .modal-button-bar input,
-.modal form .modal-button-bar button {
+.btn-default {
     font-family: "Roboto Medium";
     text-transform: uppercase;    
     background-color: var(--gray-2);
@@ -463,6 +480,7 @@ a.floating-action-button i {
 
 .modal form .modal-button-bar input[type=submit] {    
     color: var(--white);
+    background-color: var(--blue);
 }
 
 .modal form .modal-button-bar button.btn-delete {        
@@ -523,5 +541,11 @@ a.floating-action-button i {
 
     a.floating-action-button i {
         font-size: 24px;
+    }
+}
+
+@media (max-width: 960px) {
+    .md-floating-button {    
+        bottom: 72px;
     }
 }
