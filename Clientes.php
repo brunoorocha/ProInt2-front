@@ -53,8 +53,8 @@ $pageTitle = "Clientes";
                                 </div>
 
                                 <div class="row no-gutters modal-button-bar">
-                                    <input type="button" name="cancel-button" data-dismiss="modal" value="Cancelar">
-                                    <input type="submit" name="save-button" class="btn-primary" value="Salvar">
+                                    <input type="button" name="cancel-button" class="btn-default" data-dismiss="modal" value="Cancelar">
+                                    <input type="submit" name="save-button" class="btn-default btn-primary" value="Salvar">
                                 </div>
                             </form>
                         </div>
@@ -105,13 +105,13 @@ $pageTitle = "Clientes";
                                 </div>
 
                                 <div class="row no-gutters modal-button-bar primary space-bettwen">
-                                    <input type="button" id="edit-button" name="edit-button" value="Editar">                                    
-                                    <button id="removeCliente" class="btn-delete">Remover</button>
+                                    <input type="button" id="edit-button" class="btn-default" name="edit-button" value="Editar">                                    
+                                    <button id="removeCliente" class="btn-default btn-delete">Remover</button>
                                 </div>
 
                                 <div class="row no-gutters modal-button-bar secondary">
-                                    <input type="button" id="cancel-edit-button" name="cancel-edit-button" value="Cancelar">
-                                    <input type="submit" name="save-button" class="btn-primary hidden" value="Salvar">                                    
+                                    <input type="button" id="cancel-edit-button" class="btn-default" name="cancel-edit-button" value="Cancelar">
+                                    <input type="submit" name="save-button" class="btn-default btn-primary hidden" value="Salvar">                                    
                                 </div>
                             </form>
                         </div>

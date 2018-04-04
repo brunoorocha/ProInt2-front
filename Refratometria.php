@@ -120,8 +120,35 @@
                 </div>
 
             </div>
-        </div>
+        </div>        
+        
     </div>
+
+        <div id="historicoRefratometriaModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Histórico de Refratometrias</h4>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+                            <div class="col">
+                                Data
+                            </div>
+                        </div>
+                        <div class="list-group" id="listaRefratometrias">
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
         <!-- Nav Mask Component -->
         <div class="mask"></div>
@@ -134,9 +161,12 @@
                 <div class="row no-gutters">
                     <div class="col center-content">
                         <section>
-                            <div class="row align-right">                                    
+                            <div class="row">                                    
+                                <div class="col-6">
+                                    <p>Cliente: <span id="nome-cliente">Nome cliente</span></p>
+                                </div>
                                 <div class="col">                                        
-                                    <p>Data: 23/11/2017</p>                              
+                                    <p class="align-right">Data: <span id="data-refratometria"></span></p>                              
                                 </div>
                             </div>
                             <!-- <h3>Produtos</h3> -->
@@ -160,11 +190,11 @@
                             </div>
                             
                             <p><b>Adições: </b> adições</p>
-                            <p><b>Observações: </b> adições</p>
+                            <p><b>Observações: </b> observações</p>
 
                             <div class="row no-gutters content-center">
                                 <div class="">
-                                    <a href="" class="btn-default btn-large">Ver histórico</a>
+                                    <a href="#" data-toggle="modal" data-target="#historicoRefratometriaModal" class="btn-default btn-large">Ver histórico</a>
                                 </div>                                
                             </div>                            
                         </section>

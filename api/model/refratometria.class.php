@@ -11,6 +11,7 @@ class refratometria{
 	private $oeeixo;
 	private $oedmp;
 	private $cod_cliente;
+	private $data;
 
 	public function __construct() {
 
@@ -106,5 +107,12 @@ class refratometria{
 	}
 	function getCodCliente(){
 		return $this->cod_cliente;
+	}
+
+	function setData($data){
+		$this->data = $data;
+	}
+	function getData(){
+		return $this->data;
 	}
 }

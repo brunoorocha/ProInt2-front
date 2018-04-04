@@ -16,8 +16,9 @@ class refratometriaDAO{
         $oeeixo=$refratometria->getOeeixo();
         $oedmp=$refratometria->getOedmp();
         $cliente_cod = $refratometria->getCodCliente();
+        $data = $refratometria->getData();
         
-        $q = "INSERT INTO refratometria (odesf,odcil,odeixo,oddmp,oeesf,oecil,oeeixo,oedmp,cliente_cod) VALUES('$odesf','$odcil','$odeixo','$oddmp','$oeesf','$oecil','$oeeixo','$oedmp','$cliente_cod')";   
+        $q = "INSERT INTO refratometria (odesf,odcil,odeixo,oddmp,oeesf,oecil,oeeixo,oedmp,cliente_cod, data) VALUES('$odesf','$odcil','$odeixo','$oddmp','$oeesf','$oecil','$oeeixo','$oedmp','$cliente_cod', '$data')";   
         $conex = conexao::connect();        
         $stmt = $conex->query($q);
     }
@@ -48,6 +49,7 @@ class refratometriaDAO{
             $refratometria['oeeixo']=$result[$i]['oeeixo'];
             $refratometria['oedmp']=$result[$i]['oedmp'];
             $refratometria['cliente_cod']=$result[$i]['cliente_cod'];
+            $refratometria['data']=$result[$i]['data'];
             
             array_push($refratometrias, $refratometria);
         }
@@ -78,9 +80,11 @@ class refratometriaDAO{
         $refratometria['oeeixo']=$result[0]['oeeixo'];
         $refratometria['oedmp']=$result[0]['oedmp'];
         $refratometria['cliente_cod']=$result[0]['cliente_cod'];
-            
+
+        $time = strtotime($result[0]['data']);      
+        $refratometria['data'] = date("Y-m-d H:i:s", $time);
         
-       return json_encode($refratometria);
+        return json_encode($refratometria);
     }
 
     function editarRefratometria($refratometria){
@@ -93,9 +97,10 @@ class refratometriaDAO{
         $oecil=$refratometria->getOecil();
         $oeeixo=$refratometria->getOeeixo();
         $oedmp=$refratometria->getOedmp();
-        $cliente_cod=$refratometria->cliente->getCod_cliente();
+        $cliente_cod=$refratometria->getCodCliente();
+        $data=$refratometria->getData();        
         
-        $q = "UPDATE refratometria set odesf='$odesf',odcil='$odcil',odeixo='$odeixo',oddmp='$oddmp',oeesf='$oeesf',oecil='$oecil',oeeixo='$oeeixo',oedmp='$oedmp',cliente_cod='$cliente_cod' WHERE cod_refrato=$cod_refrato";   
+        $q = "UPDATE refratometria set odesf='$odesf',odcil='$odcil',odeixo='$odeixo',oddmp='$oddmp',oeesf='$oeesf',oecil='$oecil',oeeixo='$oeeixo',oedmp='$oedmp',cliente_cod='$cliente_cod', data='$data' WHERE cod_refrato=$cod_refrato";   
         $conex = conexao::connect();        
         $stmt = $conex->query($q);
     }

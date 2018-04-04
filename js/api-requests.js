@@ -120,28 +120,45 @@ function loadTableRefratometria() {
     var codCliente = url.searchParams.get("cliente")
 
     $('#cod_cliente').val(codCliente)
-    getOnEndPointById("refratometria", codCliente, function(refratometria){
-        if(refratometria == null) {
+    getOnEndPointById("refratometria", codCliente, function(refratometrias){
+        if(refratometrias == null) {
             $("#tableRefratometria tbody").append("<tr><td colspan=\"2\">Não há refratometria cadastrada.</td></tr>");
         }
-        else {                        
-            var tableRow = "<tr><td><b>OD</b></td>"
-            tableRow += "<td>"+ refratometria.odesf +"</td>"
-            tableRow += "<td>"+ refratometria.odcil +"</td>"
-            tableRow += "<td>"+ refratometria.odeixo +"</td>"
-            tableRow += "<td>"+ refratometria.oddmp +"</td>"
-            tableRow += "</tr>"
+        else {      
+            for(key in refratometrias) {
+                
+                data = new Date(refratometrias[key].data)
+                data = dateFormatter(data)
+                
+                if(key == 0) {
+                    var tableRow = "<tr><td><b>OD</b></td>"
+                    tableRow += "<td>"+ refratometrias[key].odesf +"</td>"
+                    tableRow += "<td>"+ refratometrias[key].odcil +"</td>"
+                    tableRow += "<td>"+ refratometrias[key].odeixo +"</td>"
+                    tableRow += "<td>"+ refratometrias[key].oddmp +"</td>"
+                    tableRow += "</tr>"
+        
+                    tableRow += "<tr><td><b>OE</b></td>"
+                    tableRow += "<td>"+ refratometrias[key].oeesf +"</td>"
+                    tableRow += "<td>"+ refratometrias[key].oecil +"</td>"
+                    tableRow += "<td>"+ refratometrias[key].oeeixo +"</td>"
+                    tableRow += "<td>"+ refratometrias[key].oedmp +"</td>"
+                    tableRow += "</tr>"
+        
+                    $("#tableRefratometria tbody").append(tableRow)                                              
+                    $('#data-refratometria').html(data)        
+                }
 
-            tableRow += "<tr><td><b>OE</b></td>"
-            tableRow += "<td>"+ refratometria.oeesf +"</td>"
-            tableRow += "<td>"+ refratometria.oecil +"</td>"
-            tableRow += "<td>"+ refratometria.oeeixo +"</td>"
-            tableRow += "<td>"+ refratometria.oedmp +"</td>"
-            tableRow += "</tr>"
-
-            $("#tableRefratometria tbody").append(tableRow)            
+                var itemLista = '<a href="#" class="list-group-item list-group-item-action text-primary">'+ data +'</a>'
+                $('#listaRefratometrias').append(itemLista)
+    
+            }            
         }
-    })    
+    })  
+    
+    getOnEndPointById('cliente', codCliente, function(cliente) {
+        $('#nome-cliente').html(cliente.nome)
+    })
 }
 
 function getOnEndPointById(endpoint, id, callback) {

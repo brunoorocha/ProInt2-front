@@ -37,7 +37,7 @@ $pageTitle = "Funcionários";
 
                                 <div class="row no-gutters modal-button-bar">
                                     <input type="button" name="cancel-button" data-dismiss="modal" value="Cancelar">
-                                    <input type="submit" class="btn-primary" name="save-button" value="Salvar">
+                                    <input type="submit" class="btn-default btn-primary" name="save-button" value="Salvar">
                                 </div>
                             </form>
                         </div>

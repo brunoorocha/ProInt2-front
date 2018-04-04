@@ -13,8 +13,8 @@
 
         function visualizar_um($cod_cliente) {
             $rDAO = new refratometriaDAO();
-            return $rDAO->listaUm($cod_cliente);
-        }
+            return $rDAO->retornaRefratometrias($cod_cliente);
+        }        
         
         
         function cadastrar($input){
@@ -30,7 +30,8 @@
                 $refratometria->setOecil($input['oecil']);
                 $refratometria->setOeeixo($input['oeeixo']);
                 $refratometria->setOedmp($input['oedmp']);
-                $refratometria->setCodCliente($input['cod_cliente']);    
+                $refratometria->setCodCliente($input['cod_cliente']);  
+                $refratometria->setData($input['data']);    
             
                 $rDAO = new refratometriaDAO();
                 $rDAO->cadastrarRefratometria($refratometria);
@@ -70,7 +71,7 @@
                     $refratometria->setOecil($_POST['oecil']);
                     $refratometria->setOeeixo($_POST['oeeixo']);
                     $refratometria->setOedmp($_POST['oedmp']);
-                    $refratometria->cliente->setCod_cliente($_POST['cod_cliente']); 
+                    $refratometria->setCodCliente($_POST['cod_cliente']); 
                     
 
                     $rDAO->editarRefratometria($refratometria);
