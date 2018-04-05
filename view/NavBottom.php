@@ -20,7 +20,7 @@
             </a>
         </li>
         <li class="col nav-item">
-            <a class="caixa nav-link" href="#">
+            <a class="caixa nav-link" href="Caixa.php">
                 <i class="material-icons">attach_money</i>
                 <span>Caixa</span>
             </a>

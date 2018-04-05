@@ -5,6 +5,7 @@
     require_once './controller/funcionarioController.php';        
     require_once './controller/clienteController.php'; 
     require_once './controller/refratometriaController.php'; 
+    require_once './controller/vendaController.php'; 
     require_once './controller/AuthController.php';   
     
     header("Access-Control-Allow-Origin: *");

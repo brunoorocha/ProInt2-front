@@ -7,14 +7,15 @@ class refratometriaDAO{
     
     
     function cadastrarRefratometria($refratometria){
-        $odesf=$refratometria->getOdesf();
-        $odcil=$refratometria->getOdcil();
-        $odeixo=$refratometria->getOdeixo();
-        $oddmp=$refratometria->getOddmp();
-        $oeesf=$refratometria->getOeesf();
-        $oecil=$refratometria->getOecil();
-        $oeeixo=$refratometria->getOeeixo();
-        $oedmp=$refratometria->getOedmp();
+        
+        $odesf = floatval(str_replace(',', '.', $refratometria->getOdesf()));
+        $odcil = floatval(str_replace(',', '.', $refratometria->getOdcil()));
+        $odeixo = floatval(str_replace(',', '.', $refratometria->getOdeixo()));
+        $oddmp = floatval(str_replace(',', '.', $refratometria->getOddmp()));
+        $oeesf = floatval(str_replace(',', '.', $refratometria->getOeesf()));
+        $oecil = floatval(str_replace(',', '.', $refratometria->getOecil()));
+        $oeeixo = floatval(str_replace(',', '.', $refratometria->getOeeixo()));
+        $oedmp = floatval(str_replace(',', '.', $refratometria->getOedmp()));
         $cliente_cod = $refratometria->getCodCliente();
         $data = $refratometria->getData();
         
@@ -27,7 +28,7 @@ class refratometriaDAO{
         
         
         $conexao = conexao::connect();        
-        $stmt = $conexao->query("SELECT * FROM refratometria WHERE cliente_cod=$cliente_cod");        
+        $stmt = $conexao->query("SELECT * FROM refratometria WHERE cliente_cod=$cliente_cod ORDER BY data DESC");        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if($stmt->rowCount() == 0) {            

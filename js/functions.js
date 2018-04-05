@@ -91,6 +91,15 @@ $(function() {
         loadTableFuncionarios()  
     })
 
+    $('#add-venda-form').on('submit', function(e){
+        e.preventDefault()                
+        var formSerialized = JSON.stringify(serializeForm($(this)))        
+        
+        sendPost('venda', formSerialized)
+        $("#adicionarVendaModal").modal('hide')
+        loadTableCaixa()
+    })
+
     $('#add-refratometria-form').on('submit', function(e){
         e.preventDefault()                
         var formSerialized = JSON.stringify(serializeForm($(this)))        

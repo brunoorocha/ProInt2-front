@@ -4,26 +4,28 @@
     
         public function __construct() {
             
-            require_once 'model/vendaDAO.class.php';
-            require_once 'view/vendaView.php';
+            require_once 'model/vendaDAO.php';            
             require_once 'model/venda.class.php';
             require_once 'model/cliente.class.php';
             
         }
         
+        function visualizar_todos() {
+            $vDAO = new vendaDAO();
+            return $vDAO->retornaVendas();
+        }
         
-        function cadastrar(){
+        function cadastrar($input){
             $venda = new venda();
             if($_SERVER['REQUEST_METHOD']=='POST'){
                 
-                $venda->setForma_pagamento($_POST['forma_pagamento']);
-                $venda->setQtd_parcela($_POST['qtd_parcela']);
-                $venda->setObs($_POST['obs']);
-                $venda->setCliente_cod($_POST['cliente_cod']);
-                $venda->setProduto_cod($_POST['produto_cod']);
-                $venda->setData($_POST['data']);
-                $venda->cliente->setCod_cliente($_POST['cliente_cod']);
-                $venda->produto->setCod_produto($_POST['produto_cod']);
+                $venda->setForma_pagamento($input['forma_pagamento']);
+                $venda->setQtd_parcela($input['qtd_parcela']);
+                $venda->setObs($input['obs']);
+                $venda->setCliente($input['cliente']);
+                $venda->setProduto($input['produto']);
+                $venda->setData($input['data']);
+                $venda->setFuncionario($input['funcionario']);
 
                 $vDAO = new vendaDAO();
                 $vDAO->cadastrarVenda($venda);

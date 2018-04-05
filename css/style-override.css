@@ -119,8 +119,7 @@ b {
 
 .center-content {
     width: 100%;
-    box-sizing: border-box;
-    min-height: 110vh;
+    box-sizing: border-box;    
 }
 
 .center-content section {
@@ -434,6 +433,7 @@ a.floating-action-button i {
 
 .modal form input[type=text],
 .modal form input[type=password],
+.modal form input[type=number],
 .modal form input[type=date] {
     float: left;
     width: 100%;

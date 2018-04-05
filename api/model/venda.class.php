@@ -8,6 +8,7 @@ class venda{
 	private $data;
 	private $cliente;
 	private $produto;
+	private $funcionario;
 
 	public function __construct() {
 
@@ -22,7 +23,7 @@ class venda{
           $this->data = " ";
           $this->cliente = " ";
           $this->produto = " ";
-
+		  $this->funcionario = " ";
         }
         if($n_args == 13){
           $this->cod_venda = $args[0];
@@ -77,5 +78,12 @@ class venda{
 	}
 	function getData(){
 		return $this->data;
+	}
+
+	function setFuncionario($funcionario){
+		$this->funcionario = $funcionario;
+	}
+	function getFuncionario(){
+		return $this->funcionario;
 	}
 }

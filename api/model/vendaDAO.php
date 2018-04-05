@@ -3,19 +3,19 @@
 require_once 'venda.class.php';
 require_once 'cliente.class.php';
 require_once 'produto.class.php';
-include './conexao.php'; 
+
 class vendaDAO{
     
     function cadastrarVenda($venda){
         $forma_pagamento=$venda->getForma_pagamento();
         $qtd_parcela=$venda->getQtd_parcela();
         $obs=$venda->getObs();
-        $cliente_cod=$venda->cliente->getCod_cliente();
-        $produto_cod=$venda->produto->getCod_produto();
-        $data=$venda->getData();
+        $cliente_cod=$venda->getCliente();
+        $produto_cod=$venda->getProduto();
+        $data=$venda->getData();        
+        $funcionario = $venda->getFuncionario();        
         
-        
-        $q = "INSERT INTO venda (forma_pagamento,qtd_parcela,obs,cliente_cod,produto_cod, data) VALUES('$forma_pagamento','$qtd_parcela','$obs','$cliente_cod','$produto_cod','$data')";   
+        $q = "INSERT INTO venda (forma_pagamento,qtd_parcela,obs,cliente_cod,produto_cod, data, funcio_cod) VALUES('$forma_pagamento','$qtd_parcela','$obs','$cliente_cod','$produto_cod','$data','$funcionario')";   
         $conex = conexao::connect();        
         $stmt = $conex->query($q);
     }
@@ -23,7 +23,7 @@ class vendaDAO{
     function retornaVendas(){
         
         $conexao = conexao::connect();        
-        $stmt = $conexao->query("SELECT * FROM venda");        
+        $stmt = $conexao->query("SELECT * FROM caixa");        
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $vendas = array();
@@ -34,46 +34,39 @@ class vendaDAO{
 		
         for($i=0; $i<$stmt->rowCount(); $i++){
             $venda = array();
-            $venda["cod_venda"]=$result[$i]['cod_venda'];
-            $venda["forma_pagamento"]=$result[$i]['forma_pagamento'];
-            $venda["qtd_parcela"]=$result[$i]['qtd_parcela'];
-            $venda["obs"]=$result[$i]['obs'];
-            $venda["cliente_cod"]=$result[$i]['cliente_cod'];
-            $venda["produto_cod"]=$result[$i]['produto_cod'];
             $venda["data"]=$result[$i]['data'];
+            $venda["cliente"]=$result[$i]['cliente'];
+            $venda["forma_pagamento"]=$result[$i]['forma_pagamento'];
+            $venda["funcionario"]=$result[$i]['funcionario'];
 
             array_push($vendas, $venda);
         }
-
         
-	return json_encode($vendas);
+    	return json_encode($vendas);
 	}
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código
         
     function listaUm($cod_venda){
-        
-    
+            
         $conexao = conexao::connect();        
         $stmt = $conexao->query("SELECT * FROM venda WHERE cod_venda = $cod_venda"); 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);        
 
         if($stmt->rowCount() == 0) {            
             return NULL;
         }
         
         
-            $venda = array();
-            $venda["cod_venda"]=$result[0]['cod_venda'];
-            $venda["forma_pagamento"]=$result[0]['forma_pagamento'];
-            $venda["qtd_parcela"]=$result[0]['qtd_parcela'];
-            $venda["obs"]=$result[0]['obs'];
-            $venda["cliente_cod"]=$result[0]['cliente_cod'];
-            $venda["produto_cod"]=$result[0]['produto_cod'];
-            $venda["data"]=$result[0]['data'];    
-            return json_encode($venda);
+        $venda = array();
+        $venda["cod_venda"]=$result[0]['cod_venda'];
+        $venda["forma_pagamento"]=$result[0]['forma_pagamento'];
+        $venda["qtd_parcela"]=$result[0]['qtd_parcela'];
+        $venda["obs"]=$result[0]['obs'];
+        $venda["cliente_cod"]=$result[0]['cliente_cod'];
+        $venda["produto_cod"]=$result[0]['produto_cod'];
+        $venda["data"]=$result[0]['data'];    
+        return json_encode($venda);
 	
     }
     function editarVenda($venda){
@@ -116,6 +109,7 @@ class vendaDAO{
         
         return $carne;
     }
+
     function preencheCarne($cliente_cod){
         $carne = $this->carnePagamento($cliente_cod);
         for ($i=0; $i < $carne['qtd_parcela']; $i++) { 

@@ -119,6 +119,9 @@ function loadTableRefratometria() {
     var url = new URL(window.location)
     var codCliente = url.searchParams.get("cliente")
 
+    $("#tableRefratometria tbody").html('')
+    $('#listaRefratometrias').html('')
+
     $('#cod_cliente').val(codCliente)
     getOnEndPointById("refratometria", codCliente, function(refratometrias){
         if(refratometrias == null) {
@@ -149,7 +152,7 @@ function loadTableRefratometria() {
                     $('#data-refratometria').html(data)        
                 }
 
-                var itemLista = '<a href="#" class="list-group-item list-group-item-action text-primary">'+ data +'</a>'
+                var itemLista = '<a href="#" class="list-group-item list-group-item-action text-primary">'+ data +'</a>'                
                 $('#listaRefratometrias').append(itemLista)
     
             }            
@@ -158,6 +161,26 @@ function loadTableRefratometria() {
     
     getOnEndPointById('cliente', codCliente, function(cliente) {
         $('#nome-cliente').html(cliente.nome)
+    })
+}
+
+function loadTableCaixa() {
+    
+    $('#tableVendas tbody').html('')
+
+    loadDataFromAPI("venda", function(vendas) {
+        vendas.forEach(function(venda) {                        
+
+            data = new Date(venda.data)
+            data = dateFormatter(data)
+
+            var tableRow = '<tr><td>'+ data +'</td>'
+            tableRow += '<td>'+ venda.cliente +'</td>'
+            tableRow += '<td class="sm-cell-hide">'+ venda.forma_pagamento +'</td>'
+            tableRow += '<td class="md-cell-hide">'+ venda.funcionario +'</td></tr>'
+
+            $('#tableVendas tbody').append(tableRow)
+        })        
     })
 }
 
