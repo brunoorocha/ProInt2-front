@@ -119,7 +119,7 @@ function loadTableRefratometria() {
     var url = new URL(window.location)
     var codCliente = url.searchParams.get("cliente")
 
-    $("#tableRefratometria tbody").html('')
+    $("#tableRefratometria tbody").html('') 
     $('#listaRefratometrias').html('')
 
     $('#cod_cliente').val(codCliente)
@@ -186,6 +186,10 @@ function loadTableCaixa() {
 
 function getOnEndPointById(endpoint, id, callback) {
     loadDataFromAPI((endpoint +"&key="+ id), callback)
+}
+
+function getOnEndPointBySearch(endpoint, search, callback) {
+    loadDataFromAPI((endpoint +"&key=search&value="+ search), callback)
 }
 
 function removeOnEndPointById(endpoint, id, callback) {

@@ -1,6 +1,7 @@
 <?php
     include_once('./view/Head.php');
     $pageTitle = "Estoque";
+    $endpoint = "produto";
 ?>
 
 <!DOCTYPE html>

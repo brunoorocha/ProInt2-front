@@ -241,6 +241,21 @@ $(function() {
         localStorage.removeItem("otica_token")
         window.location = "/Login.php"
     })
+
+    $('.btn-search').on('click', function() {
+        $(this).toggleClass('btn-actived')
+        $('.search-field').toggleClass('search-field-actived')
+        $('.search-field').focus()
+    })
+
+    $('.search-field').on('keyup', function(){
+        var search = $('.search-field').val()
+        var endpoint = $('.search-field').attr('id')
+
+        getOnEndPointBySearch(endpoint, search, function(result){
+            console.log(result)
+        })
+    })
 })
 
 function loadClienteInfoModal(id) {                     

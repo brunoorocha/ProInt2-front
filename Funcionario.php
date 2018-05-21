@@ -1,6 +1,7 @@
 <?php
-include_once('./view/Head.php');
-$pageTitle = "Funcionários";
+    include_once('./view/Head.php');
+    $pageTitle = "Funcionários";
+    $endpoint = "funcionario";
 ?>
 
 <!DOCTYPE html>

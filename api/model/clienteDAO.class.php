@@ -116,4 +116,38 @@ class clienteDAO{
         $conex = conexao::connect();        
         $stmt = $conex->query($q);
     }
+
+    function pesquisar($nomeCliente) {
+        $q = "SELECT * FROM cliente WHERE nome LIKE '%$nomeCliente%'";
+        $conex = conexao::connect();        
+        $stmt = $conex->query($q);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
+
+        $clientes = array();
+
+        for($i=0; $i<$stmt->rowCount(); $i++){
+            $cliente = array();            
+            $cliente["cod_cliente"] = $result[$i]['cod_cliente'];
+            $cliente["nome"] = $result[$i]['nome'];
+            $cliente["profissao"] = $result[$i]['profissao'];
+            $cliente["endereco"] = $result[$i]['endereco'];
+            $cliente["rg"] = $result[$i]['rg'];
+            $cliente["cpf"] = $result[$i]['cpf'];
+            $cliente["filiacao"] = $result[$i]['filiacao'];
+            $cliente["naturalidade"] = $result[$i]['naturalidade'];
+            $cliente["data_nasc"] = $result[$i]['data_nasc'];
+            $cliente["nome_conjuge"] = $result[$i]['nome_conjuge'];
+            $cliente["profissao_conjuge"] = $result[$i]['profissao_conjuge'];
+            $cliente["referencia"] = $result[$i]['referencia'];
+            $cliente["telefone_referencia"] = $result[$i]['telefone_referencia'];
+
+            array_push($clientes, $cliente);
+        }
+        
+	    return json_encode($clientes);
+    }    
 }

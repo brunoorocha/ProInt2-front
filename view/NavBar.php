@@ -13,11 +13,12 @@
             <h3><?php echo $pageTitle; ?></h3>
         </div>
 
-        <div class="col btn-col">
+        <div class="col">            
+            <input type="text" class="search-field" id="<?php echo $endpoint; ?>" placeholder="Pesquisar...">
             <!-- Nav Button Component -->
-            <button type="button" class="btn">
+            <button type="button" class="btn btn-search">
                 <i class="material-icons">search</i>
-            </button>
+            </button>            
         </div>
     </div>
 </div>

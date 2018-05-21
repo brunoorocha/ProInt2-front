@@ -71,6 +71,13 @@
             $cDAO->atualizarCliente($cliente);
             return "Ok";
         }
+
+        function pesquisar($nomeCliente) {
+            $cDAO = new clienteDAO();
+            $result = $cDAO->pesquisar($nomeCliente);
+
+            return $result;
+        }
 		
         function View_Alterar(){
             $cDAO = new clienteDAO();

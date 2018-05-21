@@ -32,9 +32,9 @@ class relatorioDAO{
 		
         for($i=0; $i<$stmt->rowCount(); $i++){
             
-            $rel["saldo"]=+$result[$i]['saldo'];
-            $rel["entrada"]=+$result[$i]['entrada'];
-            $rel["saida"]=+$result[$i]['saida'];
+            $rel["saldo"] = $result[$i]['saldo'];
+            $rel["entrada"] = $result[$i]['entrada'];
+            $rel["saida"] = $result[$i]['saida'];
         
         }
         

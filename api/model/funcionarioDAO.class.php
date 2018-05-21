@@ -56,6 +56,30 @@ class funcionarioDAO{
         return $funcionarios;
     }
 
+    public function pesquisar($nomeFuncionario){
+        $conexao = conexao::connect();            
+        $stmt = $conexao->query("SELECT * FROM funcionario WHERE nome LIKE '%$nomeFuncionario%'");
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
+
+        $funcionarios = array();
+        
+        for($i = 0; $i < $stmt->rowCount(); $i++){
+            $funcionario = array();
+            $funcionario['login'] = $result[$i]['login'];
+            $funcionario['senha'] = $result[$i]['senha'];
+            $funcionario['nome'] = $result[$i]['nome'];            
+            $funcionario['cod_funci'] = $result[$i]['cod_funci'];            
+
+            array_push($funcionarios, $funcionario);
+        }
+
+        return $funcionarios;
+    }
+
     function excluirFuncionario($funcionario){
         $cod_funci=$funcionario->getCod_funci();
         

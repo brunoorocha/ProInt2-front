@@ -32,6 +32,13 @@
             }
             return json_encode($result);
         }
+
+        function pesquisar($nomeFuncionario) {
+            $fDAO = new funcionarioDAO();
+            $result = $fDAO->pesquisar($nomeFuncionario);
+
+            return $result;
+        }
         
         function view_cadastrar(){
           

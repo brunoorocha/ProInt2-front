@@ -41,6 +41,31 @@ class produtoDAO{
         }
         
 	    return json_encode($produtos);
+    }
+    
+    function pesquisar($nomeProduto){
+        $conexao = conexao::connect();        
+        $stmt = $conexao->query("SELECT * FROM produto WHERE nome LIKE '%$nomeProduto%'");        
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $produtos = array();
+        
+        if($stmt->rowCount() == 0) {            
+            return NULL;
+        }
+
+        for($i=0; $i<$stmt->rowCount(); $i++){
+            $produto = array(); 
+            $produto["cod_produto"] = $result[$i]['cod_produto'];
+            $produto["nome"] = $result[$i]['nome'];
+            $produto["preco_fabrica"] = $result[$i]['preco_fabrica'];            
+            $produto["preco_revenda"] = $result[$i]['preco_revenda'];
+            $produto["fornecedor"] = $result[$i]['fornecedor'];            
+            
+            array_push($produtos, $produto);
+        }
+        
+	    return json_encode($produtos);
 	}
 
     // Função que retorna as informações de 1 produto passando como parâmetro o seu código

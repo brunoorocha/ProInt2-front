@@ -13,7 +13,8 @@
     
     $method  = $_SERVER['REQUEST_METHOD'];
     $resource = $_GET['resource'];
-    $key = isset($_GET['key']) ? $_GET['key'] : 0;    
+    $key = isset($_GET['key']) ? $_GET['key'] : 0;
+    $searchValue =  isset($_GET['value']) ? $_GET['value'] : '';
     
     $input   = json_decode(file_get_contents('php://input'), true);        
     
@@ -21,8 +22,7 @@
     $token = isset($headers['token']) ? $headers['token'] : '';
 
     if($resource == 'auth') {
-        $token = AuthController::authenticate($input["username"], $input["password"]);
-        // $token = AuthController::authenticate("bruno123", "123");
+        $token = AuthController::authenticate($input["username"], $input["password"]);        
 
         if($token != '') {
             echo $token;
@@ -53,12 +53,18 @@
             echo $controllerInstance->cadastrar($input);
         }
 
-        if($method == 'GET') { 
-            if($key != 0) {
-                $result = $controllerInstance->visualizar_um($key);
-            }
-            else {
-                $result = $controllerInstance->visualizar_todos();                        
+        if($method == 'GET') {            
+            if($key == 'search') {            
+                $result = $controllerInstance->pesquisar($searchValue);
+            } else {
+                if($key != 0) {                               
+                    // else {
+                        $result = $controllerInstance->visualizar_um($key);
+                    // }
+                }
+                else {
+                    $result = $controllerInstance->visualizar_todos();                        
+                }
             }
 
             if($result == NULL) {                    

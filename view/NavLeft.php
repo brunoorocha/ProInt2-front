@@ -68,7 +68,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="relatórios nav-link" href="./Relatorio.php">
                     <i class="material-icons">pie_chart</i>
                     <span>Relatórios</span>
                 </a>

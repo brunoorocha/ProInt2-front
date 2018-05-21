@@ -37,6 +37,13 @@
             return $result;                 
         }
         
+        function pesquisar($nomeProduto) {
+            $pDAO = new produtoDAO();
+            $result = $pDAO->pesquisar($nomeProduto);
+
+            return $result;
+        }
+
         function view_cadastrar(){
           
             $pVIEW = new produtoView();
